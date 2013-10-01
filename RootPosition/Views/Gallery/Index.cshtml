@@ -1,0 +1,48 @@
+﻿@using Web.Mvc.Html
+@model Web.Mvc.Models.PhotoGalleryModel
+
+@{
+	Layout = "~/Views/Shared/_Layout.cshtml";
+
+	Html.Resources().Styles.Add(Url.Content("~/Css/photo-box.css"));
+	if (Request.Browser.Browser.Trim().Equals("IE", StringComparison.InvariantCultureIgnoreCase) && Request.Browser.MajorVersion < 7)
+	{
+		Html.Resources().Styles.Add(Url.Content("~/Css/ie6-overlay.css"));
+	}
+	Html.Resources().Styles.Add(Url.Content("~/Css/gallery.css"));
+	Html.Resources().Scripts.Add(Url.Content("~/Scripts/jquery-1.8.1.min.js"));
+	Html.Resources().Scripts.Add(Url.Content("~/Scripts/html-extension.js"));
+	Html.Resources().Scripts.Add(Url.Content("~/Scripts/jquery-extension.js"));
+	Html.Resources().Scripts.Add(Url.Content("~/Scripts/photo-box.js"));
+	Html.Resources().Scripts.Add(Url.Content("~/Scripts/photo-box-auto-load.js"));
+}
+
+@section Body {
+
+<div role="body">
+
+	<div id="content">
+		<section role="photos" class="gl-2013 clear">
+			<h3>June 28, 2013</h3>
+			<div class="gl-slides-center-column-wrapper">
+				<div class="gl-slides-center-column" role="slides">
+					@Html.PhotoGallery().Bind(Model).ClientId("slides").SetCssClassLandscape("ls").SetCssClassPortrait("pt").SetFirstItemCssClass("first").SetLastItemCssClass("last").HtmlAttributes(new { @class = "slides-list" }).Render()
+				</div>
+			</div>
+			<div class="gl-slides-left-column"><a class="gl-slides-prev-button"></a></div>
+			<div class="gl-slides-right-column"><a class="gl-slides-next-button"></a></div>
+		</section>
+		<section role="photos" class="gl-2012 clear">
+			<h3>July 15, 2012</h3>
+			<div class="gl-slides-center-column-wrapper">
+				<div class="gl-slides-center-column" role="slides">
+					@Html.PhotoGallery().Bind(Model).ClientId("slides").SetCssClassLandscape("ls").SetCssClassPortrait("pt").SetFirstItemCssClass("first").SetLastItemCssClass("last").HtmlAttributes(new { @class = "slides-list" }).Render()
+				</div>
+			</div>
+			<div class="gl-slides-left-column"><a class="gl-slides-prev-button"></a></div>
+			<div class="gl-slides-right-column"><a class="gl-slides-next-button"></a></div>
+		</section>
+	</div>
+
+</div>
+}

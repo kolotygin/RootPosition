@@ -1,0 +1,308 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{857B0873-E6FD-4E6C-80A4-18565ED7ECA7}</ProjectGuid>
+    <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RootPosition</RootNamespace>
+    <AssemblyName>RootPosition</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>true</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <FilesToIncludeForPublish>AllFilesInProjectFolder</FilesToIncludeForPublish>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.WebPages" />
+    <Reference Include="System.Web.Helpers" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\PianoController.cs" />
+    <Compile Include="Controllers\GalleryController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\TestimonialsController.cs" />
+    <Compile Include="Controllers\VoiceController.cs" />
+    <Compile Include="Controllers\ContactsController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Css\voice.css" />
+    <Content Include="Css\ie-not7.css" />
+    <Content Include="Images\back-button.png" />
+    <Content Include="Images\child-singing.jpg" />
+    <Content Include="Images\close.png" />
+    <Content Include="Images\html-background.png" />
+    <Content Include="Images\next-button.png" />
+    <Content Include="Images\no-image-available-hi.png" />
+    <Content Include="Images\no-image-available.png" />
+    <Content Include="Images\tom-lee-logo.png" />
+    <Content Include="Images\transparent.png" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5198.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5198.thumb.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5209.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5209.thumb.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5214.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5214.thumb.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5215.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5215.thumb.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5221.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5221.thumb.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5227.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5227.thumb.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5232.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5232.thumb.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5233.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5233.thumb.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5245.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5245.thumb.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5249.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5249.thumb.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5262.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5262.thumb.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5276.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5276.thumb.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5280.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5280.thumb.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5285.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5285.thumb.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5286.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5286.thumb.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5305.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5305.thumb.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5313.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5313.thumb.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5318.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5318.thumb.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5325.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5325.thumb.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5341.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5341.thumb.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5350.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5350.thumb.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5353.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5353.thumb.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5359.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5359.thumb.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5368.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5368.thumb.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5369.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5369.thumb.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5377.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5377.thumb.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5382.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5382.thumb.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5388.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_5388.thumb.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_9430.jpg" />
+    <Content Include="PhotoGallery\2012-06-25\IMG_9430.thumb.jpg" />
+    <Content Include="PhotoGallery\2013-06-28\IMG_0298.jpg" />
+    <Content Include="PhotoGallery\2013-06-28\IMG_0298.original.JPG" />
+    <Content Include="PhotoGallery\2013-06-28\IMG_0300.jpg" />
+    <Content Include="PhotoGallery\2013-06-28\IMG_0300.original.JPG" />
+    <Content Include="PhotoGallery\2013-06-28\IMG_0303.jpg" />
+    <Content Include="PhotoGallery\2013-06-28\IMG_0303.original.JPG" />
+    <Content Include="PhotoGallery\2013-06-28\IMG_0306.jpg" />
+    <Content Include="PhotoGallery\2013-06-28\IMG_0306.original.JPG" />
+    <Content Include="PhotoGallery\2013-06-28\IMG_0308.jpg" />
+    <Content Include="PhotoGallery\2013-06-28\IMG_0308.original.JPG" />
+    <Content Include="PhotoGallery\2013-06-28\IMG_0318.jpg" />
+    <Content Include="PhotoGallery\2013-06-28\IMG_0318.original.JPG" />
+    <Content Include="PhotoGallery\2013-06-28\IMG_0324.jpg" />
+    <Content Include="PhotoGallery\2013-06-28\IMG_0324.original.JPG" />
+    <Content Include="PhotoGallery\2013-06-28\IMG_0335.jpg" />
+    <Content Include="PhotoGallery\2013-06-28\IMG_0335.original.JPG" />
+    <Content Include="PhotoGallery\2013-06-28\IMG_0342.jpg" />
+    <Content Include="PhotoGallery\2013-06-28\IMG_0342.original.JPG" />
+    <Content Include="PhotoGallery\2013-06-28\IMG_0351.original.JPG" />
+    <Content Include="PhotoGallery\2013-06-28\IMG_0353.original.JPG" />
+    <Content Include="PhotoGallery\2013-06-28\IMG_0367.original.JPG" />
+    <Content Include="PhotoGallery\2013-06-28\IMG_0370.original.JPG" />
+    <Content Include="PhotoGallery\2013-06-28\IMG_0372.original.JPG" />
+    <Content Include="PhotoGallery\2013-06-28\IMG_0377.original.JPG" />
+    <Content Include="PhotoGallery\2013-06-28\IMG_0382.original.JPG" />
+    <Content Include="PhotoGallery\2013-06-28\IMG_0389.original.JPG" />
+    <Content Include="PhotoGallery\2013-06-28\IMG_0390.original.JPG" />
+    <Content Include="PhotoGallery\2013-06-28\IMG_0396.original.JPG" />
+    <Content Include="Scripts\jquery.images-loaded.js" />
+    <Content Include="Scripts\jquery.load-image.js" />
+    <Content Include="Scripts\jquery.px-em.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Css\contacts.css" />
+    <Content Include="Css\ie6-overlay.css" />
+    <Content Include="Css\piano.css" />
+    <Content Include="Css\gallery.css" />
+    <Content Include="Css\reset.css" />
+    <Content Include="Css\photo-box.css" />
+    <Content Include="Css\testimonials.css" />
+    <Content Include="Css\root-position.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Images\body-background.png" />
+    <Content Include="Images\header-background.gif" />
+    <Content Include="Images\header-piano.jpg" />
+    <Content Include="Images\header-piano2.gif" />
+    <Content Include="Images\header-voice2.gif" />
+    <Content Include="Images\loading.gif" />
+    <Content Include="Images\logo-rootposition.gif" />
+    <Content Include="Images\nextlabel.gif" />
+    <Content Include="Images\paragraph-start.gif" />
+    <Content Include="Images\prevlabel.gif" />
+    <Content Include="Images\reference-background.gif" />
+    <Content Include="Images\site.ico" />
+    <Content Include="Scripts\jquery-1.8.1.js" />
+    <Content Include="Scripts\jquery-1.8.1.min.js" />
+    <Content Include="Scripts\ModalBox.js" />
+    <Content Include="Scripts\NewFolderDialog.js" />
+    <Content Include="Scripts\photo-box-auto-load.js" />
+    <Content Include="Scripts\html-extension.js" />
+    <Content Include="Scripts\jquery-extension.js" />
+    <Content Include="Scripts\photo-box.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery-1.4.4.js" />
+    <Content Include="Scripts\jquery-1.4.4.min.js" />
+    <Content Include="Scripts\jquery-1.4.4-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui.js" />
+    <Content Include="Scripts\jquery-ui.min.js" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\Menu.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Piano\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Voice\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Contacts\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Testimonials\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Gallery\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
+      <Project>{2B5AFB8F-B499-417A-BCA7-921C3DBA036E}</Project>
+      <Name>Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Web.Mvc\Web.Mvc.csproj">
+      <Project>{6BDFECA3-B9F1-4D64-8ABE-6E87B19C5149}</Project>
+      <Name>Web.Mvc</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>50460</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

@@ -1,0 +1,67 @@
+﻿#content article[role="reference"] {
+	margin: 2em 0;
+	background: url("/Images/reference-background.gif") no-repeat scroll 50% 50% #fff;
+	background-size: contain;
+	padding: 1.2em;
+	border: 1px solid #E0CFAB;
+	-webkit-border-radius: 1em;
+	-moz-border-radius: 1em;
+	border-radius: 1em;
+}
+
+#content article[role="reference"].first-reference {
+	margin-top: 0;
+}
+
+#content article[role="reference"].last-reference {
+	margin-bottom: 0;
+}
+
+#content article[role="reference"]:hover {
+	border: 1px solid #FC6B35;
+}
+
+article[role="reference"] p {
+	width: 100%;
+	margin: 0 0 1em 0;
+	font-family: "Maiandra GD", "Gill Sans", Helvetica, Arial, sans-serif;
+	font-style: normal;
+	font-size: 1.6em;
+	color: #333;
+}
+
+article[role="reference"] header {
+	margin: 0 0 1em 0;
+}
+
+article[role="reference"] header time {
+	font-size: 1.2em;
+	color: #FC6B35;
+}
+
+article[role="reference"] footer span {
+	letter-spacing: -0.1em;
+	color: #777;
+	font-size: 1.4em;
+	display: block;
+}
+
+/* Gradient color1 - color2 - color1 */
+hr {
+	border: 0;
+	height: 0.1em;
+	background: #FC6B35; /* IE6-9 */
+	background: rgba(252, 107, 53, 0.3); /* IE9-10 */
+	/* Webkit (Safari/Chrome 10) */ 
+	background-image: -webkit-gradient(linear, left top, right top, color-stop(0, rgba(0,0,0,0)), color-stop(1, #FC6B35) color-stop(2, rgba(0,0,0,0)));
+	/* Webkit (Chrome 11+) */
+	background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), #FC6B35, rgba(0,0,0,0));
+	/* Mozilla Firefox */
+	background-image: -moz-linear-gradient(left, rgba(0,0,0,0), #FC6B35, rgba(0,0,0,0));
+	/* IE10 */
+	background-image: -ms-linear-gradient(left, rgba(0,0,0,0), #FC6B35, rgba(0,0,0,0));
+	/* Opera */
+	background-image: -o-linear-gradient(left, rgba(0,0,0,0), #FC6B35, rgba(0,0,0,0));
+	/* Proposed W3C Markup */
+	background-image: linear-gradient(rgba(0,0,0,0), #FC6B35, rgba(0,0,0,0));
+}

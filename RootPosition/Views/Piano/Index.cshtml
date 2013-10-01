@@ -1,0 +1,69 @@
+﻿@using Web.Mvc.Html
+@{ Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+@Html.Resources().Styles.Add(Url.Content("~/CSS/piano.css"))
+
+@section Body {
+
+<div role="body">
+
+	<div id="content">
+		<section id="piano" role="piano-techniques">
+			<p>Playing piano is more than just taking lessons, it help the students to develop Life Skills through Music. Students will acquire time management and goal setting skills, as well as, the feeling of commitment and personal responsibility.  Also the students will develop self-confidence and creative thinking skills.</p>
+			<p>Here are just a few things that Olga draws students’ attention on during the lessons and recommends for the homework:</p>
+			<ul>
+				<li>
+					<p><em>Proper hands and body position</em> is absolutely vital for developing piano techniques. Straight back, relaxed wristed, curved fingers should become a second nature when playing piano.</p>
+				</li>
+				<li>
+					<p>Good <em>sight reading</em> is a high priority for any piano player. Daily sight reading exercises using RCM books will definitely help to develop solid sight reading skills.</p>
+				</li>
+				<li>
+					<p><em>Counting beats</em> is absolutely necessary when learning new piece. Either counting the beats aloud or playing with metronome will help the students develop rhythmical skills.</p>
+				</li>
+				<li>
+					<p>Knowledge about <em>musical periods, composers, form and structure</em>, brings life and style in playing the piece. Learning about the background of the piece really makes a difference in performing it.</p>
+				</li>
+				<li>
+					<p><em>Playing slowly</em> opens up mental space for intense focus. Slow practice also prepares students for easy playing up to speed.</p>
+				</li>
+				<li>
+					<p><em>Close focus on fingering</em> makes it more likely to remember them. This is simply a matter of mental habit, and good mental habits can be developed.</p>
+				</li>
+			</ul>
+		</section>
+	</div>
+
+	<aside id="sidebar" role="complementary">
+		<blockquote class="pullquote" cite="../Testimonials">
+			<span class="start">&#8220;</span>
+			<p class="quote">@Html.ActionLink("Olga sees each student as an individual and draws upon their strengths to teach them in ways that work best for them...", "Index", "Testimonials")</p>
+			<span class="end">&#8221;</span>
+			<p class="author">~ Igor Dianov</p>
+		</blockquote>
+
+		<blockquote class="pullquote" cite="../Testimonials">
+			<span class="start">&#8220;</span>
+			<p class="quote">@Html.ActionLink("Olga has been demonstrating her patience and encouraging personality, which are critical for starting students, along with her excellent teaching skills and passion for music...", "Index", "Testimonials")</p>
+			<span class="end">&#8221;</span>
+			<p class="author">~ Songlin Ye</p>
+		</blockquote>
+
+		<blockquote class="pullquote" cite="../Testimonials">
+			<span class="start">&#8220;</span>
+			<p class="quote">@Html.ActionLink("Olga sees each student as an individual and draws upon their strengths to teach them in ways that work best for them...", "Index", "Testimonials")</p>
+			<span class="end">&#8221;</span>
+			<p class="author">~ Iana Machinskaia</p>
+		</blockquote>
+
+		<blockquote class="pullquote" cite="../Testimonials">
+			<span class="start">&#8220;</span>
+			<p class="quote">@Html.ActionLink("Olga is very positive and encouraging Teacher who is able to make students feel confident and motivated...", "Index", "Testimonials")</p>
+			<span class="end">&#8221;</span>
+			<p class="author">~ Nisveta Nikki Mujezinovic</p>
+		</blockquote>
+
+	</aside>
+
+</div>
+}

@@ -1,0 +1,40 @@
+﻿@using Web.Mvc.Html
+@{ Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+@Html.Resources().Styles.Add(Url.Content("~/CSS/voice.css"))
+
+@section Body {
+
+<div role="body">
+
+	<div id="content">
+		<section id="voice" role="voice-techniques">
+			<p>It has been said by some that the human voice is the basis of all music. No matter how marvelous the technique, no other instrument can touch our heart in quite the same way. Some may be surprised to hear the voice referred to as an instrument, but that's really what it is in the context of music. In fact the voice is the oldest instrument, since humans were able to vocalize before they could even use tools.</p>
+
+			<p>Olga is a very down to earth voice instructor who emphasizes the importance of keeping singing fun.</p>
+			<p>Here are some tips that Olga suggest to her students during the practice:</p>
+			<ul>
+				<li>
+					<p><em>Articulation</em> Using articulators (lips, teeth, tip of the tongue) more specifically to create words will help to sing better and more easily.</p>
+				</li>
+				<li>
+					<p><em>Humming</em> should be easy and sound alive; it should help students to sing to their potential.</p>
+				</li>
+				<li>
+					<p><em>Lifting Diaphragm</em> To get the best breath for singing, a student should fill up abdomen like an inner tube, and feel expansion all the way around your body, even in the back. Then to compress the air and support the vocal tone release, lift the diaphragm muscle straight up from the center of the body.</p>
+				</li>
+				<li>
+					<p><em>Quit singing through the nose</em> Nasal tone qualities occur when there is too much resonance in nasal cavity and not enough sympathetic resonance or overtones being created in other cavities. One quick fix is to simply open mouth taller.</p>
+				</li>
+				<li>
+					<p><em>Learning a song</em> The most efficient way to learn a song is actually to <b>not</b> sing it right away, but listen to it as many times as needed to pick every single detail. It’s much easier to learn a song properly from the begging then to fix mistakes later.</p>
+				</li>
+			</ul>
+		<section>
+	</div>
+
+	<aside id="sidebar" role="complementary">
+	</aside>
+
+</div>
+}

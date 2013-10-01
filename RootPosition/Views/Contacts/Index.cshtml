@@ -1,0 +1,25 @@
+﻿@using Web.Mvc.Html
+@{ Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+@Html.Resources().Styles.Add(Url.Content("~/CSS/contacts.css"))
+
+@section Body {
+<div role="body">
+
+	<div id="content">
+		<section id="map" role="direction">
+			<iframe src="http://www.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=7488+Southwynde+Avenue,+Burnaby,+BC,+Canada&amp;aq=0&amp;oq=7488+Southwynde&amp;sll=37.0625,-95.677068&amp;sspn=39.729049,67.587891&amp;ie=UTF8&amp;hq=&amp;hnear=7488+Southwynde+Ave,+Burnaby,+British+Columbia+V3N+5C6,+Canada&amp;t=m&amp;z=14&amp;ll=49.206977,-122.964054&amp;output=embed"></iframe>
+			<a href="http://www.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=7488+Southwynde+Avenue,+Burnaby,+BC,+Canada&amp;aq=0&amp;oq=7488+Southwynde&amp;sll=37.0625,-95.677068&amp;sspn=39.729049,67.587891&amp;ie=UTF8&amp;hq=&amp;hnear=7488+Southwynde+Ave,+Burnaby,+British+Columbia+V3N+5C6,+Canada&amp;t=m&amp;z=14&amp;ll=49.206977,-122.964054" target="_blank">View Larger Map</a>
+		</section>
+	</div>
+
+	<aside id="sidebar" role="complementary">
+		<address>
+			<span>Olga Kolotygin (<abbr title="Bachelor of Music">BMus</abbr>)</span>
+			<span>Tel: <a href="callto&#58;+16047831967">(604)727-6259</a></span>
+			<span>Email: <a href="mailto:okuznets@hotmail.com">okuznets@hotmail.com</a></span>
+		</address>
+	</aside>
+
+</div>
+}

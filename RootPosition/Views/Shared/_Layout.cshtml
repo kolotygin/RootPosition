@@ -1,0 +1,53 @@
+﻿@using Web.Mvc.Extensions
+@using Web.Mvc.Html
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>@ViewBag.Title</title>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+	<link rel="shortcut icon" type="image/ico" href="/Images/site.ico" />
+	<meta name="author" content="Roman Kolotygin" />
+	<meta name="keywords" content="music, piano lessons, vocal lessons, voice lessons, music exams, vancouver, burnaby, olga, kolotygin" />
+	<meta name="description" content="Olga's piano lessons information" />
+	<!-- to correct the unsightly Flash of Unstyled Content. http://www.bluerobot.com/web/css/fouc.asp -->
+	<script type="text/javascript"></script>
+	<!-- enable HTML5 elements in IE7+8 -->
+	<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	@{
+		Html.Resources().Styles.AddFirst(Url.Content("~/CSS/root-position.css"));
+		if (Request.Browser.Browser.Trim().Equals("IE", StringComparison.InvariantCultureIgnoreCase) && Request.Browser.MajorVersion != 7)
+		{
+			Html.Resources().Styles.Add(Url.Content("~/Css/ie-not7.css"));
+		}
+	}
+	@Html.Resources().Styles.Render()
+</head>
+
+<body>
+@{var formId = Html.ViewContext.RouteData.GetCurrentUrl().AsId();}
+@using (Html.BeginForm(null, null, FormMethod.Get, new { name = formId, id = formId }))
+{
+	<div id="wrapper">
+		<header role="banner">
+			<div id="logo">
+				<a href="http://rootposition.com"><img src=@Url.Content("~/Images/logo-rootposition.gif") /></a>
+			</div>
+			<nav role="navigation">
+				@{ Html.RenderAction("Menu", "Menu", Html.ViewContext.RouteData.GetCurrentUrl()); }
+			</nav>
+			<h1>@ViewBag.Title</h1>
+		</header>
+		@RenderSection("Body")
+		<footer role="siteinfo">
+			<p id="contact">Olga Kolotygin (<abbr title="Bachelor of Music">BMus</abbr>) <b>|</b> <a href="callto&#58;+16047831967">(604)727-6259</a> <b>|</b> <a href="mailto:okuznets@hotmail.com">okuznets@hotmail.com</a></p>
+			<p id="copyright">Copyright &copy; 2008-2012 <a href="http://rootposition.com/" title="root-position home page">R<span class="red">o</span><span class="yellow">o</span>tp<span class="black">o</span>sition</a></p>
+		</footer>
+	</div>
+	@Html.Resources().Scripts.Render()
+}
+</body>
+</html>

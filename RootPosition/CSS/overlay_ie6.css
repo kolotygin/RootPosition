@@ -1,0 +1,5 @@
+﻿/* IE6 does not like position: fixed or the Microsoft filter used for IE7 */
+#overlay-container {
+	position: absolute;
+	filter: alpha(opacity=50);
+}
