@@ -106,7 +106,8 @@ namespace Web.Mvc.Html
 				}
 				if (string.IsNullOrEmpty(item.OnClick))
 				{
-					liTag.InnerHtml = Helper.ActionLink(item.Text, item.Url.ActionName, item.Url.ControllerName ?? string.Empty).ToHtmlString();
+				    var link = Helper.ActionLink(item.Text, item.Url.ActionName, item.Url.ControllerName ?? string.Empty);
+					liTag.InnerHtml = link.ToHtmlString();
 				}
 				else
 				{

@@ -1,5 +1,8 @@
 ﻿@using Web.Mvc.Html
 @using Web.Mvc.Models
+
 @model MenuModel
+
 @{ Layout = null;}
+
 @Html.Menu().Bind(Model).ClientId("menu").SetSelectedItemCssClass("selected").SetFirstItemCssClass("first").SetLastItemCssClass("last").Render()

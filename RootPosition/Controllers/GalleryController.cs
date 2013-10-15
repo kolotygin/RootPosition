@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Web.Mvc;
 using Infrastructure.Extensions;
-using Infrastructure.Image;
+using Infrastructure.Imaging;
 using Web.Mvc.Models;
 
 namespace RootPosition.Controllers

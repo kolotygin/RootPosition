@@ -17,14 +17,15 @@
 	<!--[if lt IE 9]>
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
-	@{
-		Html.Resources().Styles.AddFirst(Url.Content("~/CSS/root-position.css"));
-		if (Request.Browser.Browser.Trim().Equals("IE", StringComparison.InvariantCultureIgnoreCase) && Request.Browser.MajorVersion != 7)
-		{
-			Html.Resources().Styles.Add(Url.Content("~/Css/ie-not7.css"));
-		}
-	}
-	@Html.Resources().Styles.Render()
+
+    @{
+        Html.Resources().Styles.AddFirst(Url.Content("~/CSS/root-position.css"));
+        if (Request.Browser.Browser.Trim().Equals("IE", StringComparison.InvariantCultureIgnoreCase) && Request.Browser.MajorVersion != 7)
+        {
+            Html.Resources().Styles.Add(Url.Content("~/Css/ie-not7.css"));
+        }
+    }
+    @Html.Resources().Styles.Render()
 </head>
 
 <body>
