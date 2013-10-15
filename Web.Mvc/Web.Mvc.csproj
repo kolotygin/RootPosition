@@ -55,6 +55,7 @@
     <Compile Include="Html\MvcLabelExtensions.cs" />
     <Compile Include="Html\MvcMenu.cs" />
     <Compile Include="Html\MvcUrl.cs" />
+    <Compile Include="ImageFileResult.cs" />
     <Compile Include="Models\PhotoGalleryModel.cs" />
     <Compile Include="Models\MenuItemModel.cs" />
     <Compile Include="Models\MenuModel.cs" />

@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Web.Mvc;
 using Infrastructure.Imaging;
+using Web.Mvc;
 
 namespace RootPosition.Controllers
 {
@@ -24,8 +25,7 @@ namespace RootPosition.Controllers
             {
                 return new HttpNotFoundResult(string.Format("The file {0} does not exist.", file));
             }
-            var controller = new ImageServiceController();
-            var stream = controller.ResizeWithHighQuality(fullPath, width, height);
+            var stream = ImageResizer.Resize(fullPath, width, height, ImageResizeQuality.High);
             return new ImageStreamResult(stream, GetContentType(fullPath));
         }
 

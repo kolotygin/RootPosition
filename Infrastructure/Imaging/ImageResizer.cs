@@ -7,10 +7,36 @@ using Size = System.Drawing.Size;
 
 namespace Infrastructure.Imaging
 {
-    public class ImageServiceController
+    public enum ImageResizeQuality
+    {
+        Undefined = 0,
+        Poor,
+        Medium,
+        High
+    }
+
+    public static class ImageResizer
     {
 
-        public Stream ResizeWithPoorQuality(string fullPath, int? width, int? height)
+        public static Stream Resize(string fullPath, int? width, int? height, ImageResizeQuality quality)
+        {
+            Stream stream = null;
+            switch (quality)
+            {
+                case ImageResizeQuality.Poor:
+                    stream = ResizeWithPoorQuality(fullPath, width, height);
+                    break;
+                case ImageResizeQuality.Medium:
+                    stream = ResizeWithMediumQuality(fullPath, width, height);
+                    break;
+                case ImageResizeQuality.High:
+                    stream = ResizeWithHighQuality(fullPath, width, height);
+                    break;
+            }
+            return stream;
+        }
+
+        private static Stream ResizeWithPoorQuality(string fullPath, int? width, int? height)
         {
             // create a bit-map object from the image path
             var bitmap = new Bitmap(fullPath);
@@ -28,7 +54,7 @@ namespace Infrastructure.Imaging
             return memoryStream;
         }
 
-        public Stream ResizeWithMediumQuality(string fullPath, int? width, int? height)
+        private static Stream ResizeWithMediumQuality(string fullPath, int? width, int? height)
         {
             var imageStream = new MemoryStream(File.ReadAllBytes(fullPath));
             var image = Image.FromStream(imageStream);
@@ -58,7 +84,7 @@ namespace Infrastructure.Imaging
             return thumbnailStream;
         }
 
-        public Stream ResizeWithHighQuality(string fullPath, int? width, int? height)
+        private static Stream ResizeWithHighQuality(string fullPath, int? width, int? height)
         {
             var imageStream = new MemoryStream(File.ReadAllBytes(fullPath));
             var image = Image.FromStream(imageStream);

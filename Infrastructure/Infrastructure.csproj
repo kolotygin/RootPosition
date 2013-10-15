@@ -51,9 +51,8 @@
   <ItemGroup>
     <Compile Include="Extensions\ServerExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
-    <Compile Include="Imaging\ImageFileResult.cs" />
     <Compile Include="Imaging\ImageHeader.cs" />
-    <Compile Include="Imaging\ImageServiceController.cs" />
+    <Compile Include="Imaging\ImageResizer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

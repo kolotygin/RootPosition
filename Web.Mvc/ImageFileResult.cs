@@ -3,7 +3,7 @@ using System.Web;
 using System.Web.Caching;
 using System.Web.Mvc;
 
-namespace Infrastructure.Imaging
+namespace Web.Mvc
 {
 
     internal static class ImageCacheability

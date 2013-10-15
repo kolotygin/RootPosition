@@ -70,7 +70,7 @@ namespace Infrastructure.Imaging
 		{
 			int maxMagicBytesLength = ImageFormatDecoders.Keys.OrderByDescending(x => x.Length).First().Length;
 			var magicBytes = new byte[maxMagicBytesLength];
-			for (int i = 0; i < maxMagicBytesLength; i += 1)
+			for (var i = 0; i < maxMagicBytesLength; i += 1)
 			{
 				magicBytes[i] = binaryReader.ReadByte();
 				foreach (var pair in ImageFormatDecoders)
@@ -86,7 +86,7 @@ namespace Infrastructure.Imaging
 
 		private static bool StartsWith(byte[] thisBytes, byte[] thatBytes)
 		{
-			for (int i = 0; i < thatBytes.Length; i += 1)
+			for (var i = 0; i < thatBytes.Length; i += 1)
 			{
 				if (thisBytes[i] != thatBytes[i])
 				{
@@ -99,7 +99,7 @@ namespace Infrastructure.Imaging
 		private static short ReadLittleEndianInt16(BinaryReader binaryReader)
 		{
 			var bytes = new byte[sizeof (short)];
-			for (int i = 0; i < sizeof (short); i += 1)
+			for (var i = 0; i < sizeof (short); i += 1)
 			{
 				bytes[sizeof (short) - 1 - i] = binaryReader.ReadByte();
 			}
@@ -109,7 +109,7 @@ namespace Infrastructure.Imaging
 		private static ushort ReadLittleEndianUInt16(BinaryReader binaryReader)
 		{
 			var bytes = new byte[sizeof (ushort)];
-			for (int i = 0; i < sizeof (ushort); i += 1)
+			for (var i = 0; i < sizeof (ushort); i += 1)
 			{
 				bytes[sizeof (ushort) - 1 - i] = binaryReader.ReadByte();
 			}
@@ -119,7 +119,7 @@ namespace Infrastructure.Imaging
 		private static int ReadLittleEndianInt32(BinaryReader binaryReader)
 		{
 			var bytes = new byte[sizeof(int)];
-			for (int i = 0; i < sizeof (int); i += 1)
+			for (var i = 0; i < sizeof (int); i += 1)
 			{
 				bytes[sizeof (int) - 1 - i] = binaryReader.ReadByte();
 			}
@@ -129,8 +129,8 @@ namespace Infrastructure.Imaging
 		private static Size DecodeBitmap(BinaryReader binaryReader)
 		{
 			binaryReader.ReadBytes(16);
-			int width = binaryReader.ReadInt32();
-			int height = binaryReader.ReadInt32();
+			var width = binaryReader.ReadInt32();
+			var height = binaryReader.ReadInt32();
 			return new Size(width, height);
 		}
 
@@ -144,8 +144,8 @@ namespace Infrastructure.Imaging
 		private static Size DecodePng(BinaryReader binaryReader)
 		{
 			binaryReader.ReadBytes(8);
-			int width = ReadLittleEndianInt32(binaryReader);
-			int height = ReadLittleEndianInt32(binaryReader);
+			var width = ReadLittleEndianInt32(binaryReader);
+			var height = ReadLittleEndianInt32(binaryReader);
 			return new Size(width, height);
 		}
 
