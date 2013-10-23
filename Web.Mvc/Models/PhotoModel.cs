@@ -2,7 +2,7 @@
 
 namespace Web.Mvc.Models {
 
-	public enum PhotoOrientation {
+	public enum ImageOrientation {
 		Undefined = 0,
 		Landscape = 1,
 		Portrait = 2
@@ -15,7 +15,7 @@ namespace Web.Mvc.Models {
 		public string PhotoSource;
 		public string AlternateText;
 		public string Title;
-		public PhotoOrientation ThumbnailOrientation;
+		public ImageOrientation Orientation;
 
 		public string ThumbnailSource {
 			get {

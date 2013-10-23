@@ -5,23 +5,23 @@ namespace Infrastructure.Extensions
 {
 	public static class ServerExtensions
 	{
-		public static string RelativePath(string path)
+		public static string RelativePath(string absolutePath)
 		{
-			return path.Replace(HttpContext.Current.Request.ServerVariables["APPL_PHYSICAL_PATH"], "~/").Replace(@"\", "/");
+			return absolutePath.Replace(HttpContext.Current.Request.ServerVariables["APPL_PHYSICAL_PATH"], "~/").Replace(@"\", "/");
 		}
 
-		public static string MapPathReverse(string fullServerPath)
+		public static string MapPathReverse(string absolutePath)
 		{
-			return @"~\" + fullServerPath.Replace(HttpContext.Current.Request.PhysicalApplicationPath.GetTextOrEmpty(), String.Empty);
+			return @"~\" + absolutePath.Replace(HttpContext.Current.Request.PhysicalApplicationPath.GetTextOrEmpty(), String.Empty);
 		}
 
-		static string RelativeFromAbsolutePath(string path)
+		static string GetVirtualPath(string absolutePath)
 		{
 			var request = HttpContext.Current.Request;
 			var applicationPath = request.PhysicalApplicationPath.GetTextOrEmpty();
 			var virtualDir = request.ApplicationPath;
 			virtualDir = virtualDir == "/" ? virtualDir : (virtualDir + "/");
-			return path.Replace(applicationPath, virtualDir).Replace(@"\", "/");
+			return absolutePath.Replace(applicationPath, virtualDir).Replace(@"\", "/");
 		}
 
 	}

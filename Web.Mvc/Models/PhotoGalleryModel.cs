@@ -10,7 +10,7 @@ namespace Web.Mvc.Models
 
 //		public List<PhotoModel> GetThumbnails()
 //		{
-//			return Photos.Select(photo => new PhotoModel { PhotoSource = GetThumbnailSource(photo.PhotoSource), ThumbnailOrientation = photo.ThumbnailOrientation }).ToList();
+//			return Photos.Select(photo => new PhotoModel { PhotoSource = GetThumbnailSource(photo.PhotoSource), Orientation = photo.Orientation }).ToList();
 //		}
 //
 //		private string GetThumbnailSource(string source)

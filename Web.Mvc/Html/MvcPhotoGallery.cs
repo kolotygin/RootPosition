@@ -116,7 +116,7 @@ namespace Web.Mvc.Html
 					{
 						liTag.AddNotEmptyCssClass(LastItemCssClass);
 					}
-					var imgCssClass = (photo.ThumbnailOrientation == PhotoOrientation.Landscape ? CssClassLandscape : CssClassPortrait);
+					var imgCssClass = (photo.Orientation == ImageOrientation.Landscape ? CssClassLandscape : CssClassPortrait);
 					var link = Helper.ImageLink(
 						String.Empty,
 						Gallery.Path.Append(photo.ThumbnailSource, "/"),
