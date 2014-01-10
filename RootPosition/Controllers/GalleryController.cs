@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Web.Hosting;
 using System.Web.Mvc;
 using Infrastructure.Extensions;
 using Infrastructure.Imaging;
@@ -62,9 +63,9 @@ namespace RootPosition.Controllers
 			var galleries = new SortedList<string, PhotoGalleryModel>(new DescendingComparer());
 
 			//var fileName = Request.MapPath("~\\PhotoGallery\\2012-06-25\\IMG_9430.jpg");
-			var fileName = Request.MapPath(model.Path + "/" + model.Photos[0].PhotoSource);
-			var size = ImageHeader.GetDimensions(fileName);
-			var path = ServerExtensions.RelativePath("~\\PhotoGallery\\2012-06-25\\IMG_9430.jpg");
+            //var fileName = HostingEnvironment.MapPath(model.Path + "/" + model.Photos[0].PhotoSource);
+			//var size = ImageHeader.GetDimensions(fileName);
+			//var path = ServerExtensions.RelativePath("~\\PhotoGallery\\2012-06-25\\IMG_9430.jpg");
 			return View(model);
 		}
 	}

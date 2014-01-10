@@ -84,9 +84,9 @@ namespace Infrastructure.Imaging
 			throw new ArgumentException(ErrorMessage, "binaryReader");
 		}
 
-		private static bool StartsWith(byte[] thisBytes, byte[] thatBytes)
+		private static bool StartsWith(IList<byte> thisBytes, IList<byte> thatBytes)
 		{
-			for (var i = 0; i < thatBytes.Length; i += 1)
+			for (var i = 0; i < thatBytes.Count; i += 1)
 			{
 				if (thisBytes[i] != thatBytes[i])
 				{
