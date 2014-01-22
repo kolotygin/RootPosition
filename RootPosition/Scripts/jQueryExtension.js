@@ -22,16 +22,30 @@
 (function (jQuery) {
 	jQuery.fn.extend({
 		center: function() {
-			var jQueryWindow = jQuery(window);
+			var $window = jQuery(window);
 			return this.each(function () {
-				var jQueryThis = jQuery(this);
-				var top = (jQueryWindow.height() - jQueryThis.outerHeight(true)) / 2 + jQueryWindow.scrollTop();
+				var $this = jQuery(this);
+				var top = ($window.height() - $this.outerHeight(true)) / 2 + $window.scrollTop();
 				top = top > 0 ? top : 0;
-				var left = (jQueryWindow.width() - jQueryThis.outerWidth(true)) / 2 + jQueryWindow.scrollLeft();
+				var left = ($window.width() - $this.outerWidth(true)) / 2 + $window.scrollLeft();
 				left = left > 0 ? left : 0;
-				jQueryThis.css({ position: "absolute", margin: 0, top: top + "px", left: left + "px" });
-				return jQueryThis;
+				$this.css({ position: "absolute", margin: 0, top: top + "px", left: left + "px" });
+				return $this;
 			});
 		}
 	});
+})(jQuery);
+
+(function ($) {
+    if (typeof __doPostBack === "function") {
+        var __doPostBackOriginal = __doPostBack;
+        __doPostBack = function (eventTarget, eventArgument) {
+            $("form").trigger("onPostBack");
+            __doPostBackOriginal(eventTarget, eventArgument);
+        };
+    }
+
+    $.onPostBack = function (func) {
+        $("form").on("onPostBack", function () { func(); });
+    };
 })(jQuery);
