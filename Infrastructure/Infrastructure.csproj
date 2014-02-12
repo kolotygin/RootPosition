@@ -45,7 +45,7 @@
   <ItemGroup>
     <Compile Include="Extensions\ServerExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
-    <Compile Include="Imaging\ImageHeader.cs" />
+    <Compile Include="Imaging\ImageHelper.cs" />
     <Compile Include="Imaging\ImageResizer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

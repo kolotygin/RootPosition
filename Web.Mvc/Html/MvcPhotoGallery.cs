@@ -123,7 +123,7 @@ namespace Web.Mvc.Html
 						photo.AlternateText,
 						new { @class = imgCssClass },
 						String.Empty,
-						Gallery.Path.Append(photo.PhotoSource, "/"),
+						Gallery.Path.Append(photo.Source, "/"),
 						new { @target = "_blank", @rel = "photo-box" });
 					liTag.InnerHtml = link.ToHtmlString();
 					ulTag.InnerHtml += MvcHtmlString.Create(liTag.ToString(TagRenderMode.Normal));

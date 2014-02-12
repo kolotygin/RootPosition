@@ -1,36 +1,34 @@
 ﻿using System;
+using System.Drawing;
 
-namespace Web.Mvc.Models {
+namespace Web.Mvc.Models
+{
+    public enum ImageOrientation
+    {
+        Undefined = 0,
+        Landscape = 1,
+        Portrait = 2
+    }
 
-	public enum ImageOrientation {
-		Undefined = 0,
-		Landscape = 1,
-		Portrait = 2
-	}
+    public class PhotoModel
+    {
+        public string Source;
+        public string AlternateText;
+        public ImageOrientation Orientation;
+        public Size ThumbnailSize { get; set; }
 
-	public class PhotoModel {
+        public string ThumbnailSource
+        {
+            get
+            {
+                return string.Format("Image/{0}/{1}/{2}", ThumbnailSize.Width, ThumbnailSize.Height, Source);
+            }
+        }
 
-		private const string ThumbnailSuffix = ".thumb";
+        public override string ToString()
+        {
+            return String.Format("{0} [{1}]", Source, AlternateText);
+        }
 
-		public string PhotoSource;
-		public string AlternateText;
-		public string Title;
-		public ImageOrientation Orientation;
-
-		public string ThumbnailSource {
-			get {
-				return GetThumbnailSource(PhotoSource);
-			}
-		}
-
-		private static string GetThumbnailSource(string source) {
-			var i = source.LastIndexOf(".", StringComparison.InvariantCulture);
-			return source.Substring(0, i) + ThumbnailSuffix + source.Substring(i);
-		}
-
-		public override string ToString() {
-			return String.Format("{0} [{1}]", PhotoSource, Title);
-		}
-
-	}
+    }
 }

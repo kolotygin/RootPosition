@@ -11,7 +11,7 @@ namespace Infrastructure.Imaging
 	///     Minor improvements including supporting unsigned 16-bit integers when decoding Jfif and added logic
 	///     to load the image using new Bitmap if reading the headers fails
 	/// </summary>
-	public static class ImageHeader
+	public static class ImageHelper
 	{
 		private const string ErrorMessage = "Could not recognise image format.";
 
