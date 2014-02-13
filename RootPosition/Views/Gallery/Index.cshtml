@@ -1,5 +1,5 @@
 ﻿@using Web.Mvc.Html
-@model Web.Mvc.Models.PhotoGalleryModel
+@model SortedList<string, Web.Mvc.Models.PhotoGalleryModel>
 
 @{
 	Layout = "~/Views/Shared/_Layout.cshtml";
@@ -26,7 +26,7 @@
 			<h3>June 28, 2013</h3>
 			<div class="gl-slides-center-column-wrapper">
 				<div class="gl-slides-center-column" role="slides">
-					@Html.PhotoGallery().Bind(Model).ClientId("slides").SetCssClassLandscape("ls").SetCssClassPortrait("pt").SetFirstItemCssClass("first").SetLastItemCssClass("last").HtmlAttributes(new { @class = "slides-list" }).Render()
+					@Html.PhotoGallery().Bind(Model["2012-06-25"]).ClientId("slides").SetCssClassLandscape("ls").SetCssClassPortrait("pt").SetFirstItemCssClass("first").SetLastItemCssClass("last").HtmlAttributes(new { @class = "slides-list" }).Render()
 				</div>
 			</div>
 			<div class="gl-slides-left-column"><a class="gl-slides-prev-button"></a></div>
@@ -36,7 +36,7 @@
 			<h3>July 15, 2012</h3>
 			<div class="gl-slides-center-column-wrapper">
 				<div class="gl-slides-center-column" role="slides">
-					@Html.PhotoGallery().Bind(Model).ClientId("slides").SetCssClassLandscape("ls").SetCssClassPortrait("pt").SetFirstItemCssClass("first").SetLastItemCssClass("last").HtmlAttributes(new { @class = "slides-list" }).Render()
+					@Html.PhotoGallery().Bind(Model["2013-06-28"]).ClientId("slides").SetCssClassLandscape("ls").SetCssClassPortrait("pt").SetFirstItemCssClass("first").SetLastItemCssClass("last").HtmlAttributes(new { @class = "slides-list" }).Render()
 				</div>
 			</div>
 			<div class="gl-slides-left-column"><a class="gl-slides-prev-button"></a></div>

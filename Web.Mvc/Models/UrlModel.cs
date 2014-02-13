@@ -32,7 +32,7 @@ namespace Web.Mvc.Models
 
         public override int GetHashCode()
         {
-            return ActionName.GetTextOrEmpty().GetHashCode() ^ ControllerName.GetTextOrEmpty().GetHashCode() ^ AreaName.GetTextOrEmpty().GetHashCode();
+            return ActionName.TextOrEmpty().GetHashCode() ^ ControllerName.TextOrEmpty().GetHashCode() ^ AreaName.TextOrEmpty().GetHashCode();
         }
 
         public override string ToString()
@@ -42,7 +42,7 @@ namespace Web.Mvc.Models
 
         public string AsId()
         {
-            return ControllerName.Append(ActionName, "-").GetTextOrEmpty().ToLower();
+            return ControllerName.Append(ActionName, "-").TextOrEmpty().ToLower();
         }
     }
 

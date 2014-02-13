@@ -17,8 +17,8 @@ namespace RootPosition
 
             routes.MapRoute(
                 name: "GetResizedImage",
-                url: "Image/{width}/{height}/{file}",
-                defaults: new { controller = "Image", action = "Resize" }
+                url: "Image/{width}/{height}/{*file}",
+                defaults: new { controller = "Image", action = "Resize", file = "" }
             );
 
             routes.MapRoute(

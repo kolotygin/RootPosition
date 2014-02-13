@@ -86,31 +86,54 @@ namespace Infrastructure.Imaging
 
         private static Stream ResizeWithHighQuality(string fullPath, int? width, int? height)
         {
-            var imageStream = new MemoryStream(File.ReadAllBytes(fullPath));
-            var image = Image.FromStream(imageStream);
+            MemoryStream imageStream = null;
+            MemoryStream thumbnailStream = null;
+            Graphics graphics = null;
+            Image thumbnail = null;
+            Image image = null;
 
-            var thumbnailSize = GetScaledSize(image.Width, image.Height, width, height);
-            Image thumbnail = new Bitmap(thumbnailSize.Width, thumbnailSize.Height);
-            var graphics = Graphics.FromImage(thumbnail);
-            graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
-            graphics.SmoothingMode = SmoothingMode.HighQuality;
-            graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
-            graphics.CompositingQuality = CompositingQuality.HighQuality;
+            try
+            {
 
-            graphics.DrawImage(image, 0, 0, thumbnailSize.Width, thumbnailSize.Height);
+                imageStream = new MemoryStream(File.ReadAllBytes(fullPath));
+                image = Image.FromStream(imageStream);
 
-            var info = ImageCodecInfo.GetImageEncoders();
-            var encoderParameters = new EncoderParameters(1);
-            encoderParameters.Param[0] = new EncoderParameter(Encoder.Quality, 100L);
-            var thumbnailStream = new MemoryStream();
-            thumbnail.Save(thumbnailStream, info[1], encoderParameters);
-            thumbnailStream.Position = 0;
+                var thumbnailSize = GetScaledSize(image.Width, image.Height, width, height);
+                thumbnail = new Bitmap(thumbnailSize.Width, thumbnailSize.Height);
+                graphics = Graphics.FromImage(thumbnail);
+                graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                graphics.SmoothingMode = SmoothingMode.HighQuality;
+                graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                graphics.CompositingQuality = CompositingQuality.HighQuality;
 
-            imageStream.Dispose();
-            graphics.Dispose();
-            thumbnail.Dispose();
-            image.Dispose();
+                graphics.DrawImage(image, 0, 0, thumbnailSize.Width, thumbnailSize.Height);
 
+                var info = ImageCodecInfo.GetImageEncoders();
+                var encoderParameters = new EncoderParameters(1);
+                encoderParameters.Param[0] = new EncoderParameter(Encoder.Quality, 100L);
+                thumbnailStream = new MemoryStream();
+                thumbnail.Save(thumbnailStream, info[1], encoderParameters);
+                thumbnailStream.Position = 0;
+            }
+            finally
+            {
+                if (imageStream != null)
+                {
+                    imageStream.Dispose();
+                }
+                if (graphics != null)
+                {
+                    graphics.Dispose();
+                }
+                if (thumbnail != null)
+                {
+                    thumbnail.Dispose();
+                }
+                if (image != null)
+                {
+                    image.Dispose();
+                }
+            }
             return thumbnailStream;
         }
 
@@ -124,7 +147,7 @@ namespace Infrastructure.Imaging
             var size = new Size();
             // desired height is supplied -> calculate the new width;
             // or the original image is taller with respect to the ratio
-            if (desiredHeight.HasValue && desiredHeight > 0 && (!desiredWidth.HasValue || desiredWidth == 0 || GetAspectRatio(desiredWidth.Value, desiredHeight.Value) > GetAspectRatio(originalWidth, originalHeight)))
+            if (desiredHeight.HasValue && desiredHeight > 0 && (!desiredWidth.HasValue || desiredWidth == 0 || GetAspectRatio(desiredWidth.Value, desiredHeight.Value) >= GetAspectRatio(originalWidth, originalHeight)))
             {
                 var ratio = (decimal)desiredHeight / (decimal)originalHeight;
                 size.Width = (int)Math.Round(originalWidth * ratio, MidpointRounding.ToEven); //get new width from the ratio of the new height to orginal height
@@ -132,7 +155,7 @@ namespace Infrastructure.Imaging
             }
             // desired width is supplied -> calculate the new height
             // or the original image is wider than thumbnail with respect to the ratio
-            else if (desiredWidth.HasValue && desiredWidth > 0 && (!desiredHeight.HasValue || desiredHeight == 0 || GetAspectRatio(desiredWidth.Value, desiredHeight.Value) < GetAspectRatio(originalWidth, originalHeight)))
+            else if (desiredWidth.HasValue && desiredWidth > 0 && (!desiredHeight.HasValue || desiredHeight == 0 || GetAspectRatio(desiredWidth.Value, desiredHeight.Value) <= GetAspectRatio(originalWidth, originalHeight)))
             {
                 var ratio = (decimal)desiredWidth / (decimal)originalWidth;
                 size.Height = (int)Math.Round(originalHeight * ratio, MidpointRounding.ToEven); //get new height from the ratio of the new width to orginal width

@@ -1,5 +1,7 @@
 ﻿using System.IO;
+using System.Web.Hosting;
 using System.Web.Mvc;
+using Infrastructure.Extensions;
 using Infrastructure.Imaging;
 using Web.Mvc;
 
@@ -10,7 +12,7 @@ namespace RootPosition.Controllers
 
         public ActionResult Render(string file)
         {
-            var fullPath = GetFullPath(file);
+            var fullPath = HostingEnvironment.MapPath(file);
             if (!System.IO.File.Exists(fullPath))
             {
                 return new HttpNotFoundResult(string.Format("The file {0} does not exist.", file));
@@ -20,7 +22,7 @@ namespace RootPosition.Controllers
 
         public ActionResult Resize(string file, int? width, int? height)
         {
-            var fullPath = GetFullPath(file);
+            var fullPath = HostingEnvironment.MapPath(file);
             if (!System.IO.File.Exists(fullPath))
             {
                 return new HttpNotFoundResult(string.Format("The file {0} does not exist.", file));
@@ -29,15 +31,18 @@ namespace RootPosition.Controllers
             return new ImageStreamResult(stream, GetContentType(fullPath));
         }
 
-        private string GetFullPath(string file)
+        private static string GetFullPath(string virtualPath)
         {
+            return HostingEnvironment.MapPath(virtualPath);
+/*
             var fileName = file.EndsWith("/") ? file.Remove(file.Length - 1) : file;
-            return string.Format("{0}\\{1}", Server.MapPath("~/Content/Images"), fileName);
+            return string.Format("{0}\\{1}", Server.MapPath("~"), fileName);
+*/
         }
 
         public static string GetContentType(string path)
         {
-            switch (Path.GetExtension(path))
+            switch (Path.GetExtension(path).TextOrEmpty().ToLower())
             {
                 case ".bmp": return "image/bmp";
                 case ".gif": return "image/gif";
