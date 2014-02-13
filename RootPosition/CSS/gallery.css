@@ -100,6 +100,7 @@ section[role="photos"] ul li a {
 section[role="photos"] ul li a img {
 	border: 0.1em solid #aaa;
 	border-color: #666 #aaa #aaa #666;
+    opacity: 0.9;
 }
 
 section[role="photos"] ul li a img.ls {
@@ -113,7 +114,13 @@ section[role="photos"] ul li a img.pt {
 
 section[role="photos"] ul li a:hover {
 	/*background: none repeat scroll 0 0 #FF8539;*/
+/*
 	background: none repeat scroll 0 0 #B0281A;
+*/
+}
+
+section[role="photos"] ul li a:hover img {
+    opacity: 1;
 }
 
 

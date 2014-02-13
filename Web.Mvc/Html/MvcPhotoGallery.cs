@@ -125,7 +125,7 @@ namespace Web.Mvc.Html
                         photo.AlternateText,
                         new { @class = imgCssClass },
                         String.Empty,
-                        VirtualPathUtility.ToAppRelative(photo.Source),
+                        VirtualPathUtility.ToAppRelative(photo.ImageSource),
                         new { @target = "_blank", @rel = "photo-box" });
                     liTag.InnerHtml = link.ToHtmlString();
                     ulTag.InnerHtml += MvcHtmlString.Create(liTag.ToString(TagRenderMode.Normal));

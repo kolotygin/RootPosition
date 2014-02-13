@@ -53,7 +53,7 @@ String.prototype.append = function (stringToAppend, separator) {
 function HtmlExtension() {
 }
 
-HtmlExtension.HtmlEncode = function (text) {
+RootPosition.HtmlEncode = function (text) {
 	if (null !== text && "" !== text) {
 		text = text.replace(/&/g, "&amp;");
 		text = text.replace(/"/g, "&quot;");
@@ -67,15 +67,15 @@ HtmlExtension.HtmlEncode = function (text) {
 /* encodes HTML entities
 * and also replaces non-breakable spaces with common ones for proper appearance
 */
-HtmlExtension.HtmlEncodeAndReplaceNBSP = function (text) {
+RootPosition.HtmlEncodeAndReplaceNBSP = function (text) {
 	if (null !== text && "" !== text) {
-		text = HtmlExtension.HtmlEncode(text);
+		text = RootPosition.HtmlEncode(text);
 		text = text.replace(/\u00a0/g, ' ');
 	}
 	return text;
 };
 
-HtmlExtension.GetControl = function (controlID) {
+RootPosition.GetControl = function (controlID) {
 	var control = null;
 
 	if (document.getElementById) {
@@ -104,25 +104,25 @@ HtmlExtension.GetControl = function (controlID) {
 	return control;
 };
 
-HtmlExtension.GetControls = function (controlIDs) {
-	if (HtmlExtension.IsArray(controlIDs)) {
+RootPosition.GetControls = function (controlIDs) {
+	if (RootPosition.IsArray(controlIDs)) {
 		var returnArray = new Array(controlIDs.length);
 		var i;
 		for (i = 0; i < controlIDs.length; i++) {
-			returnArray[i] = HtmlExtension.GetControl(controlIDs[i]);
+			returnArray[i] = RootPosition.GetControl(controlIDs[i]);
 		}
 		return returnArray;
 	}
-	return HtmlExtension.GetControl(controlIDs);
+	return RootPosition.GetControl(controlIDs);
 };
 
-HtmlExtension.SetCheckBoxValue = function (cb, value) {
+RootPosition.SetCheckBoxValue = function (cb, value) {
 	if (cb) {
 		cb.checked = value;
 	}
 };
 
-HtmlExtension.AddEvent = function (el, evname, func) {
+RootPosition.AddEvent = function (el, evname, func) {
 	if (el.attachEvent) { // IE
 		el.attachEvent(evname, func);
 	}
@@ -134,7 +134,7 @@ HtmlExtension.AddEvent = function (el, evname, func) {
 	}
 };
 
-HtmlExtension.RemoveEvent = function (el, evname, func) {
+RootPosition.RemoveEvent = function (el, evname, func) {
 	if (el.detachEvent) { // IE
 		el.detachEvent(evname, func);
 	}
@@ -146,7 +146,7 @@ HtmlExtension.RemoveEvent = function (el, evname, func) {
 	}
 };
 
-HtmlExtension.SetTopDocumentTitle = function (title) {
+RootPosition.SetTopDocumentTitle = function (title) {
 	try {
 		window.top.document.title = title;
 	}
@@ -154,11 +154,11 @@ HtmlExtension.SetTopDocumentTitle = function (title) {
 	}
 };
 
-HtmlExtension.SetFocus = function (controlID) {
+RootPosition.SetFocus = function (controlID) {
 	if (String.isNullOrEmpty(controlID)) {
 		return false;
 	}
-	var ctrl = HtmlExtension.GetControl(controlID);
+	var ctrl = RootPosition.GetControl(controlID);
 	if (!Object.isNullOrUndefined(ctrl)) {
 		if (!ctrl.disabled) {
 			try {
@@ -172,20 +172,20 @@ HtmlExtension.SetFocus = function (controlID) {
 	return false;
 };
 
-HtmlExtension.IsArray = function (obj) {
+RootPosition.IsArray = function (obj) {
 	if (obj && typeof obj === 'object' && obj.constructor === Array) {
 		return true;
 	}
 	return false;
 };
 
-HtmlExtension.GetIframeBody = function (iframe) {
-	var doc = HtmlExtension.GetIFrameDocument(iframe);
+RootPosition.GetIframeBody = function (iframe) {
+	var doc = RootPosition.GetIFrameDocument(iframe);
 	return doc ? doc.body : undefined;
 };
 
 // Returns a reference to the document object in the IFrame.
-HtmlExtension.GetIFrameDocument = function (iframe) {
+RootPosition.GetIFrameDocument = function (iframe) {
 	if (Object.isNullOrUndefined(iframe)) {
 		return null;
 	}
@@ -210,7 +210,7 @@ HtmlExtension.GetIFrameDocument = function (iframe) {
 };
 
 // Returns true if the executing browser it a Microsoft Internet Explorer browser.
-HtmlExtension.IsBrowserIE = function () {
+RootPosition.IsBrowserIE = function () {
 	try {
 		return (window.navigator.userAgent.indexOf("MSIE ") > 0);
 	}
@@ -220,7 +220,7 @@ HtmlExtension.IsBrowserIE = function () {
 };
 
 // Returns true if the executing browser it a Netscape browser.
-HtmlExtension.IsBrowserNS = function () {
+RootPosition.IsBrowserNS = function () {
 	try {
 		return (window.navigator.userAgent.indexOf("Netscape") > 0);
 	}
@@ -230,7 +230,7 @@ HtmlExtension.IsBrowserNS = function () {
 };
 
 // Returns true if the executing browser it a Firefox browser.
-HtmlExtension.IsBrowserFirefox = function () {
+RootPosition.IsBrowserFirefox = function () {
 	try {
 		return (window.navigator.userAgent.indexOf("Firefox") > 0);
 	}
@@ -243,14 +243,14 @@ HtmlExtension.IsBrowserFirefox = function () {
 // For the default of iframes this is the same as whether there is a scrollbar, but if scrollbars are forced on or off
 // (using the â€˜scrolling="yes"/"no"â€™ attribute in the parent document, or CSS â€˜overflow: scroll/hiddenâ€™ in the iframe document)
 // then this may differ.
-HtmlExtension.CanHaveVerticalScrollBar = function (element) {
+RootPosition.CanHaveVerticalScrollBar = function (element) {
 	if (Object.isNullOrUndefined(element)) {
 		element = document.compatMode == 'BackCompat' ? document.body : document.documentElement;
 	}
 	return element.scrollHeight > element.clientHeight;
 };
 
-HtmlExtension.CanHaveHorizontalScrollBar = function (element) {
+RootPosition.CanHaveHorizontalScrollBar = function (element) {
 	if (Object.isNullOrUndefined(element)) {
 		element = document.compatMode == 'BackCompat' ? document.body : document.documentElement;
 	}
@@ -259,7 +259,7 @@ HtmlExtension.CanHaveHorizontalScrollBar = function (element) {
 
 // obtain the scrolling offsets
 // see http://www.howtocreate.co.uk/tutorials/javascript/browserwindow for details
-HtmlExtension.GetScrollPosition = function () {
+RootPosition.GetScrollPosition = function () {
 	var scrollLeft = 0;
 	var scrollTop = 0;
 
@@ -282,7 +282,7 @@ HtmlExtension.GetScrollPosition = function () {
 };
 
 // see http://www.howtocreate.co.uk/tutorials/javascript/browserwindow for details
-HtmlExtension.SetScrollPosition = function (scrollTop, scrollLeft) {
+RootPosition.SetScrollPosition = function (scrollTop, scrollLeft) {
 	if (window.scrollTo) {
 		window.scrollTo(scrollLeft, scrollTop);
 		return;
@@ -306,7 +306,7 @@ HtmlExtension.SetScrollPosition = function (scrollTop, scrollLeft) {
 
 // finding the size of the browser window
 // see http://www.howtocreate.co.uk/tutorials/javascript/browserwindow for details
-HtmlExtension.GetClientBounds = function () {
+RootPosition.GetClientBounds = function () {
 	var windowWidth = 0;
 	var windowHeight = 0;
 
@@ -328,7 +328,7 @@ HtmlExtension.GetClientBounds = function () {
 	return { "width": windowWidth, "height": windowHeight };
 };
 
-HtmlExtension.GetFormOrBody = function () {
+RootPosition.GetFormOrBody = function () {
 	if (!Object.isNullOrUndefined(document.forms) && !Object.isNullOrUndefined(document.forms[0])) {
 		return document.forms[0];
 	}
@@ -338,7 +338,7 @@ HtmlExtension.GetFormOrBody = function () {
 /**
 * Creates and returns element from html string. Uses innerHTML to create an element
 */
-HtmlExtension.CreateElement = (function () {
+RootPosition.CreateElement = (function () {
 	var div = document.createElement('div');
 	return function (html) {
 		div.innerHTML = html;
@@ -348,7 +348,7 @@ HtmlExtension.CreateElement = (function () {
 	};
 })();
 
-HtmlExtension.GetUniqueID = (function () {
+RootPosition.GetUniqueID = (function () {
 	var id = 0;
 	return function () {
 		if (arguments[0] === 0) {
@@ -358,13 +358,13 @@ HtmlExtension.GetUniqueID = (function () {
 	};
 })();
 
-HtmlExtension.RemoveElement = function (element) {
+RootPosition.RemoveElement = function (element) {
 	if (element && element.parentNode) {
 		element.parentNode.removeChild(element);
 	}
 };
 
-HtmlExtension.DisableElement = function (element, disabled) {
+RootPosition.DisableElement = function (element, disabled) {
 	if (element) {
 		if (disabled) {
 			element.setAttribute("disabled", "true");
@@ -375,7 +375,7 @@ HtmlExtension.DisableElement = function (element, disabled) {
 	}
 };
 
-HtmlExtension.GetParentOfElement = function (element, parentTag) {
+RootPosition.GetParentOfElement = function (element, parentTag) {
 	var parent = element;
 	var parentTagName = parentTag.toLowerCase();
 	while (parent) {
@@ -391,27 +391,27 @@ HtmlExtension.GetParentOfElement = function (element, parentTag) {
 Any html table may contain nested tables.
 This method returns a table row (tr) of the specified "table" that contains the "element"
 */
-HtmlExtension.GetTableRowOfElement = function (element, table) {
-	var row = HtmlExtension.GetParentOfElement(element, "tr");
+RootPosition.GetTableRowOfElement = function (element, table) {
+	var row = RootPosition.GetParentOfElement(element, "tr");
 	if (!table) {
 		return row;
 	}
 	var rowTable;
 	while (row) {
-		rowTable = HtmlExtension.GetParentOfElement(row, "table");
+		rowTable = RootPosition.GetParentOfElement(row, "table");
 		if (rowTable === table) {
 			return row;
 		}
-		row = HtmlExtension.GetParentOfElement(rowTable, "tr");
+		row = RootPosition.GetParentOfElement(rowTable, "tr");
 	}
 	return null;
 };
 
-HtmlExtension.GetFormOfElement = function (element) {
-	return HtmlExtension.GetParentOfElement(element, "form");
+RootPosition.GetFormOfElement = function (element) {
+	return RootPosition.GetParentOfElement(element, "form");
 };
 
-HtmlExtension.TimedTasks = function (tasks, args, callback) {
+RootPosition.TimedTasks = function (tasks, args, callback) {
 	var tasksCopy = tasks.concat(); // clone the array
 	setTimeout(function () {
 		var start = +new Date();
@@ -430,7 +430,7 @@ HtmlExtension.TimedTasks = function (tasks, args, callback) {
 	}, 25);
 };
 
-HtmlExtension.TimedProcessArray = function (items, process, callback) {
+RootPosition.TimedProcessArray = function (items, process, callback) {
 	var itemsCopy = items.concat(); // clone the array
 	setTimeout(function () {
 		var start = +new Date();
@@ -449,8 +449,8 @@ HtmlExtension.TimedProcessArray = function (items, process, callback) {
 	}, 25);
 };
 
-HtmlExtension.SetSize = function (element, size) {
-	if (HtmlExtension.IsBrowserIE()) {
+RootPosition.SetSize = function (element, size) {
+	if (RootPosition.IsBrowserIE()) {
 		element.style.width = size.width;
 		element.style.height = size.height;
 	}
@@ -460,7 +460,7 @@ HtmlExtension.SetSize = function (element, size) {
 	}
 };
 
-HtmlExtension.LoadStyleSheet = function (doc, path, callback, scope) {
+RootPosition.LoadStyleSheet = function (doc, path, callback, scope) {
 	var head = doc.getElementsByTagName("head")[0]; // reference to document.head for appending/ removing link nodes
 	var link = doc.createElement("link");
 	link.setAttribute("href", path);

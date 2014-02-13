@@ -29,6 +29,14 @@ namespace Web.Mvc.Models
             }
         }
 
+        public string ImageSource
+        {
+            get
+            {
+                return string.Format("~/Image/{0}/{1}/{2}", 600, 600, HttpContext.Current.Server.UrlEncode(Source));
+            }
+        }
+
         public override string ToString()
         {
             return String.Format("{0} [{1}]", Source, AlternateText);
