@@ -1,31 +1,8 @@
 // Global namespace
-var RootPosition = RootPosition || {};
+var Root = Root || {};
 
 // Singleton (Instance in a Closure)
-RootPosition.PhotoBox = function (options) {
-
-    // make sure the function is called as a constructor
-    /*	if (!(this instanceof RootPosition.PhotoBox)) {
-	return new RootPosition.PhotoBox(options);
-	}*/
-
-    // the cached instance
-    /*	var instance;*/
-
-    // rewrite the constructor
-    //RootPosition.PhotoBox = function() {
-    //	return instance;
-    //};
-
-    // carry over the prototype properties
-    //RootPosition.PhotoBox.prototype = this;
-
-    // the instance
-    //instance = new RootPosition.PhotoBox(options);
-    //instance = this;
-
-    // reset the constructor pointer
-    //instance.constructor = RootPosition.PhotoBox;
+Root.PhotoBox = function (options) {
 
     this._options = {
         loop: false, // Allows to navigate between first and last images
@@ -47,9 +24,9 @@ RootPosition.PhotoBox = function (options) {
     };
 
     this._options = $.extend(this._options, options);
-    this._ie6 = (jQuery.browser && jQuery.browser.msie && parseFloat(jQuery.browser.version) < 7);
+    this._ie6 = ($.browser && $.browser.msie && parseFloat($.browser.version) < 7);
 
-    this._$window = jQuery(window);
+    this._$window = $(window);
 
     this._images = null;
     this._currentImageIndex = -1;
@@ -75,35 +52,35 @@ RootPosition.PhotoBox = function (options) {
 
 };
 
-RootPosition.PhotoBox.prototype = {
+Root.PhotoBox.prototype = {
 
     _createLayout: function () {
 
         this._image = new Image();
         this._image.setAttribute("unselectable", "on");
         this._image.tabIndex = "-1";
-        this._$image = jQuery(this._image);
+        this._$image = $(this._image);
         this._$image.load(this._onImageLoadedFunction);
         this._$image.error(this._onImageLoadedFunction);
 
-        this._$overlay = jQuery('<div id="overlay-container" />');
+        this._$overlay = $('<div id="overlay-container" />');
         this._overlay = this._$overlay[0];
         this._$overlay.bind("click", this._closeFunction);
 
-        this._$container = jQuery("<div id='photo-container' />");
+        this._$container = $("<div id='photo-container' />");
         this._$container.addClass("hide");
         this._container = this._$container[0];
 
-        this._$imageContainer = jQuery('<div id="image-container" />');
+        this._$imageContainer = $('<div id="image-container" />');
         this._imageContainer = this._$imageContainer[0];
 
         this._imageContainer.appendChild(this._image);
         //this._imageContainer.appendChild(this._loadingImage);
 
-        this._$closeButton = jQuery('<a id="close-button" href="#" />').bind("click", this._closeFunction);
+        this._$closeButton = $('<a id="close-button" href="#" />').bind("click", this._closeFunction);
 
-        this._$prevImageButton = jQuery('<a id="previous-button" href="#" />').bind("click", this._prevImageFunction);
-        this._$nextImageButton = jQuery('<a id="next-button" href="#" />').bind("click", this._nextImageFunction);
+        this._$prevImageButton = $('<a id="previous-button" href="#" />').bind("click", this._prevImageFunction);
+        this._$nextImageButton = $('<a id="next-button" href="#" />').bind("click", this._nextImageFunction);
 
         this._container.appendChild(this._$imageContainer[0]);
         this._container.appendChild(this._$prevImageButton[0]);
@@ -125,7 +102,7 @@ RootPosition.PhotoBox.prototype = {
 
     _enforceFocus: function () {
         var self = this;
-        jQuery(document).on("focusin.photoBox", function (eventObject) {
+        $(document).on("focusin.photoBox", function (eventObject) {
             if (self._container !== eventObject.target && !self._$container.has(eventObject.target).length) {
                 self._$closeButton.focus();
             }
@@ -133,7 +110,7 @@ RootPosition.PhotoBox.prototype = {
     },
 
     _releseFocus: function () {
-        jQuery(document).off("focusin.photoBox");
+        $(document).off("focusin.photoBox");
     },
 
     _ensureLayout: function () {
@@ -147,20 +124,20 @@ RootPosition.PhotoBox.prototype = {
 
         this._$image.addClass("hide");
 
-        jQuery("body").append(this._overlay);
+        $("body").append(this._overlay);
         this._$overlay.css("opacity", this._options.overlayOpacity).fadeIn(this._options.overlayFadeDuration);
 
-        jQuery("body").append(this._container);
+        $("body").append(this._container);
 
         this._hiddenElements = [];
         var self = this;
-        jQuery("object").add(self._ie6 ? "select" : "embed").each(function (index, el) {
+        $("object").add(self._ie6 ? "select" : "embed").each(function (index, el) {
             self._hiddenElements[index] = [el, el.style.visibility];
             el.style.visibility = "hidden";
         });
 
         this._$window.bind("scroll resize", this._onResizeFunction);
-        jQuery(document).bind(RootPosition.browser.mozilla ? "keypress" : "keydown", this._onKeyDownFunction);
+        $(document).bind(Root.browser.mozilla ? "keypress" : "keydown", this._onKeyDownFunction);
 
         this._center();
 
@@ -171,14 +148,14 @@ RootPosition.PhotoBox.prototype = {
     _hideLayout: function () {
         this._$container.addClass("hide");
         //this._resetImageSize();
-        RootPosition.RemoveElement(this._container);
-        RootPosition.RemoveElement(this._overlay);
+        Root.RemoveElement(this._container);
+        Root.RemoveElement(this._overlay);
         if (this._hiddenElements) {
-            jQuery.each(this._hiddenElements, function (index, el) { el[0].style.visibility = el[1]; });
+            $.each(this._hiddenElements, function (index, el) { el[0].style.visibility = el[1]; });
             this._hiddenElements = null;
         }
         this._$window.unbind("scroll resize", this._onResizeFunction);
-        jQuery(document).unbind(RootPosition.browser.mozilla ? "keypress" : "keydown", this._onKeyDownFunction);
+        $(document).unbind(Root.browser.mozilla ? "keypress" : "keydown", this._onKeyDownFunction);
         this._releseFocus();
     },
 
@@ -225,7 +202,7 @@ RootPosition.PhotoBox.prototype = {
 
     _centerImage: function () {
         if (this._image.src) {
-            var scaledImageCss = jQuery.scaleToFit(this._image, this._imageContainer, this._imageScalingOptions);
+            var scaledImageCss = $.scaleToFit(this._image, this._imageContainer, this._imageScalingOptions);
             this._$image.css(scaledImageCss);
         }
         //this._$loadingImage.center(this._imageContainer);
@@ -301,7 +278,7 @@ RootPosition.PhotoBox.prototype = {
             return;
         }
         var loadedImage = event.currentTarget;
-        var $loadedImage = jQuery(loadedImage);
+        var $loadedImage = $(loadedImage);
 
         var originalWidth = $loadedImage.width();
         var originalHeigth = $loadedImage.height();
@@ -312,7 +289,7 @@ RootPosition.PhotoBox.prototype = {
         }
 
         this._imageScalingOptions = { originalWidth: originalWidth, originalHeight: originalHeigth, verticalCenter: true, horizontalCenter: true };
-        var scaledImageCss = jQuery.scaleToFit(loadedImage, this._imageContainer, this._imageScalingOptions);
+        var scaledImageCss = $.scaleToFit(loadedImage, this._imageContainer, this._imageScalingOptions);
         this._$image.css(scaledImageCss);
 
         //self._$image.removeClass("hide");
@@ -347,19 +324,19 @@ RootPosition.PhotoBox.prototype = {
             event.stopPropagation();
         }
         // Prevent default keyboard action (like navigating inside the page)
-        return (jQuery.inArray(key, this._options.closeKeys) >= 0) ? this._close()
-			: (jQuery.inArray(key, this._options.nextKeys) >= 0) ? this._showNextImage()
-			: (jQuery.inArray(key, this._options.previousKeys) >= 0) ? this._showPrevImage()
+        return ($.inArray(key, this._options.closeKeys) >= 0) ? this._close()
+			: ($.inArray(key, this._options.nextKeys) >= 0) ? this._showNextImage()
+			: ($.inArray(key, this._options.previousKeys) >= 0) ? this._showPrevImage()
 			: false;
     }
 
 };
 
 
-(function (jQuery) {
-    jQuery.fn.photoBox = function (options) {
+(function ($) {
+    $.fn.photoBox = function (options) {
 
-        var photoBoxInstance = new RootPosition.PhotoBox(options);
+        var photoBoxInstance = new Root.PhotoBox(options);
         var linkMapper = function (el) { return { src: el.href, title: el.title }; };
         var linksFilter = function () { return true; };
 
@@ -373,7 +350,7 @@ RootPosition.PhotoBox.prototype = {
                 return linksFilter.call(link, el, i);
             });
 
-            // cannot use jQuery.map() because it flattens the returned array
+            // cannot use $.map() because it flattens the returned array
             for (var length = filteredLinks.length, i = 0; i < length; ++i) {
                 if (filteredLinks[i] === link) {
                     startIndex = i;

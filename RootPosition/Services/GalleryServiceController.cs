@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Web.Hosting;
 using System.IO;
-using System.Web.UI.WebControls;
 using Infrastructure.Imaging;
 using Infrastructure.Extensions;
 using Web.Mvc.Models;
@@ -28,7 +27,7 @@ namespace RootPosition.Services
 
     public class GalleryServiceController
     {
-        public static SortedList<string, PhotoGalleryModel> GetGalleries(string virtualPath)
+        public static IList<PhotoGalleryModel> GetGalleries(string virtualPath)
         {
             var physicalPath = HostingEnvironment.MapPath(virtualPath);
             var galleries = new SortedList<string, PhotoGalleryModel>(new DescendingComparer());
@@ -43,7 +42,7 @@ namespace RootPosition.Services
                     gallery.Photos.Add(new PhotoModel { Source = gallery.Path + "/" + file.Name, Orientation = size.Orientation(), ThumbnailSize = new Size(120, 120) });
                 }
             }
-            return galleries;
+            return galleries.Values;
         }
 
     }

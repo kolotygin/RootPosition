@@ -6,7 +6,7 @@ namespace RootPosition.Controllers
     {
         public ActionResult Index()
         {
-			ViewBag.Title = "Piano";
+            ViewBag.Title = "Piano";
             return View();
         }
     }

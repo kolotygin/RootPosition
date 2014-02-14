@@ -195,7 +195,7 @@
     <Content Include="CSS\ie-not7.css" />
     <Content Include="CSS\ie6-overlay.css" />
     <Content Include="CSS\overlay_ie6.css" />
-    <Content Include="CSS\photo-box.css" />
+    <Content Include="CSS\root.photo-box.css" />
     <Content Include="CSS\piano.css" />
     <Content Include="CSS\reset.css" />
     <Content Include="CSS\root-position.css" />
@@ -215,8 +215,7 @@
     <Content Include="Images\reference-background.gif" />
     <Content Include="Images\transparent.png" />
     <Content Include="Scripts\gallery-auto-load.js" />
-    <Content Include="Scripts\rootposition.extensions.js" />
-    <Content Include="Scripts\HtmlExtension.js" />
+    <Content Include="Scripts\root.extensions.js" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\jquery-2.0.3.js" />
     <Content Include="Scripts\jquery.min.js" />
@@ -240,8 +239,9 @@
     <Content Include="Scripts\knockout.debug.js" />
     <Content Include="Scripts\knockout.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\photo-box-auto-load.js" />
-    <Content Include="Scripts\photo-box.js" />
+    <Content Include="Scripts\root.gallery.js" />
+    <Content Include="Scripts\root.photo-box.js" />
+    <Content Include="Scripts\root.Slider.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

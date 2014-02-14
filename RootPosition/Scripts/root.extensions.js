@@ -66,9 +66,9 @@ if (!String.prototype.fulltrim) {
     String.prototype.fulltrim = function () { return this.replace(/(?:(?:^|\n)\s+|\s+(?:$|\n))/g, '').replace(/\s+/g, ' '); };
 }
 
-var RootPosition = RootPosition || {};
+var Root = Root || {};
 
-RootPosition.HtmlEncode = function (text) {
+Root.HtmlEncode = function (text) {
     if (typeof (text) === "string") {
         text = text.replace(/&/g, "&amp;");
         text = text.replace(/"/g, "&quot;");
@@ -82,15 +82,15 @@ RootPosition.HtmlEncode = function (text) {
 /* encodes HTML entities
 * and also replaces non-breakable spaces with common ones for proper appearance
 */
-RootPosition.HtmlEncodeAndReplaceNBSP = function (text) {
+Root.HtmlEncodeAndReplaceNBSP = function (text) {
     if (typeof (text) === "string") {
-        text = RootPosition.HtmlEncode(text);
+        text = Root.HtmlEncode(text);
         text = text.replace(/\u00a0/g, ' ');
     }
     return text;
 };
 
-RootPosition.GetControl = function (controlId) {
+Root.GetControl = function (controlId) {
     var control = null;
 
     if (document.getElementById) {
@@ -119,25 +119,25 @@ RootPosition.GetControl = function (controlId) {
     return control;
 };
 
-RootPosition.GetControls = function (controlIDs) {
-    if (RootPosition.IsArray(controlIDs)) {
+Root.GetControls = function (controlIDs) {
+    if (Root.IsArray(controlIDs)) {
         var returnArray = new Array(controlIDs.length);
         var i;
         for (i = 0; i < controlIDs.length; i++) {
-            returnArray[i] = RootPosition.GetControl(controlIDs[i]);
+            returnArray[i] = Root.GetControl(controlIDs[i]);
         }
         return returnArray;
     }
-    return RootPosition.GetControl(controlIDs);
+    return Root.GetControl(controlIDs);
 };
 
-RootPosition.SetCheckBoxValue = function (cb, value) {
+Root.SetCheckBoxValue = function (cb, value) {
     if (cb) {
         cb.checked = value;
     }
 };
 
-RootPosition.AddEvent = function (el, evname, func) {
+Root.AddEvent = function (el, evname, func) {
     if (el.attachEvent) { // IE
         el.attachEvent(evname, func);
     }
@@ -149,7 +149,7 @@ RootPosition.AddEvent = function (el, evname, func) {
     }
 };
 
-RootPosition.RemoveEvent = function (el, evname, func) {
+Root.RemoveEvent = function (el, evname, func) {
     if (el.detachEvent) { // IE
         el.detachEvent(evname, func);
     }
@@ -161,7 +161,7 @@ RootPosition.RemoveEvent = function (el, evname, func) {
     }
 };
 
-RootPosition.SetTopDocumentTitle = function (title) {
+Root.SetTopDocumentTitle = function (title) {
     try {
         window.top.document.title = title;
     }
@@ -169,11 +169,11 @@ RootPosition.SetTopDocumentTitle = function (title) {
     }
 };
 
-RootPosition.SetFocus = function (controlId) {
+Root.SetFocus = function (controlId) {
     if (String.isNullOrEmpty(controlId)) {
         return false;
     }
-    var ctrl = RootPosition.GetControl(controlId);
+    var ctrl = Root.GetControl(controlId);
     if (!Object.isNullOrUndefined(ctrl)) {
         if (!ctrl.disabled) {
             try {
@@ -187,20 +187,20 @@ RootPosition.SetFocus = function (controlId) {
     return false;
 };
 
-RootPosition.IsArray = function (obj) {
+Root.IsArray = function (obj) {
     if (obj && typeof obj === 'object' && obj.constructor === Array) {
         return true;
     }
     return false;
 };
 
-RootPosition.GetIframeBody = function (iframe) {
-    var doc = RootPosition.GetIFrameDocument(iframe);
+Root.GetIframeBody = function (iframe) {
+    var doc = Root.GetIFrameDocument(iframe);
     return doc ? doc.body : undefined;
 };
 
 // Returns a reference to the document object in the IFrame.
-RootPosition.GetIFrameDocument = function (iframe) {
+Root.GetIFrameDocument = function (iframe) {
     if (Object.isNullOrUndefined(iframe)) {
         return null;
     }
@@ -228,14 +228,14 @@ RootPosition.GetIFrameDocument = function (iframe) {
 // For the default of iframes this is the same as whether there is a scrollbar, but if scrollbars are forced on or off
 // (using the â€˜scrolling="yes"/"no"â€™ attribute in the parent document, or CSS â€˜overflow: scroll/hiddenâ€™ in the iframe document)
 // then this may differ.
-RootPosition.CanHaveVerticalScrollBar = function (element) {
+Root.CanHaveVerticalScrollBar = function (element) {
     if (Object.isNullOrUndefined(element)) {
         element = document.compatMode == 'BackCompat' ? document.body : document.documentElement;
     }
     return element.scrollHeight > element.clientHeight;
 };
 
-RootPosition.CanHaveHorizontalScrollBar = function (element) {
+Root.CanHaveHorizontalScrollBar = function (element) {
     if (Object.isNullOrUndefined(element)) {
         element = document.compatMode == 'BackCompat' ? document.body : document.documentElement;
     }
@@ -244,7 +244,7 @@ RootPosition.CanHaveHorizontalScrollBar = function (element) {
 
 // obtain the scrolling offsets
 // see http://www.howtocreate.co.uk/tutorials/javascript/browserwindow for details
-RootPosition.GetScrollPosition = function () {
+Root.GetScrollPosition = function () {
     var scrollLeft = 0;
     var scrollTop = 0;
 
@@ -267,7 +267,7 @@ RootPosition.GetScrollPosition = function () {
 };
 
 // see http://www.howtocreate.co.uk/tutorials/javascript/browserwindow for details
-RootPosition.SetScrollPosition = function (scrollTop, scrollLeft) {
+Root.SetScrollPosition = function (scrollTop, scrollLeft) {
     if (window.scrollTo) {
         window.scrollTo(scrollLeft, scrollTop);
         return;
@@ -291,7 +291,7 @@ RootPosition.SetScrollPosition = function (scrollTop, scrollLeft) {
 
 // finding the size of the browser window
 // see http://www.howtocreate.co.uk/tutorials/javascript/browserwindow for details
-RootPosition.GetClientBounds = function () {
+Root.GetClientBounds = function () {
     var windowWidth = 0;
     var windowHeight = 0;
 
@@ -313,7 +313,7 @@ RootPosition.GetClientBounds = function () {
     return { "width": windowWidth, "height": windowHeight };
 };
 
-RootPosition.GetFormOrBody = function () {
+Root.GetFormOrBody = function () {
     if (!Object.isNullOrUndefined(document.forms) && !Object.isNullOrUndefined(document.forms[0])) {
         return document.forms[0];
     }
@@ -323,7 +323,7 @@ RootPosition.GetFormOrBody = function () {
 /**
 * Creates and returns element from html string. Uses innerHTML to create an element
 */
-RootPosition.CreateElement = (function () {
+Root.CreateElement = (function () {
     var div = document.createElement('div');
     return function (html) {
         div.innerHTML = html;
@@ -333,7 +333,7 @@ RootPosition.CreateElement = (function () {
     };
 })();
 
-RootPosition.GetUniqueID = (function () {
+Root.GetUniqueID = (function () {
     var id = 0;
     return function () {
         if (arguments[0] === 0) {
@@ -343,13 +343,13 @@ RootPosition.GetUniqueID = (function () {
     };
 })();
 
-RootPosition.RemoveElement = function (element) {
+Root.RemoveElement = function (element) {
     if (element && element.parentNode) {
         element.parentNode.removeChild(element);
     }
 };
 
-RootPosition.DisableElement = function (element, disabled) {
+Root.DisableElement = function (element, disabled) {
     if (element) {
         if (disabled) {
             element.setAttribute("disabled", "true");
@@ -360,7 +360,7 @@ RootPosition.DisableElement = function (element, disabled) {
     }
 };
 
-RootPosition.GetParentOfElement = function (element, parentTag) {
+Root.GetParentOfElement = function (element, parentTag) {
     var parent = element;
     var parentTagName = parentTag.toLowerCase();
     while (parent) {
@@ -376,27 +376,27 @@ RootPosition.GetParentOfElement = function (element, parentTag) {
 Any html table may contain nested tables.
 This method returns a table row (tr) of the specified "table" that contains the "element"
 */
-RootPosition.GetTableRowOfElement = function (element, table) {
-    var row = RootPosition.GetParentOfElement(element, "tr");
+Root.GetTableRowOfElement = function (element, table) {
+    var row = Root.GetParentOfElement(element, "tr");
     if (!table) {
         return row;
     }
     var rowTable;
     while (row) {
-        rowTable = RootPosition.GetParentOfElement(row, "table");
+        rowTable = Root.GetParentOfElement(row, "table");
         if (rowTable === table) {
             return row;
         }
-        row = RootPosition.GetParentOfElement(rowTable, "tr");
+        row = Root.GetParentOfElement(rowTable, "tr");
     }
     return null;
 };
 
-RootPosition.GetFormOfElement = function (element) {
-    return RootPosition.GetParentOfElement(element, "form");
+Root.GetFormOfElement = function (element) {
+    return Root.GetParentOfElement(element, "form");
 };
 
-RootPosition.TimedTasks = function (tasks, args, callback) {
+Root.TimedTasks = function (tasks, args, callback) {
     var tasksCopy = tasks.concat(); // clone the array
     setTimeout(function () {
         var start = +new Date();
@@ -415,7 +415,7 @@ RootPosition.TimedTasks = function (tasks, args, callback) {
     }, 25);
 };
 
-RootPosition.TimedProcessArray = function (items, process, callback) {
+Root.TimedProcessArray = function (items, process, callback) {
     var itemsCopy = items.concat(); // clone the array
     setTimeout(function () {
         var start = +new Date();
@@ -434,8 +434,8 @@ RootPosition.TimedProcessArray = function (items, process, callback) {
     }, 25);
 };
 
-RootPosition.SetSize = function (element, size) {
-    if (RootPosition.IsBrowserIE()) {
+Root.SetSize = function (element, size) {
+    if (Root.browser.msie) {
         element.style.width = size.width;
         element.style.height = size.height;
     }
@@ -445,7 +445,7 @@ RootPosition.SetSize = function (element, size) {
     }
 };
 
-RootPosition.LoadStyleSheet = function (doc, path, callback, scope) {
+Root.LoadStyleSheet = function (doc, path, callback, scope) {
     var head = doc.getElementsByTagName("head")[0]; // reference to document.head for appending/ removing link nodes
     var link = doc.createElement("link");
     link.setAttribute("href", path);
@@ -487,7 +487,7 @@ RootPosition.LoadStyleSheet = function (doc, path, callback, scope) {
     return link; // return the link node;
 };
 
-RootPosition.browser = (function () {
+Root.browser = (function () {
     var browser = {
         chrome: false,
         mozilla: false,
