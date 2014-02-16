@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Drawing;
+using System.Globalization;
 using System.Web.Hosting;
 using System.IO;
 using Infrastructure.Imaging;
@@ -34,12 +34,14 @@ namespace RootPosition.Services
             var dir = new DirectoryInfo(physicalPath);
             foreach (var subDir in dir.GetDirectories("????-??-??"))
             {
-                var gallery = new PhotoGalleryModel { Path = virtualPath + "/" + subDir.Name };
+                DateTime galleryDate;
+                DateTime.TryParseExact(subDir.Name, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out galleryDate);
+                var gallery = new PhotoGalleryModel(virtualPath + "/" + subDir.Name, galleryDate);
                 galleries.Add(subDir.Name, gallery);
                 foreach (var file in subDir.GetFiles("*.jpg"))
                 {
                     var size = ImageHelper.GetDimensions(file.FullName);
-                    gallery.Photos.Add(new PhotoModel { Source = gallery.Path + "/" + file.Name, Orientation = size.Orientation(), ThumbnailSize = new Size(120, 120) });
+                    gallery.Photos.Add(new PhotoModel(file.Name, size.Orientation()));
                 }
             }
             return galleries.Values;

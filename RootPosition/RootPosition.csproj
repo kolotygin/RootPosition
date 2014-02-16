@@ -207,6 +207,7 @@
     <Content Include="Images\A_Classical_Sound_by_torchdesigns.jpg" />
     <Content Include="Images\back-button.png" />
     <Content Include="Images\close.png" />
+    <Content Include="Images\in-progress-small.gif" />
     <Content Include="Images\iStock_000006814984Small.jpg" />
     <Content Include="Images\iStock_000011918298XSmall.jpg" />
     <Content Include="Images\iStock_000020974265XSmall.jpg" />
@@ -214,7 +215,9 @@
     <Content Include="Images\next-button.png" />
     <Content Include="Images\reference-background.gif" />
     <Content Include="Images\transparent.png" />
+    <Content Include="Scripts\date.format.js" />
     <Content Include="Scripts\gallery-auto-load.js" />
+    <Content Include="Scripts\knockout.mapping.js" />
     <Content Include="Scripts\root.extensions.js" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\jquery-2.0.3.js" />

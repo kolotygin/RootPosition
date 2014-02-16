@@ -4,57 +4,48 @@
 @model IList<PhotoGalleryModel>
 
 @{
-	Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 
-	Html.Resources().Styles.Add(Url.Content("~/Css/root.photo-box.css"));
-	if (Request.Browser.Browser.Trim().Equals("IE", StringComparison.InvariantCultureIgnoreCase) && Request.Browser.MajorVersion < 7)
-	{
-		Html.Resources().Styles.Add(Url.Content("~/Css/ie6-overlay.css"));
-	}
-	Html.Resources().Styles.Add(Url.Content("~/Css/gallery.css"));
-	Html.Resources().Scripts.Add(Url.Content("~/Scripts/jquery.min.js"));
-	Html.Resources().Scripts.Add(Url.Content("~/Scripts/root.extensions.js"));
-	Html.Resources().Scripts.Add(Url.Content("~/Scripts/jquery.extensions.js"));
-	Html.Resources().Scripts.Add(Url.Content("~/Scripts/root.photo-box.js"));
-	Html.Resources().Scripts.Add(Url.Content("~/Scripts/root.gallery.js"));
+    Html.Resources().Styles.Add(Url.Content("~/Css/root.photo-box.css"));
+    if (Request.Browser.Browser.Trim().Equals("IE", StringComparison.InvariantCultureIgnoreCase) && Request.Browser.MajorVersion < 7)
+    {
+        Html.Resources().Styles.Add(Url.Content("~/Css/ie6-overlay.css"));
+    }
+    Html.Resources().Styles.Add(Url.Content("~/Css/gallery.css"));
+    Html.Resources().Scripts.Add(Url.Content("~/Scripts/jquery.min.js"));
+    Html.Resources().Scripts.Add(Url.Content("~/Scripts/date.format.js")); 
+    Html.Resources().Scripts.Add(Url.Content("~/Scripts/root.extensions.js"));
+    Html.Resources().Scripts.Add(Url.Content("~/Scripts/jquery.extensions.js"));
+    Html.Resources().Scripts.Add(Url.Content("~/Scripts/knockout.js"));
+    Html.Resources().Scripts.Add(Url.Content("~/Scripts/root.photo-box.js"));
+    Html.Resources().Scripts.Add(Url.Content("~/Scripts/root.gallery.js"));
 }
 
 @section Body {
-
 <div role="body">
-
-	<div id="content">
-		<section role="photos" class="gl-2013 clear">
-			<h3>June 28, 2013</h3>
-			<div class="gl-slides-center-column-wrapper">
-				<div class="gl-slides-center-column" role="slides">
-					@Html.PhotoGallery().Bind(Model[0]).ClientId("slides").SetCssClassLandscape("ls").SetCssClassPortrait("pt").SetFirstItemCssClass("first").SetLastItemCssClass("last").HtmlAttributes(new { @class = "slides-list" }).Render()
-				</div>
-			</div>
-			<div class="gl-slides-left-column"><a href="javascript:void(0)" class="gl-slides-prev-button"></a></div>
-			<div class="gl-slides-right-column"><a href="javascript:void(0)" class="gl-slides-next-button"></a></div>
-		</section>
-		<section role="photos" class="gl-2012 clear">
-			<h3>July 15, 2012</h3>
-			<div class="gl-slides-center-column-wrapper">
-				<div class="gl-slides-center-column" role="slides">
-					@Html.PhotoGallery().Bind(Model[1]).ClientId("slides").SetCssClassLandscape("ls").SetCssClassPortrait("pt").SetFirstItemCssClass("first").SetLastItemCssClass("last").HtmlAttributes(new { @class = "slides-list" }).Render()
-				</div>
-			</div>
-			<div class="gl-slides-left-column"><a class="gl-slides-prev-button"></a></div>
-			<div class="gl-slides-right-column"><a class="gl-slides-next-button"></a></div>
-		</section>
-	</div>
-
+    <div id="content" data-bind="foreach: galleries">
+        <section role="photos" class="clear">
+            <h3 data-bind="text: date"></h3>
+            <div class="gl-slides-center-column-wrapper">
+                <div class="gl-slides-center-column" role="slides">
+                    <ul data-bind="foreach: photos, attachOnThumbnailClick: true">
+                        <li>
+                            <a target="_blank" rel="photo-box" data-bind="attr: { 'href': imageSource }, css: { 'gl-photo-loading': !loaded() }">
+                                <img data-bind="event: { load: onLoad }, attr: { 'src': thumbnailSource, 'class': cssClass }" alt="">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="gl-slides-left-column"><a href="javascript:void(0)" class="gl-slides-prev-button"></a></div>
+            <div class="gl-slides-right-column"><a href="javascript:void(0)" class="gl-slides-next-button"></a></div>
+        </section>
+    </div>
 </div>
 }
 
 @section Scripts {
-    <script type="text/javascript">
-        function SimpleModelLoading(m) {
-            var m1 = m;
-        }
-        var viewModel = new SimpleModelLoading(@Html.Raw(Model.ToJson()));
-        ko.applyBindings(viewModel);
-    </script>
+<script type="text/javascript">
+    root.gallery.initialize("#content", @Html.Raw(Model.ToJson()));
+</script>
 }

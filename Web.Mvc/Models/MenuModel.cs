@@ -2,14 +2,14 @@
 
 namespace Web.Mvc.Models
 {
-	public class MenuModel
-	{
-		public List<MenuItemModel> Items { get; set; }
-		public UrlModel SelectedItem { get; set; }
+    public class MenuModel
+    {
+        public List<MenuItemModel> Items { get; set; }
+        public UrlModel SelectedItem { get; set; }
 
-		public bool IsSelected(MenuItemModel menuItem)
-		{
-			return SelectedItem != null && SelectedItem.Equals(menuItem.Url);
-		}
-	}
+        public bool IsSelected(MenuItemModel menuItem)
+        {
+            return SelectedItem != null && SelectedItem.Equals(menuItem.Url);
+        }
+    }
 }

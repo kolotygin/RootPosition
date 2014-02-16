@@ -98,18 +98,18 @@ section[role="photos"] ul li a {
 }
 
 section[role="photos"] ul li a img {
-	border: 0.1em solid #aaa;
-	border-color: #666 #aaa #aaa #666;
+    border: 0.1em solid #aaa;
+    border-color: #666 #aaa #aaa #666;
     opacity: 0.9;
 }
 
 section[role="photos"] ul li a img.ls {
-	width: 100%;
-	vertical-align: middle;
+    width: 100%;
+    vertical-align: middle;
 }
 
 section[role="photos"] ul li a img.pt {
-	height: 100%;
+    height: 100%;
 }
 
 section[role="photos"] ul li a:hover {
@@ -123,6 +123,13 @@ section[role="photos"] ul li a:hover img {
     opacity: 1;
 }
 
+section[role="photos"] ul li a.gl-photo-loading {
+    background: #fff url(../Images/in-progress-small.gif) no-repeat 50% 50%;
+}
+
+section[role="photos"] ul li a.gl-photo-loading img {
+    display: none;
+}
 
 /*
 section[role="photos"] ul li a em {

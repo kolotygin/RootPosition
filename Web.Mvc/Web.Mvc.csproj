@@ -34,6 +34,10 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -51,12 +55,12 @@
     <Compile Include="Extensions\HttpContextExtensions.cs" />
     <Compile Include="Extensions\RequestExtensions.cs" />
     <Compile Include="Html\MvcImage.cs" />
-    <Compile Include="Html\MvcPhotoGallery.cs" />
     <Compile Include="Html\MvcExternalResources.cs" />
     <Compile Include="Html\MvcLabelExtensions.cs" />
     <Compile Include="Html\MvcMenu.cs" />
     <Compile Include="Html\MvcUrl.cs" />
     <Compile Include="ImageFileResult.cs" />
+    <Compile Include="Models\PhotoGalleryCollection.cs" />
     <Compile Include="Models\PhotoGalleryModel.cs" />
     <Compile Include="Models\MenuItemModel.cs" />
     <Compile Include="Models\MenuModel.cs" />
@@ -69,6 +73,9 @@
       <Project>{2b5afb8f-b499-417a-bca7-921c3dba036e}</Project>
       <Name>Infrastructure</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
