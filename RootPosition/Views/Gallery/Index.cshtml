@@ -18,17 +18,18 @@
     Html.Resources().Scripts.Add(Url.Content("~/Scripts/jquery.extensions.js"));
     Html.Resources().Scripts.Add(Url.Content("~/Scripts/knockout.js"));
     Html.Resources().Scripts.Add(Url.Content("~/Scripts/root.photo-box.js"));
+    Html.Resources().Scripts.Add(Url.Content("~/Scripts/root.slider.js"));
     Html.Resources().Scripts.Add(Url.Content("~/Scripts/root.gallery.js"));
 }
 
 @section Body {
 <div role="body">
     <div id="content" data-bind="foreach: galleries">
-        <section role="photos" class="clear">
+        <section role="photos" class="clear" data-bind="sectionCreated: true">
             <h3 data-bind="text: date"></h3>
             <div class="gl-slides-center-column-wrapper">
                 <div class="gl-slides-center-column" role="slides">
-                    <ul data-bind="foreach: photos, attachOnThumbnailClick: true">
+                    <ul data-bind="foreach: photos, thumbnailsCreated: true">
                         <li>
                             <a target="_blank" rel="photo-box" data-bind="attr: { 'href': imageSource }, css: { 'gl-photo-loading': !loaded() }">
                                 <img data-bind="event: { load: onLoad }, attr: { 'src': thumbnailSource, 'class': cssClass }" alt="">

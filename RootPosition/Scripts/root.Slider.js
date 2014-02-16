@@ -129,7 +129,7 @@
 
             this._calculator = new SliderCalculator({
                 displayAreaWidth: this.$element.width(),
-                containerWidth: this.$container.outerWidth(),
+                containerWidth: this.options.containerWidth || this.$container.outerWidth(),
                 leftMargin: 0
             });
 
@@ -244,7 +244,7 @@
         containerSelector: "",
         nextButton: null,
         prevButton: null,
-        slidingSpeed: 600
+        slidingSpeed: 200
     };
 
     Slider.defaults = function (settings) {

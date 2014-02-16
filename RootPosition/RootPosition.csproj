@@ -244,7 +244,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\root.gallery.js" />
     <Content Include="Scripts\root.photo-box.js" />
-    <Content Include="Scripts\root.Slider.js" />
+    <Content Include="Scripts\root.slider.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

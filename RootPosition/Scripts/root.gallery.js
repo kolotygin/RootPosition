@@ -44,10 +44,7 @@ root.gallery = root.gallery || {};
     var PhotoGalleryViewModel = this.PhotoGalleryViewModel = function (model, options) {
         this._options = options;
         this.photos = this._toObservable(model);
-        this.date = ko.computed(function () {
-            var date = new Date(model.date);
-            return date.format("longDate");
-        }, this);
+        this.date = ko.observable(new Date(model.date).format("longDate"));
     };
 
     PhotoGalleryViewModel.prototype = {
@@ -81,33 +78,39 @@ root.gallery = root.gallery || {};
     };
 
     this.initialize = function (selector, model, options) {
+        var sliderOptions;
+        ko.bindingHandlers.sectionCreated = {
+            update: function (element, valueAccessor, allBindingsAccessor, elementViewModel, bindingContext) {
+                // This will be called once when the binding is first applied to an element,
+                // and again whenever the associated observable changes value.
+                // Update the DOM element based on the supplied values here.
+                var $element = $(element);
+                sliderOptions = {
+                    containerSelector: $element.find("ul"),
+                    prevButton: $element.find(".gl-slides-prev-button"),
+                    nextButton: $element.find(".gl-slides-next-button")
+                };
+            }
+        };
+        ko.bindingHandlers.thumbnailsCreated = {
+            update: function (element, valueAccessor, allBindingsAccessor, elementViewModel, bindingContext) {
+                // This will be called once when the binding is first applied to an element,
+                // and again whenever the associated observable changes value.
+                // Update the DOM element based on the supplied values here.
+                if (! /android|iphone|ipod|series60|symbian|windows ce|blackberry/i.test(navigator.userAgent)) {
+                    $(element).find("a").photoBox({/* custom options here */ });
+                }
+                var containerWidth = 0;
+                sliderOptions.containerSelector.children().width(function (i, w) { containerWidth += w; });
+                sliderOptions.containerWidth = containerWidth;
+                var slider = new root.Slider($(".gl-slides-center-column")[0], sliderOptions);
+            }
+        };
         $(document).ready(function () {
-            var $element = $(selector);
-            var element = $element[0];
-            ko.bindingHandlers.showGalleryDate = {
-                update: function (element, valueAccessor, allBindingsAccessor, elementViewModel, bindingContext) {
-                    // This will be called once when the binding is first applied to an element,
-                    // and again whenever the associated observable changes value.
-                    // Update the DOM element based on the supplied values here.
-                    var date = new Date(elementViewModel.createdAt);
-                    $(element).text(date.format("h:mmt dd-MM-yyyy")).attr("datetime", date.toLocaleTimeString());
-                }
-            };
-            ko.bindingHandlers.attachOnThumbnailClick = {
-                update: function (element, valueAccessor, allBindingsAccessor, elementViewModel, bindingContext) {
-                    // This will be called once when the binding is first applied to an element,
-                    // and again whenever the associated observable changes value.
-                    // Update the DOM element based on the supplied values here.
-                    if (! /android|iphone|ipod|series60|symbian|windows ce|blackberry/i.test(navigator.userAgent)) {
-                        $(element).find("a") .photoBox({/* custom options here */ });
-                    }
-                }
-            };
             var vm = new ViewModel(model, options);
-            ko.applyBindings(vm, element);
+            ko.applyBindings(vm, $(selector)[0]);
         });
     };
-
 
 }).apply(root.gallery, [jQuery, window, document, undefined, ko]);
 
