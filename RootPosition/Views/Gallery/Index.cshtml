@@ -25,6 +25,7 @@
 @section Body {
 <div role="body">
     <div id="content" data-bind="foreach: galleries">
+        <!-- ko if: photos().length > 0 -->
         <section role="photos" class="clear" data-bind="sectionCreated: true">
             <h3 data-bind="text: date"></h3>
             <div class="gl-slides-center-column-wrapper">
@@ -41,6 +42,7 @@
             <div class="gl-slides-left-column"><a href="javascript:void(0)" class="gl-slides-prev-button"></a></div>
             <div class="gl-slides-right-column"><a href="javascript:void(0)" class="gl-slides-next-button"></a></div>
         </section>
+        <!-- /ko -->
     </div>
 </div>
 }

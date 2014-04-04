@@ -1,7 +1,12 @@
-﻿#content {
-	padding: 0 2em;
-	width: auto;
+﻿div[role="body"] {
+    padding: 0 2em 10em;
+}
+
+#content {
+	padding: 0;
+	width: 100%;
 	max-width: 100%;
+    margin: 0;
 }
 
 section[role="photos"] h3 {
