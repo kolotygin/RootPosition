@@ -101,12 +101,28 @@ root.gallery = root.gallery || {};
                     $(element).find("a").photoBox({/* custom options here */ });
                 }
                 var containerWidth = 0;
-                sliderOptions.containerSelector.children().width(function (i, w) { containerWidth += w; });
+                var elementWidth = 0;
+                sliderOptions.containerSelector.children().each(function() {
+                    containerWidth += $(this).outerWidth(true);
+                    if (elementWidth === 0) {
+                        elementWidth = containerWidth;
+                    }
+                });
+                var containerWidthFunction = function($container) {
+                    var containerWidth = 0;
+                    $container.children().each(function() {
+                        containerWidth += $(this).outerWidth(true);
+                    });
+                    return containerWidth;
+                };
                 sliderOptions.containerWidth = containerWidth;
+                sliderOptions.elementWidth = elementWidth * 4;
                 var slider = new root.Slider($(".gl-slides-center-column")[0], sliderOptions);
             }
         };
         $(document).ready(function () {
+            // preload image
+            new Image().src = "/Images/in-progress-small.gif";
             var vm = new ViewModel(model, options);
             ko.applyBindings(vm, $(selector)[0]);
         });

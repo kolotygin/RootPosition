@@ -204,6 +204,8 @@
     <Content Include="CSS\voice.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\arrows-sprite.png" />
+    <Content Include="Images\arrows-sprite2.png" />
     <Content Include="Images\A_Classical_Sound_by_torchdesigns.jpg" />
     <Content Include="Images\back-button.png" />
     <Content Include="Images\close.png" />

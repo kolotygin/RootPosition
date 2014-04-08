@@ -128,7 +128,7 @@
             this._$inProgressHandler = $.proxy(this._complete, this, "in-progress");
 
             this._calculator = new SliderCalculator({
-                displayAreaWidth: this.$element.width(),
+                displayAreaWidth: this.options.elementWidth || this.$element.width(),
                 containerWidth: this.options.containerWidth || this.$container.outerWidth(),
                 leftMargin: 0
             });
@@ -244,7 +244,7 @@
         containerSelector: "",
         nextButton: null,
         prevButton: null,
-        slidingSpeed: 200
+        slidingSpeed: 50
     };
 
     Slider.defaults = function (settings) {

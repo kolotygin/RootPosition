@@ -23,7 +23,7 @@ section[role="photos"] h3 {
 }
 
 .gl-slides-center-column {
-	height: 16.4em;
+	height: 18.4em;
 	overflow: hidden; /* So the sliding bit doesn't stick out. */
 	float: left;
 	position: relative;
@@ -31,33 +31,67 @@ section[role="photos"] h3 {
 }
 
 .gl-slides-left-column, .gl-slides-right-column {
-	float: left;
-	width: 3em;
+    float: left;
+    height: 20.2em;
+    width: 3em;
+    position: relative;
 }
 
 .gl-slides-left-column {
-	margin-left: -100%;
+    margin-left: -100%;
 }
 
 .gl-slides-right-column {
-	margin-left: -3em;
+    margin-left: -3em;
 }
 
-.gl-slides-prev-button, .gl-slides-next-button {
-	float: left;
-	margin: 1em 0;
-	height: 16.2em;
-	text-indent: -1000em;
-	background: green;
-	width: 3em;
+a.gl-slides-prev-button,
+a.gl-slides-prev-button:link,
+a.gl-slides-prev-button:visited,
+a.gl-slides-prev-button:hover,
+a.gl-slides-prev-button:active,
+a.gl-slides-next-button,
+a.gl-slides-next-button:link,
+a.gl-slides-next-button:visited,
+a.gl-slides-next-button:hover,
+a.gl-slides-next-button:active {
+    margin: 1em 0;
+    height: 18.2em;
+    width: 30px;
+    text-indent: -1000em;
+    background: transparent url(../Images/arrows-sprite2.png) no-repeat 0 0;
 }
 
-.gl-slides-prev-button {
-	left: 0;
+a.gl-slides-prev-button {
+    float: left;
 }
 
-.gl-slides-next-button {
-	right: 0;
+a.gl-slides-next-button {
+    float: right;
+}
+
+a.gl-slides-prev-button:link {
+    background-position: 0 50%;
+}
+
+a.gl-slides-prev-button:hover {
+    background-position: -30px 50%;
+}
+
+a.gl-slides-prev-button:active {
+    background-position: -60px 50%;
+}
+
+a.gl-slides-next-button:link {
+    background-position: -216px 50%;
+}
+
+a.gl-slides-next-button:hover {
+    background-position: -186px 50%;
+}
+
+a.gl-slides-next-button:active {
+    background-position: -156px 50%;
 }
 
 section[role="photos"] ul {
@@ -74,13 +108,13 @@ section[role="photos"] ul {
 section[role="photos"] ul li {
 	display: block;
 	float: left;
-	margin: 0 0 1.4em 1.4em;
+	margin: 0 0 1.4em 1.7em;
 }
 
 section[role="photos"] ul li a {
 	background: none repeat scroll 0 0 #ffffff;
 	/*background: none repeat scroll 0 0 rgb(239, 236, 229);*/
-	border: 0.1em solid #aaa;
+	border: 0.063em solid #aaa;
 	border-color: #aaa #666 #666 #aaa;
 /*
 	-moz-border-radius: 0.5em;
@@ -93,17 +127,17 @@ section[role="photos"] ul li a {
 */
 	display: block;
 	overflow: hidden;
-	line-height: 14em;
+	line-height: 16em;
 	padding: 1em;
 
 	text-align: center;
 
-	width: 14em;
-	height: 14em;
+	width: 16em;
+	height: 16em;
 }
 
 section[role="photos"] ul li a img {
-    border: 0.1em solid #aaa;
+    border: 0.063em solid #aaa;
     border-color: #666 #aaa #aaa #666;
     opacity: 0.9;
 }
