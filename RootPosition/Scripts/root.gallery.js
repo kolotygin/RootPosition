@@ -116,7 +116,7 @@ root.gallery = root.gallery || {};
                     return containerWidth;
                 };
                 sliderOptions.containerWidth = containerWidth;
-                sliderOptions.elementWidth = elementWidth * 4;
+                sliderOptions.displayAreaWidth = Math.floor($(element).innerWidth() / elementWidth) * elementWidth;
                 var slider = new root.Slider($(".gl-slides-center-column")[0], sliderOptions);
             }
         };

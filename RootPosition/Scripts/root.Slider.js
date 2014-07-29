@@ -1,8 +1,8 @@
-﻿; var root = root || {};
+﻿;var root = root || {};
 
 // the semi-colon before function invocation is a safety net against concatenated 
 // scripts and/or other plugins which may not be closed properly.
-(function ($, window, document, undefined) {
+(function($, window, document, undefined) {
     "use strict";
 
     var SliderCalculator = this.SliderCalculator = function(options) {
@@ -18,7 +18,7 @@
             return window.Math.ceil(this._containerWidth / this._displayAreaWidth);
         },
 
-        currentIndex: function (index) {
+        currentIndex: function(index) {
             var currentIndexValue = window.Math.ceil(this._leftMargin / this._displayAreaWidth);
             if (typeof index === "undefined") {
                 return currentIndexValue;
@@ -44,7 +44,7 @@
         },
 
         // next slide: move forwards by slideLength
-        slideLeft: function (slideLength) {
+        slideLeft: function(slideLength) {
             var offset = this.rightMargin();
             if (offset > 0) {
                 this._leftMargin += window.Math.min(typeof slideLength === "undefined" ? this._displayAreaWidth : slideLength, offset);
@@ -52,7 +52,7 @@
         },
 
         // prev slide: move backwards by slideLength
-        slideRight: function (slideLength) {
+        slideRight: function(slideLength) {
             var offset = this.leftMargin();
             if (offset > 0) {
                 this._leftMargin -= window.Math.min(typeof slideLength === "undefined" ? this._displayAreaWidth : slideLength, this.leftMargin());
@@ -90,7 +90,7 @@
     var pluginName = 'slider';
 
     // The actual plugin constructor
-    var Slider = this.Slider = function (element, options) {
+    var Slider = this.Slider = function(element, options) {
         this.element = element;
         this.options = options;
 
@@ -98,10 +98,9 @@
     };
 
     Slider.prototype = {
-
         constructor: Slider,
 
-        init: function () {
+        init: function() {
             // Place initialization logic here
             // You already have access to the DOM element and the options via the instance, 
             // e.g., this.element and this.options
@@ -128,7 +127,7 @@
             this._$inProgressHandler = $.proxy(this._complete, this, "in-progress");
 
             this._calculator = new SliderCalculator({
-                displayAreaWidth: this.options.elementWidth || this.$element.width(),
+                displayAreaWidth: this.options.displayAreaWidth || this.$element.width(),
                 containerWidth: this.options.containerWidth || this.$container.outerWidth(),
                 leftMargin: 0
             });
@@ -136,19 +135,19 @@
             this._inProgress = false;
         },
 
-        _complete: function (state) {
+        _complete: function(state) {
             if (state !== "in-progress") {
                 this._inProgress = false;
             }
             this.$this.trigger($.Event("slide-completed"), [state]);
         },
 
-        _onNextButtonClick: function (eventObject) {
+        _onNextButtonClick: function(eventObject) {
             eventObject.preventDefault();
             this.slideLeft();
         },
 
-        _onPrevButtonClick: function (eventObject) {
+        _onPrevButtonClick: function(eventObject) {
             eventObject.preventDefault();
             this.slideRight();
         },
@@ -157,7 +156,7 @@
             this.$container.animate({ marginLeft: -this._calculator.leftMargin() + this._initialLeftMargin }, this.options.slidingSpeed, "linear", onComplete);
         },
 
-        _getContainerLeftMargin: function () {
+        _getContainerLeftMargin: function() {
             // get current margin of slider
             var leftMargin = this.$container.css("margin-left");
             // first page load, margin will be auto, we need to change this to 0
@@ -168,11 +167,11 @@
             return (-window.parseInt(leftMargin, 10));
         },
 
-        inProgress: function () {
+        inProgress: function() {
             return this._inProgress;
         },
 
-        currentIndex: function (index) {
+        currentIndex: function(index) {
             if (typeof index === "undefined") {
                 return this._calculator.currentIndex();
             }
@@ -195,7 +194,7 @@
         },
 
         // next slide
-        slideLeft: function () {
+        slideLeft: function() {
             if (this._inProgress) {
                 this._$inProgressHandler();
                 return;
@@ -211,7 +210,7 @@
         },
 
         // prev slide
-        slideRight: function () {
+        slideRight: function() {
             if (this._inProgress) {
                 this._$inProgressHandler();
                 return;
@@ -226,15 +225,15 @@
             }
         },
 
-        canSlide: function () {
+        canSlide: function() {
             return this._calculator.canSlide();
         },
 
-        canSlideLeft: function () {
+        canSlideLeft: function() {
             return this._calculator.canSlideLeft();
         },
 
-        canSlideRight: function () {
+        canSlideRight: function() {
             return this._calculator.canSlideRight();
         }
 
@@ -247,7 +246,7 @@
         slidingSpeed: 50
     };
 
-    Slider.defaults = function (settings) {
+    Slider.defaults = function(settings) {
         if (typeof settings !== "undefined") {
             $.extend(Slider._defaults, settings);
         }
@@ -255,13 +254,13 @@
     };
 
 
-    $.fn[pluginName] = function (option) {
+    $.fn[pluginName] = function(option) {
 
         // get the arguments
         var args = $.makeArray(arguments);
         var params = args.slice(1);
 
-        return this.each(function () {
+        return this.each(function() {
             var $this = $(this);
             var instance = $this.data(pluginName);
             if (!instance) {
@@ -275,4 +274,3 @@
     };
 
 }).apply(root, [jQuery, window, document]);
-
