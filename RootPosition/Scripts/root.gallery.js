@@ -102,7 +102,7 @@ root.gallery = root.gallery || {};
                 }
                 var containerWidth = 0;
                 var elementWidth = 0;
-                sliderOptions.containerSelector = $ul;
+    
                 $ul.children().each(function () {
                     containerWidth += $(this).outerWidth(true);
                     if (elementWidth === 0) {
@@ -115,7 +115,8 @@ root.gallery = root.gallery || {};
 //                        containerWidth += $(this).outerWidth(true);
 //                    });
 //                    return containerWidth;
-//                };
+                //                };
+                sliderOptions.containerSelector = $ul;
                 sliderOptions.containerWidth = containerWidth;
                 sliderOptions.displayAreaWidth = Math.floor($ul.innerWidth() / elementWidth) * elementWidth;
                 var slider = new root.Slider($(".gl-slides-center-column")[0], sliderOptions);
