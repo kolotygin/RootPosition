@@ -96,12 +96,14 @@ root.gallery = root.gallery || {};
                 // This will be called once when the binding is first applied to an element,
                 // and again whenever the associated observable changes value.
                 // Update the DOM element based on the supplied values here.
+                var $ul = $(element); // ul
                 if (!/android|iphone|ipod|series60|symbian|windows ce|blackberry/i.test(navigator.userAgent)) {
-                    $(element).find("a").photoBox({/* custom options here */});
+                    $ul.find("a").photoBox({/* custom options here */ });
                 }
                 var containerWidth = 0;
                 var elementWidth = 0;
-                sliderOptions.containerSelector.children().each(function() {
+                sliderOptions.containerSelector = $ul;
+                $ul.children().each(function () {
                     containerWidth += $(this).outerWidth(true);
                     if (elementWidth === 0) {
                         elementWidth = containerWidth;
@@ -115,7 +117,7 @@ root.gallery = root.gallery || {};
 //                    return containerWidth;
 //                };
                 sliderOptions.containerWidth = containerWidth;
-                sliderOptions.displayAreaWidth = Math.floor($(element).innerWidth() / elementWidth) * elementWidth;
+                sliderOptions.displayAreaWidth = Math.floor($ul.innerWidth() / elementWidth) * elementWidth;
                 var slider = new root.Slider($(".gl-slides-center-column")[0], sliderOptions);
             }
         };

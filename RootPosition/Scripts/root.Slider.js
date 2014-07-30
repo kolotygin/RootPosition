@@ -127,7 +127,7 @@ var root = root || {};
             this._$inProgressHandler = $.proxy(this._complete, this, "in-progress");
 
             this._calculator = new SliderCalculator({
-                displayAreaWidth: this.options.displayAreaWidth || this.$element.width(),
+                displayAreaWidth: this.options.displayAreaWidth || this.$element.innerWidth(),
                 containerWidth: this.options.containerWidth || this.$container.outerWidth(),
                 leftMargin: 0
             });
