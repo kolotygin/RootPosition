@@ -1,10 +1,11 @@
+;
 var root = root || {};
 
 root.gallery = root.gallery || {};
 
 // the semi-colon before function invocation is a safety net against concatenated 
 // scripts and/or other plugins which may not be closed properly.
-(function ($, window, document, undefined, ko) {
+(function($, window, document, undefined, ko) {
     "use strict";
 
     // undefined is used here as the undefined global variable in ECMAScript 3 is
@@ -16,16 +17,16 @@ root.gallery = root.gallery || {};
     // as this (slightly) quickens the resolution process and can be more efficiently
     // minified (especially when both are regularly referenced in your plugin).
 
-    var PhotoViewModel = this.PhotoViewModel = function (model, path) {
-        this.thumbnailSource = ko.computed(function () {
+    var PhotoViewModel = this.PhotoViewModel = function(model, path) {
+        this.thumbnailSource = ko.computed(function() {
             return "/Image" + "/120/120/" + path + "/" + model.source;
         }, this);
 
-        this.imageSource = ko.computed(function () {
+        this.imageSource = ko.computed(function() {
             return "/Image" + "/600/600/" + path + "/" + model.source;
         }, this);
 
-        this.cssClass = ko.computed(function () {
+        this.cssClass = ko.computed(function() {
             return model.orientation === 0 ? "ls" : "pt";
         }, this);
 
@@ -35,13 +36,12 @@ root.gallery = root.gallery || {};
     PhotoViewModel.prototype = {
         constructor: PhotoViewModel,
 
-        onLoad: function (data, event) {
+        onLoad: function(data, event) {
             this.loaded(true);
         }
-
     };
 
-    var PhotoGalleryViewModel = this.PhotoGalleryViewModel = function (model, options) {
+    var PhotoGalleryViewModel = this.PhotoGalleryViewModel = function(model, options) {
         this._options = options;
         this.photos = this._toObservable(model);
         this.date = ko.observable(new Date(model.date).format("longDate"));
@@ -50,7 +50,7 @@ root.gallery = root.gallery || {};
     PhotoGalleryViewModel.prototype = {
         constructor: PhotoGalleryViewModel,
 
-        _toObservable: function (model) {
+        _toObservable: function(model) {
             var photos = [];
             for (var i = 0, size = model.photos.length; i < size; i++) {
                 photos.push(new PhotoViewModel(model.photos[i], model.path));
@@ -59,7 +59,7 @@ root.gallery = root.gallery || {};
         }
     };
 
-    var ViewModel = this.ViewModel = function (model, options) {
+    var ViewModel = this.ViewModel = function(model, options) {
         this.galleries = this._toObservable(model);
         this._options = options;
     };
@@ -74,13 +74,12 @@ root.gallery = root.gallery || {};
             }
             return ko.observableArray(galleries);
         }
-
     };
 
-    this.initialize = function (selector, model, options) {
+    this.initialize = function(selector, model, options) {
         var sliderOptions;
         ko.bindingHandlers.sectionCreated = {
-            update: function (element, valueAccessor, allBindingsAccessor, elementViewModel, bindingContext) {
+            update: function(element, valueAccessor, allBindingsAccessor, elementViewModel, bindingContext) {
                 // This will be called once when the binding is first applied to an element,
                 // and again whenever the associated observable changes value.
                 // Update the DOM element based on the supplied values here.
@@ -93,12 +92,12 @@ root.gallery = root.gallery || {};
             }
         };
         ko.bindingHandlers.thumbnailsCreated = {
-            update: function (element, valueAccessor, allBindingsAccessor, elementViewModel, bindingContext) {
+            update: function(element, valueAccessor, allBindingsAccessor, elementViewModel, bindingContext) {
                 // This will be called once when the binding is first applied to an element,
                 // and again whenever the associated observable changes value.
                 // Update the DOM element based on the supplied values here.
-                if (! /android|iphone|ipod|series60|symbian|windows ce|blackberry/i.test(navigator.userAgent)) {
-                    $(element).find("a").photoBox({/* custom options here */ });
+                if (!/android|iphone|ipod|series60|symbian|windows ce|blackberry/i.test(navigator.userAgent)) {
+                    $(element).find("a").photoBox({/* custom options here */});
                 }
                 var containerWidth = 0;
                 var elementWidth = 0;
@@ -108,19 +107,19 @@ root.gallery = root.gallery || {};
                         elementWidth = containerWidth;
                     }
                 });
-                var containerWidthFunction = function($container) {
-                    var containerWidth = 0;
-                    $container.children().each(function() {
-                        containerWidth += $(this).outerWidth(true);
-                    });
-                    return containerWidth;
-                };
+//                var containerWidthFunction = function($container) {
+//                    var containerWidth = 0;
+//                    $container.children().each(function() {
+//                        containerWidth += $(this).outerWidth(true);
+//                    });
+//                    return containerWidth;
+//                };
                 sliderOptions.containerWidth = containerWidth;
                 sliderOptions.displayAreaWidth = Math.floor($(element).innerWidth() / elementWidth) * elementWidth;
                 var slider = new root.Slider($(".gl-slides-center-column")[0], sliderOptions);
             }
         };
-        $(document).ready(function () {
+        $(document).ready(function() {
             // preload image
             new Image().src = "/Images/in-progress-small.gif";
             var vm = new ViewModel(model, options);
@@ -129,4 +128,3 @@ root.gallery = root.gallery || {};
     };
 
 }).apply(root.gallery, [jQuery, window, document, undefined, ko]);
-

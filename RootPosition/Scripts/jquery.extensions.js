@@ -71,8 +71,7 @@
 
 (function(jQuery) {
     jQuery.fn.extend({
-        // https://github.com/moagrius/isOnScreen
-        isOnScreen: function(x, y) {
+        /*isOnScreen: function(x, y) {
             if (x === null || typeof x == "undefined") x = 1;
             if (y === null || typeof y == "undefined") y = 1;
 
@@ -109,7 +108,7 @@
                 right: Math.min(1, (viewport.right - bounds.left) / width)
             };
             return (deltas.left * deltas.right) >= x && (deltas.top * deltas.bottom) >= y;
-        },
+        },*/
 
         center: function(host) {
             var $host = host ? jQuery(host) : jQuery(window);

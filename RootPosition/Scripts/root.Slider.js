@@ -1,4 +1,5 @@
-﻿;var root = root || {};
+﻿;
+var root = root || {};
 
 // the semi-colon before function invocation is a safety net against concatenated 
 // scripts and/or other plugins which may not be closed properly.
@@ -74,7 +75,6 @@
         canSlideRight: function() {
             return this.leftMargin() > 0;
         }
-
     };
 
 
@@ -236,7 +236,6 @@
         canSlideRight: function() {
             return this._calculator.canSlideRight();
         }
-
     };
 
     Slider._defaults = {

@@ -3,7 +3,7 @@
 };
 
 Object.isNullOrUndefined = function(value) {
-    return (typeof (value) === "undefined" || value === null);
+    return (typeof(value) === "undefined" || value === null);
 };
 
 String.isNullOrEmpty = function(value) {
@@ -16,16 +16,17 @@ if (typeof String.toCamel === "undefined") {
     String.toCamel = function(text) {
         return String.isNullOrEmpty(text) ? text : (text.charAt(0).toLowerCase() + text.substr(1));
     };
-};
+}
+;
 
 if (typeof Object.ToCamel === "undefined") {
     Object.ToCamel = function(o) {
         var camelizedObject = {};
         var propertyValue;
         for (var propertyName in o) {
-            if (Object.prototype.hasOwnProperty.call(o, propertyName) && typeof (propertyName) === "string") {
+            if (Object.prototype.hasOwnProperty.call(o, propertyName) && typeof(propertyName) === "string") {
                 propertyValue = o[propertyName];
-                if (typeof (propertyValue) === "object" && propertyValue !== null && propertyValue.constructor !== Array) {
+                if (typeof(propertyValue) === "object" && propertyValue !== null && propertyValue.constructor !== Array) {
                     propertyValue = Object.ToCamel(propertyValue);
                 }
                 camelizedObject[String.toCamel(propertyName)] = propertyValue;
@@ -33,22 +34,22 @@ if (typeof Object.ToCamel === "undefined") {
         }
         return camelizedObject;
     };
-};
+}
+;
 
 String.prototype.append = function(stringToAppend, separator) {
     if (String.isNullOrEmpty(stringToAppend)) {
         return this;
     }
-    else
-        if (String.isNullOrEmpty(this)) {
-            return stringToAppend;
-        }
-        else {
-            var result = [];
-            result[0] = this;
-            result[1] = stringToAppend;
-            return result.join(separator);
-        }
+    else if (String.isNullOrEmpty(this)) {
+        return stringToAppend;
+    }
+    else {
+        var result = [];
+        result[0] = this;
+        result[1] = stringToAppend;
+        return result.join(separator);
+    }
 };
 
 if (!String.prototype.trim) {
@@ -70,7 +71,7 @@ if (!String.prototype.fulltrim) {
 var Root = Root || {};
 
 Root.HtmlEncode = function(text) {
-    if (typeof (text) === "string") {
+    if (typeof(text) === "string") {
         text = text.replace(/&/g, "&amp;");
         text = text.replace(/"/g, "&quot;");
         text = text.replace(/</g, "&lt;");
@@ -84,7 +85,7 @@ Root.HtmlEncode = function(text) {
 * and also replaces non-breakable spaces with common ones for proper appearance
 */
 Root.HtmlEncodeAndReplaceNBSP = function(text) {
-    if (typeof (text) === "string") {
+    if (typeof(text) === "string") {
         text = Root.HtmlEncode(text);
         text = text.replace(/\u00a0/g, ' ');
     }
@@ -97,29 +98,26 @@ Root.GetControl = function(controlId) {
     if (document.getElementById) {
         control = document.getElementById(controlId);
     }
-    else
-        if (document.all) {
-            control = document.all[controlId];
+    else if (document.all) {
+        control = document.all[controlId];
+    }
+    else if (document.layers) {
+        control = document.layers(controlId);
+    }
+    else if (document.forms) {
+        if (document.forms[controlId]) {
+            control = document.forms[controlId];
         }
-        else
-            if (document.layers) {
-                control = document.layers(controlId);
-            }
-            else
-                if (document.forms) {
-                    if (document.forms[controlId]) {
-                        control = document.forms[controlId];
-                    }
-                    else {
-                        var i;
-                        for (i = 0; i < document.forms.length; i++) {
-                            if (document.forms[i][controlId]) {
-                                control = document.forms[i][controlId];
-                                break;
-                            }
-                        }
-                    }
+        else {
+            var i;
+            for (i = 0; i < document.forms.length; i++) {
+                if (document.forms[i][controlId]) {
+                    control = document.forms[i][controlId];
+                    break;
                 }
+            }
+        }
+    }
     return control;
 };
 
@@ -145,33 +143,31 @@ Root.AddEvent = function(el, evname, func) {
     if (el.attachEvent) { // IE
         el.attachEvent(evname, func);
     }
-    else
-        if (el.addEventListener) { // Gecko / W3C
-            el.addEventListener(evname, func, true);
-        }
-        else { // Opera (or old browsers)
-            el[evname] = func;
-        }
+    else if (el.addEventListener) { // Gecko / W3C
+        el.addEventListener(evname, func, true);
+    }
+    else { // Opera (or old browsers)
+        el[evname] = func;
+    }
 };
 
 Root.RemoveEvent = function(el, evname, func) {
     if (el.detachEvent) { // IE
         el.detachEvent(evname, func);
     }
-    else
-        if (el.removeEventListener) { // Gecko / W3C
-            el.removeEventListener(evname, func, true);
-        }
-        else { // Opera (or old browsers)
-            el[evname] = null;
-        }
+    else if (el.removeEventListener) { // Gecko / W3C
+        el.removeEventListener(evname, func, true);
+    }
+    else { // Opera (or old browsers)
+        el[evname] = null;
+    }
 };
 
 Root.SetTopDocumentTitle = function(title) {
     try {
         window.top.document.title = title;
     }
-    catch (ex) {
+    catch(ex) {
     }
 };
 
@@ -186,7 +182,7 @@ Root.SetFocus = function(controlId) {
                 ctrl.focus();
                 return true;
             }
-            catch (e) {
+            catch(e) {
             }
         }
     }
@@ -215,20 +211,18 @@ Root.GetIFrameDocument = function(iframe) {
         // For NS6
         doc = iframe.contentDocument;
     }
-    else
-        if (iframe.contentWindow) {
-            // For IE5.5 and IE6
-            doc = iframe.contentWindow.document;
-        }
-        else
-            if (iframe.document) {
-                // For IE5
-                doc = iframe.document;
-            }
-            else {
-                // Default
-                doc = iframe.document;
-            }
+    else if (iframe.contentWindow) {
+        // For IE5.5 and IE6
+        doc = iframe.contentWindow.document;
+    }
+    else if (iframe.document) {
+        // For IE5
+        doc = iframe.document;
+    }
+    else {
+        // Default
+        doc = iframe.document;
+    }
     return doc;
 };
 
@@ -256,23 +250,21 @@ Root.GetScrollPosition = function() {
     var scrollLeft = 0;
     var scrollTop = 0;
 
-    if (typeof (window.pageYOffset) === "number") {
+    if (typeof(window.pageYOffset) === "number") {
         // Netscape compliant
         scrollTop = window.pageYOffset;
         scrollLeft = window.pageXOffset;
     }
-    else
-        if (document.body && (document.body.scrollLeft || document.body.scrollTop)) {
-            // DOM compliant
-            scrollTop = document.body.scrollTop;
-            scrollLeft = document.body.scrollLeft;
-        }
-        else
-            if (document.documentElement && (document.documentElement.scrollLeft || document.documentElement.scrollTop)) {
-                // IE6 standards compliant mode 
-                scrollTop = document.documentElement.scrollTop;
-                scrollLeft = document.documentElement.scrollLeft;
-            }
+    else if (document.body && (document.body.scrollLeft || document.body.scrollTop)) {
+        // DOM compliant
+        scrollTop = document.body.scrollTop;
+        scrollLeft = document.body.scrollLeft;
+    }
+    else if (document.documentElement && (document.documentElement.scrollLeft || document.documentElement.scrollTop)) {
+        // IE6 standards compliant mode 
+        scrollTop = document.documentElement.scrollTop;
+        scrollLeft = document.documentElement.scrollLeft;
+    }
     return { "top": scrollTop, "left": scrollLeft };
 };
 
@@ -282,23 +274,21 @@ Root.SetScrollPosition = function(scrollTop, scrollLeft) {
         window.scrollTo(scrollLeft, scrollTop);
         return;
     }
-    if (typeof (window.pageYOffset) === "number") {
+    if (typeof(window.pageYOffset) === "number") {
         // Netscape compliant
         window.pageYOffset = scrollTop;
         window.pageXOffset = scrollLeft;
     }
-    else
-        if (document.body && (document.body.scrollLeft || document.body.scrollTop)) {
-            // DOM compliant
-            document.body.scrollTop = scrollTop;
-            document.body.scrollLeft = scrollLeft;
-        }
-        else
-            if (document.documentElement && (document.documentElement.scrollLeft || document.documentElement.scrollTop)) {
-                // IE6 standards compliant mode
-                document.documentElement.scrollTop = scrollTop;
-                document.documentElement.scrollLeft = scrollLeft;
-            }
+    else if (document.body && (document.body.scrollLeft || document.body.scrollTop)) {
+        // DOM compliant
+        document.body.scrollTop = scrollTop;
+        document.body.scrollLeft = scrollLeft;
+    }
+    else if (document.documentElement && (document.documentElement.scrollLeft || document.documentElement.scrollTop)) {
+        // IE6 standards compliant mode
+        document.documentElement.scrollTop = scrollTop;
+        document.documentElement.scrollLeft = scrollLeft;
+    }
 };
 
 // finding the size of the browser window
@@ -307,23 +297,21 @@ Root.GetClientBounds = function() {
     var windowWidth = 0;
     var windowHeight = 0;
 
-    if (typeof (window.innerWidth) === "number") {
+    if (typeof(window.innerWidth) === "number") {
         // Non-IE 
         windowWidth = window.innerWidth;
         windowHeight = window.innerHeight;
     }
-    else
-        if (document.documentElement && (document.documentElement.clientWidth || document.documentElement.clientHeight)) {
-            // IE 6+ in 'standards compliant mode'
-            windowWidth = document.documentElement.clientWidth;
-            windowHeight = document.documentElement.clientHeight;
-        }
-        else
-            if (document.body && (document.body.clientWidth || document.body.clientHeight)) {
-                // IE 4 compatible 
-                windowWidth = document.body.clientWidth;
-                windowHeight = document.body.clientHeight;
-            }
+    else if (document.documentElement && (document.documentElement.clientWidth || document.documentElement.clientHeight)) {
+        // IE 6+ in 'standards compliant mode'
+        windowWidth = document.documentElement.clientWidth;
+        windowHeight = document.documentElement.clientHeight;
+    }
+    else if (document.body && (document.body.clientWidth || document.body.clientHeight)) {
+        // IE 4 compatible 
+        windowWidth = document.body.clientWidth;
+        windowHeight = document.body.clientHeight;
+    }
     return { "width": windowWidth, "height": windowHeight };
 };
 
@@ -423,7 +411,7 @@ Root.TimedTasks = function(tasks, args, callback) {
             setTimeout(arguments.callee, 25);
         }
         else {
-            if (typeof (callback) === "function") {
+            if (typeof(callback) === "function") {
                 callback();
             }
         }
@@ -443,7 +431,7 @@ Root.TimedProcessArray = function(items, process, callback) {
             setTimeout(arguments.callee, 25);
         }
         else {
-            if (typeof (callback) === "function") {
+            if (typeof(callback) === "function") {
                 callback();
             }
         }
@@ -480,18 +468,18 @@ Root.LoadStyleSheet = function(doc, path, callback, scope) {
     }
 
     var intervalId = setInterval(function() { // start checking whether the style sheet has successfully loaded
-            try {
-                if (link[sheet] && link[sheet][cssRules].length) { // SUCCESS! our style sheet has loaded
-                    clearInterval(intervalId); // clear the counters
-                    clearTimeout(timeoutId);
-                    callback.call(scope || window, true, link); // fire the callback with success == true
-                }
+        try {
+            if (link[sheet] && link[sheet][cssRules].length) { // SUCCESS! our style sheet has loaded
+                clearInterval(intervalId); // clear the counters
+                clearTimeout(timeoutId);
+                callback.call(scope || window, true, link); // fire the callback with success == true
             }
-            catch (e) {
-            }
-            finally {
-            }
-        }, 10), // how often to check if the stylesheet is loaded
+        }
+        catch(e) {
+        }
+        finally {
+        }
+    }, 10), // how often to check if the stylesheet is loaded
         timeoutId = setTimeout(function() { // start counting down till fail
             clearInterval(intervalId); // clear the counters
             clearTimeout(timeoutId);
@@ -516,22 +504,18 @@ Root.browser = (function() {
     if (userAgent.indexOf("Chrome") > -1) {
         browser.chrome = true;
     }
-    else
-        if (userAgent.indexOf("Safari") > -1) {
-            browser.safari = true;
-        }
-        else
-            if (userAgent.indexOf("Opera") > -1) {
-                browser.opera = true;
-            }
-            else
-                if (userAgent.indexOf("Firefox") > -1) {
-                    browser.mozilla = true;
-                }
-                else
-                    if (userAgent.indexOf("MSIE") > -1) {
-                        browser.msie = true;
-                    }
+    else if (userAgent.indexOf("Safari") > -1) {
+        browser.safari = true;
+    }
+    else if (userAgent.indexOf("Opera") > -1) {
+        browser.opera = true;
+    }
+    else if (userAgent.indexOf("Firefox") > -1) {
+        browser.mozilla = true;
+    }
+    else if (userAgent.indexOf("MSIE") > -1) {
+        browser.msie = true;
+    }
     return browser;
 })();
 
