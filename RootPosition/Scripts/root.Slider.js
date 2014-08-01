@@ -16,11 +16,11 @@ var root = root || {};
         constructor: SliderCalculator,
 
         size: function() {
-            return window.Math.ceil(this._containerWidth / this._displayAreaWidth);
+            return Math.ceil(this._containerWidth / this._displayAreaWidth);
         },
 
         currentIndex: function(index) {
-            var currentIndexValue = window.Math.ceil(this._leftMargin / this._displayAreaWidth);
+            var currentIndexValue = Math.ceil(this._leftMargin / this._displayAreaWidth);
             if (typeof index === "undefined") {
                 return currentIndexValue;
             }
@@ -48,7 +48,7 @@ var root = root || {};
         slideLeft: function(slideLength) {
             var offset = this.rightMargin();
             if (offset > 0) {
-                this._leftMargin += window.Math.min(typeof slideLength === "undefined" ? this._displayAreaWidth : slideLength, offset);
+                this._leftMargin += Math.min(typeof slideLength === "undefined" ? this._displayAreaWidth : slideLength, offset);
             }
         },
 
@@ -56,7 +56,7 @@ var root = root || {};
         slideRight: function(slideLength) {
             var offset = this.leftMargin();
             if (offset > 0) {
-                this._leftMargin -= window.Math.min(typeof slideLength === "undefined" ? this._displayAreaWidth : slideLength, this.leftMargin());
+                this._leftMargin -= Math.min(typeof slideLength === "undefined" ? this._displayAreaWidth : slideLength, this.leftMargin());
             }
         },
 
@@ -109,7 +109,8 @@ var root = root || {};
             this.$this = $(this);
             this.$element = $(this.element); // container
 
-            this.$container = this.options.containerSelector ? $(this.options.containerSelector) : $(this.$element.children[0]); // items container
+            //this.$container = this.options.containerSelector ? $(this.options.containerSelector) : $(this.$element.children[0]); // items container
+            this.$container = this.$element;
 
             this.$nextButton = $(this.options.nextButton);
             this.$prevButton = $(this.options.prevButton);
@@ -126,9 +127,20 @@ var root = root || {};
             this._$completeNoSlide = $.proxy(this._complete, this, "no-slide");
             this._$inProgressHandler = $.proxy(this._complete, this, "in-progress");
 
+            var containerWidth = 0;
+            var elementWidth = 0;
+
+            this.$element.children().each(function () {
+                //containerWidth += Math.floor($(this).outerWidth(true));
+                containerWidth += $(this).outerWidth(true);
+                if (elementWidth === 0) {
+                    elementWidth = containerWidth;
+                }
+            });
+
             this._calculator = new SliderCalculator({
-                displayAreaWidth: this.options.displayAreaWidth || this.$element.innerWidth(),
-                containerWidth: this.options.containerWidth || this.$container.outerWidth(),
+                displayAreaWidth: Math.floor(this.$element.innerWidth() / elementWidth) * elementWidth,
+                containerWidth: containerWidth,
                 leftMargin: 0
             });
 
@@ -164,7 +176,7 @@ var root = root || {};
                 leftMargin = 0;
             }
             // return the current margin to the function as an integer
-            return (-window.parseInt(leftMargin, 10));
+            return (-parseInt(leftMargin, 10));
         },
 
         inProgress: function() {

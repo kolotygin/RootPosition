@@ -19,7 +19,7 @@ root.gallery = root.gallery || {};
 
     var PhotoViewModel = this.PhotoViewModel = function(model, path) {
         this.thumbnailSource = ko.computed(function() {
-            return "/Image" + "/120/120/" + path + "/" + model.source;
+            return "/Image" + "/240/240/" + path + "/" + model.source;
         }, this);
 
         this.imageSource = ko.computed(function() {
@@ -85,7 +85,6 @@ root.gallery = root.gallery || {};
                 // Update the DOM element based on the supplied values here.
                 var $element = $(element);
                 sliderOptions = {
-                    containerSelector: $element.find("ul"),
                     prevButton: $element.find(".gl-slides-prev-button"),
                     nextButton: $element.find(".gl-slides-next-button")
                 };
@@ -97,18 +96,16 @@ root.gallery = root.gallery || {};
                 // and again whenever the associated observable changes value.
                 // Update the DOM element based on the supplied values here.
                 var $ul = $(element); // ul
-                if (!/android|iphone|ipod|series60|symbian|windows ce|blackberry/i.test(navigator.userAgent)) {
                     $ul.find("a").photoBox({/* custom options here */ });
-                }
-                var containerWidth = 0;
+/*                var containerWidth = 0;
                 var elementWidth = 0;
-    
-                $ul.children().each(function () {
+    */
+/*                $ul.children().each(function () {
                     containerWidth += $(this).outerWidth(true);
                     if (elementWidth === 0) {
                         elementWidth = containerWidth;
                     }
-                });
+                });*/
 //                var containerWidthFunction = function($container) {
 //                    var containerWidth = 0;
 //                    $container.children().each(function() {
@@ -116,10 +113,11 @@ root.gallery = root.gallery || {};
 //                    });
 //                    return containerWidth;
                 //                };
-                sliderOptions.containerSelector = $ul;
-                sliderOptions.containerWidth = containerWidth;
-                sliderOptions.displayAreaWidth = Math.floor($ul.innerWidth() / elementWidth) * elementWidth;
-                var slider = new root.Slider($(".gl-slides-center-column")[0], sliderOptions);
+                //sliderOptions.containerSelector = $ul;
+                //sliderOptions.containerWidth = containerWidth;
+                //sliderOptions.displayAreaWidth = Math.floor($ul.innerWidth() / elementWidth) * elementWidth;
+                //var slider = new root.Slider(element, sliderOptions);
+                $ul.slider(sliderOptions);
             }
         };
         $(document).ready(function() {
