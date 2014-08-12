@@ -3,6 +3,15 @@ var root = root || {};
 
 // the semi-colon before function invocation is a safety net against concatenated 
 // scripts and/or other plugins which may not be closed properly.
+
+// undefined is used here as the undefined global variable in ECMAScript 3 is
+// mutable (ie. it can be changed by someone else). undefined isn't really being
+// passed in so we can ensure the value of it is truly undefined. In ES5, undefined
+// can no longer be modified.
+
+// window and document are passed through as local variables rather than globals
+// as this (slightly) quickens the resolution process and can be more efficiently
+// minified (especially when both are regularly referenced in your plugin).
 (function($, window, document, undefined) {
     "use strict";
 
@@ -77,16 +86,6 @@ var root = root || {};
         }
     };
 
-
-    // undefined is used here as the undefined global variable in ECMAScript 3 is
-    // mutable (ie. it can be changed by someone else). undefined isn't really being
-    // passed in so we can ensure the value of it is truly undefined. In ES5, undefined
-    // can no longer be modified.
-
-    // window and document are passed through as local variables rather than globals
-    // as this (slightly) quickens the resolution process and can be more efficiently
-    // minified (especially when both are regularly referenced in your plugin).
-
     var pluginName = 'slider';
 
     // The actual plugin constructor
@@ -100,17 +99,15 @@ var root = root || {};
     Slider.prototype = {
         constructor: Slider,
 
-        init: function() {
+        init: function () {
             // Place initialization logic here
             // You already have access to the DOM element and the options via the instance, 
             // e.g., this.element and this.options
             this.options = $.extend({}, Slider.defaults(), this.options);
 
             this.$this = $(this);
-            this.$element = $(this.element); // container
 
-            //this.$container = this.options.containerSelector ? $(this.options.containerSelector) : $(this.$element.children[0]); // items container
-            this.$container = this.$element;
+            this.$container = $(this.element); // container
 
             this.$nextButton = $(this.options.nextButton);
             this.$prevButton = $(this.options.prevButton);
@@ -128,18 +125,17 @@ var root = root || {};
             this._$inProgressHandler = $.proxy(this._complete, this, "in-progress");
 
             var containerWidth = 0;
-            var elementWidth = 0;
+            var itemWidth = 0;
 
-            this.$element.children().each(function () {
-                //containerWidth += Math.floor($(this).outerWidth(true));
-                containerWidth += $(this).outerWidth(true);
-                if (elementWidth === 0) {
-                    elementWidth = containerWidth;
+            this.$container.children().each(function () {
+                containerWidth += Math.round($(this).outerWidth(true));
+                if (itemWidth === 0) {
+                    itemWidth = containerWidth;
                 }
             });
 
             this._calculator = new SliderCalculator({
-                displayAreaWidth: Math.floor(this.$element.innerWidth() / elementWidth) * elementWidth,
+                displayAreaWidth: Math.floor(this.$container.width() / itemWidth) * itemWidth,
                 containerWidth: containerWidth,
                 leftMargin: 0
             });
