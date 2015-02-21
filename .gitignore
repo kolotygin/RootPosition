@@ -66,6 +66,10 @@ Backup*/
 UpgradeLog*.XML
 
 RootPosition/[Bb]in/*
+Analytics/[Bb]in/*
+Web.Mvc/[Bb]in/*
+Infrastructure/[Bb]in/*
+
 
 ############
 ## DNN
