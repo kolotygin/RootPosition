@@ -42,6 +42,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -90,26 +91,47 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\AnalyticsOptions.cs" />
+    <Compile Include="Models\GraphOptions.cs" />
+    <Compile Include="Models\LineGraphDto.cs" />
+    <Compile Include="Models\MapOptions.cs" />
+    <Compile Include="Models\StatsDto.cs" />
+    <Compile Include="Models\StatsServicesOptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AnalyticsServiceController.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CSS\root.analytics.css" />
+    <Content Include="CSS\root.linegraph.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\CAN.topo.json" />
+    <Content Include="Scripts\CHN.topo.json" />
+    <Content Include="Scripts\D3\d3.v3.js" />
+    <Content Include="Scripts\D3\d3.v3.min.js" />
+    <Content Include="Scripts\D3\topojson.v1.min.js" />
+    <Content Include="Scripts\root.DataStructures.js" />
+    <Content Include="Scripts\root.WebResourceUrl.js" />
+    <Content Include="Scripts\GBR.topo.json" />
+    <Content Include="Scripts\D3\d3.v3.license" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Images\email-icon.png" />
+    <Content Include="Images\printer-icon.png" />
+    <Content Include="Scripts\jquery.extensions.js" />
+    <Content Include="Scripts\root.Analytics.ChoroplethMap.js" />
+    <Content Include="Scripts\root.Analytics.Controller.js" />
+    <Content Include="Scripts\root.Analytics.ViewModel.js" />
+    <Content Include="Scripts\root.extensions.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
-    <Content Include="Scripts\jquery-1.8.2.min.js" />
+    <Content Include="Scripts\jquery.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
@@ -120,8 +142,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
-    <Content Include="Scripts\knockout-2.2.0.js" />
+    <Content Include="Scripts\knockout.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\root.LineGraph.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -129,7 +152,6 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Content\Site.css" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
@@ -141,17 +163,19 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\Menu.cshtml" />
+    <Content Include="Scripts\MEX.topo.json" />
+    <Content Include="Scripts\RUS.topo.json" />
+    <Content Include="Scripts\USA.topo.json" />
+    <Content Include="Scripts\World.topo.json" />
+    <Content Include="Services\world.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -1,45 +1,178 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@using Infrastructure.Extensions
+@using Web.Mvc.Html
+@using Web.Mvc.Models
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    Html.Resources().Styles.Add(Url.Content("~/CSS/root.linegraph.css"));
+    Html.Resources().Styles.Add(Url.Content("~/CSS/root.analytics.css"));
+
+    Html.Resources().Scripts.Add(Url.Content("~/Scripts/jquery.min.js"));
+    Html.Resources().Scripts.Add(Url.Content("~/Scripts/knockout.js"));
+    Html.Resources().Scripts.Add(Url.Content("~/Scripts/root.extensions.js"));
+    Html.Resources().Scripts.Add(Url.Content("~/Scripts/jquery.extensions.js"));
+    Html.Resources().Scripts.Add(Url.Content("~/Scripts/root.DataStructures.js"));
+    Html.Resources().Scripts.Add(Url.Content("~/Scripts/root.WebResourceUrl.js"));
+    Html.Resources().Scripts.Add(Url.Content("~/Scripts/D3/d3.v3.min.js"));
+    Html.Resources().Scripts.Add(Url.Content("~/Scripts/D3/topojson.v1.min.js"));
+    Html.Resources().Scripts.Add(Url.Content("~/Scripts/root.LineGraph.js"));
+    Html.Resources().Scripts.Add(Url.Content("~/Scripts/root.Analytics.ChoroplethMap.js"));
+    Html.Resources().Scripts.Add(Url.Content("~/Scripts/root.Analytics.Controller.js"));
+    Html.Resources().Scripts.Add(Url.Content("~/Scripts/root.Analytics.ViewModel.js"));
 }
-@section featured {
-    <section class="featured">
-        <div class="content-wrapper">
-            <hgroup class="title">
-                <h1>@ViewBag.Title.</h1>
-                <h2>@ViewBag.Message</h2>
-            </hgroup>
-            <p>
-                To learn more about ASP.NET MVC visit
-                <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
-                The page features <mark>videos, tutorials, and samples</mark> to help you get the most from ASP.NET MVC.
-                If you have any questions about ASP.NET MVC visit
-                <a href="http://forums.asp.net/1146.aspx/1?MVC" title="ASP.NET MVC Forum">our forums</a>.
-            </p>
+
+@section Body {
+
+<div id="AnalyticsViewContainer" runat="server" class="an-view">
+    <div class="an-header">
+        <div class="an-header-actions">
+            <ul class="an-header-actions-options">
+                <li>
+                    <a href="javascript:void(0);" class="an-header-actions-options-email"></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" class="an-header-actions-options-print"></a>
+                </li>
+            </ul>
         </div>
-    </section>
+        <div class="an-header-date-range">
+            <dnn:DnnDatePicker ID="StartDatePicker" runat="server" resourcekey="StartDatePicker" data-bind="dnnDatePicker: startDate"/>
+            <label class="an-header-to-label"><%= LocalizeString("DateRangeTo") %></label>
+            <dnn:DnnDatePicker ID="EndDatePicker" runat="server" resourcekey="EndDatePicker" data-bind="dnnDatePicker: endDate"/>
+        </div>
+    </div>
+
+    <div class="an-timeline-view" data-bind="with: timeLineView">
+        <div class="an-timeline-view-header">
+            <select class="an-metric-options" data-bind="options: $parent.metricTypes, optionsText: 'value', value: $parent.selectedMetricType">
+            </select>
+            <ul class="an-timeline-view-scale-options">
+                <li>
+                    <a href="javascript:void(0);" data-bind="css: { selected: isDayScale }, click: setScale, attr: { data: scales.Day }"><%=LocalizeString("ScaleDay")%></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" data-bind="css: { selected: isWeekScale }, click: setScale, attr: { data: scales.Week }"><%=LocalizeString("ScaleWeek")%></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" data-bind="css: { selected: isMonthScale }, click: setScale, attr: { data: scales.Month }"><%=LocalizeString("ScaleMonth")%></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" data-bind="css: { selected: isYearScale }, click: setScale, attr: { data: scales.Year }"><%=LocalizeString("ScaleYear")%></a>
+                </li>
+            </ul>
+        </div>
+        <div id="TimeLineViewChartContainer" runat="server" class="an-timeline-view-chart"></div>
+    </div>
+
+    <div class="an-metric-view" data-bind="with: metricView">
+        <table class="an-metric-view-values fixed">
+            <colgroup>
+                <col class="an-metric-view-value-col"/>
+                <col class="an-metric-view-value-col"/>
+                <col class="an-metric-view-value-col"/>
+                <col class="an-metric-view-value-col"/>
+                <col class="an-metric-view-value-col"/>
+                <col class="an-metric-view-value-col"/>
+            </colgroup>
+            <thead>
+                <tr>
+                    <th scope="col"><%= LocalizeString("PageviewsColumnHeader") %></th>
+                    <th scope="col"><%= LocalizeString("UniquePageviewsColumnHeader") %></th>
+                    <th scope="col"><%= LocalizeString("AverageTimeColumnHeader") %></th>
+                    <th scope="col"><%= LocalizeString("EntrancesColumnHeader") %></th>
+                    <th scope="col"><%= LocalizeString("BounceRateColumnHeader") %></th>
+                    <th scope="col"><%= LocalizeString("ExitRateColumnHeader") %></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-bind="with: values()">
+                    <td class="an-metric-view-cell-pageviews" data-bind="text: pageViews"></td>
+                    <td class="an-metric-view-cell-unique-pageviews" data-bind="text: uniquePageViews"></td>
+                    <td class="an-metric-view-cell-average-time" data-bind="text: averageTime"></td>
+                    <td class="an-metric-view-cell-entrances" data-bind="text: entrances"></td>
+                    <td class="an-metric-view-cell-bounce-rate" data-bind="text: bounceRate"></td>
+                    <td class="an-metric-view-cell-exit-rate" data-bind="text: exitRate"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="an-geomap-view">
+        <label class="an-view-header"><%= LocalizeString("GeographySectionHeader") %></label>
+        <div id="GeoMapViewChartContainer" runat="server">
+            <div id="GeoMapZoom" runat="server" class="an-geomap-view-zoom">
+                <div class="an-geomap-view-zoom-handle"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="an-sources-view" data-bind="with: sourcesView">
+        <label class="an-view-header"><%= LocalizeString("SourcesSectionHeader") %></label>
+
+        <div class="an-sources-view-tabs">
+            <ul>
+                <!-- ko foreach: categories -->
+                <li data-bind="css: { selected: $parent.isSelected($data) }">
+                    <a href="javascript:void(0);" data-bind="text: key, click: function () { $parent.selectCategory($data); }"></a>
+                </li>
+                <!-- /ko -->
+            </ul>
+        </div>
+
+        <div class="an-sources-view-categories">
+
+            <div class="an-sources-view-pie-chart">
+                <div id="SourcesViewPieChartContainer" runat="server"></div>
+            </div>
+
+            <div class="an-sources-view-selected-category">
+                <div class="an-sources-view-selected-category-details" data-bind="with: selectedCategory">
+                    <div>
+                        <ul data-bind="with: value">
+                            <li>
+                                <label><%= LocalizeString("AvgTimeOnPageSourcesDetailsLabel") %></label>
+                                <span data-bind="text: averageTime"></span>
+                            </li>
+                            <li>
+                                <label><%= LocalizeString("EntrancesSourcesDetailsLabel") %></label>
+                                <span data-bind="text: entrances"></span>
+                            </li>
+                            <li>
+                                <label><%= LocalizeString("BounceRateSourcesDetailsLabel") %></label>
+                                <span data-bind="text: bounceRate + '%'"></span>
+                            </li>
+                            <li>
+                                <label><%= LocalizeString("ExitRateSourcesDetailsLabel") %></label>
+                                <span data-bind="text: exitRate + '%'"></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="an-sources-view-selected-category-description">
+                    <div>
+                        <!-- ko with: metric -->
+                        <label class="an-sources-view-selected-category-description-title" data-bind="text: key"></label>
+                        <!-- /ko -->
+                        <!-- ko with: selectedCategory -->
+                        <span class="an-sources-view-selected-category-description-value" data-bind="text: value.pageViews"></span>
+                        <!-- /ko -->
+                        <span class="an-sources-view-selected-category-description-note"><%= LocalizeString("SelectedSourceCategoryDescriptionLabel") %></span>
+                        <span class="an-sources-view-selected-category-description-note" data-bind="text: selectedCategoryDescription"></span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
 }
-<h3>We suggest the following:</h3>
-<ol class="round">
-    <li class="one">
-        <h5>Getting Started</h5>
-        ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-        enables a clean separation of concerns and that gives you full control over markup
-        for enjoyable, agile development. ASP.NET MVC includes many features that enable
-        fast, TDD-friendly development for creating sophisticated applications that use
-        the latest web standards.
-        <a href="http://go.microsoft.com/fwlink/?LinkId=245151">Learn more…</a>
-    </li>
 
-    <li class="two">
-        <h5>Add NuGet packages and jump-start your coding</h5>
-        NuGet makes it easy to install and update free libraries and tools.
-        <a href="http://go.microsoft.com/fwlink/?LinkId=245153">Learn more…</a>
-    </li>
-
-    <li class="three">
-        <h5>Find Web Hosting</h5>
-        You can easily find a web hosting company that offers the right mix of features
-        and price for your applications.
-        <a href="http://go.microsoft.com/fwlink/?LinkId=245157">Learn more…</a>
-    </li>
-</ol>
+@section Scripts {
+<script type="text/javascript">
+    root.Analytics.initialize("#AnalyticsViewContainer", @Html.Raw(Model.ToJson()));
+</script>
+}
