@@ -1,4 +1,8 @@
-﻿.an-container {
+﻿body {
+    background-color: #fff;
+}
+
+.an-container {
     background: #fff;
     padding: 30px;
 }
@@ -292,32 +296,32 @@
  * Choropleth map
  */
 
-.an-map-container svg .choropleth-background {
+.an-geomap-view svg .choropleth-background {
     fill: none;
     pointer-events: all;
 }
 
-.an-map-container svg #countries path {
+.an-geomap-view svg #countries path {
   fill: #ccc;
   stroke: #fff;
   stroke-width: 1px;
 }
 
-.an-map-container svg #countries .active {
+.an-geomap-view svg #countries .active {
     fill: #ccc;
 }
 
-.an-map-container svg path.state {
+.an-geomap-view svg path.state {
     fill: #ccc;
     stroke: #fff; /*rgb(96, 158, 200);*/
     stroke-width: 0.2px;
 }
-.an-map-container svg path.state-hovered {
+.an-geomap-view svg path.state-hovered {
     fill: rgb(96, 158, 200);
     cursor: pointer;
 }
 
-.an-map-container svg path.country-hovered {
+.an-geomap-view svg path.country-hovered {
     fill: #ccc;
     cursor: pointer;
 }
@@ -326,7 +330,7 @@
  * Scroller
  */
 
-.an-map-container .an-map-zoom {
+.an-geomap-view .an-map-zoom {
 	position: relative;
 	height: 160px;
 	background: #ccc;
@@ -335,11 +339,11 @@
     margin: 30px 0 0 20px;
 }
 
-.an-map-container .an-map-zoom .disabled {
+.an-geomap-view .an-map-zoom .disabled {
 	background: #898989;
 }
 
-.an-map-container .an-map-zoom-handle {
+.an-geomap-view .an-map-zoom-handle {
     background: #fff;
     height: 20px;
     width: 20px;
@@ -347,4 +351,36 @@
     border: #999;
     cursor: pointer;
     position: absolute;
+}
+
+.input-group {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+}
+
+.glyphicon {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: "Glyphicons Halflings";
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+}
+
+.input-group-addon {
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1;
+    color: #555;
+    text-align: center;
+    background-color: #EEE;
+    border: 1px solid #CCC;
+    border-radius: 4px;
+}
+
+.glyphicon-th:before {
+    content: "";
 }

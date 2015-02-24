@@ -414,7 +414,12 @@ root.Analytics = root.Analytics || {};
                 root[element.id] = model;
             }
             ko.applyBindings(model, element);
-
+            var datePickerOptions = {
+                format: "dd-mm-yyyy",
+                autoclose: true
+            };
+            $(".an-start-date").datepicker(datePickerOptions);
+            $(".an-end-date").datepicker(datePickerOptions);
         });
     };
 

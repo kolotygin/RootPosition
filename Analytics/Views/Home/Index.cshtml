@@ -41,12 +41,12 @@
             </ul>
         </div>
         <div class="an-header-date-range">
-            <div class="an-start-date date">
+            <div class="input-group an-start-date date">
                 <input type="text">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
             </div>
             <label class="an-header-to-label">To:</label>
-            <div class="an-end-date date">
+            <div class="input-group an-end-date date">
                 <input type="text">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
             </div>
@@ -125,7 +125,7 @@
     <script type="text/javascript">
         @{
             Model.ContainerId = "AnalyticsViewContainer";
-            Model.TimeLineView.ContainerId = "TimeLineViewViewChartContainer";
+            Model.TimeLineView.ContainerId = "TimeLineViewChartContainer";
             Model.GeoMapView.ContainerId = "GeoMapViewChartContainer";
             Model.SourcesView.ContainerId = "SourcesViewPieChartContainer";
         }

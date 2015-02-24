@@ -80,8 +80,9 @@ root.Analytics = root.Analytics || {};
 
         _onGetTimeLineViewData: function (callback, data, textStatus, jqXhr) {
             var points = [];
-            if (data && data.Points && data.Points.points) {
-                points = data.Points.points;
+            data = Object.ToCamel(data);
+            if (data && data.points && data.points.points) {
+                points = data.points.points;
                 for (var i = 0, size = points.length; i < size; i++) {
                     points[i].key = Controller._parseDate(points[i].key);
                 }
@@ -132,7 +133,7 @@ root.Analytics = root.Analytics || {};
         _onGetChoroplethViewData: function (callback, data, textStatus, jqXhr) {
             var choropleth = null;
             if (data) {
-                choropleth = data.Choropleth;
+                choropleth = Object.ToCamel(data.Choropleth);
             }
             typeof callback === "function" && callback.apply(this, [choropleth]);
         },
