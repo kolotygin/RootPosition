@@ -18,10 +18,10 @@ namespace Analytics.Controllers
             {
                 Services =
                 {
-                    GetStatsViewDataMethod = "AnalyticsService/GetStatsData",
-                    GetGraphViewDataMethod = "AnalyticsService/GetGraphData",
-                    GetMapViewDataMethod = "AnalyticsService/GetMapData",
-                    GetChoroplethViewDataMethod = "AnalyticsService/GetChoroplethData",
+                    GetStatsViewDataMethod = "GetStatsData",
+                    GetGraphViewDataMethod = "GetGraphData",
+                    GetMapViewDataMethod = "GetMapData",
+                    GetChoroplethViewDataMethod = "GetChoroplethData",
                     ServiceRoot = "Analytics"
                 }
             };
