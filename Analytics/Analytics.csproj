@@ -51,9 +51,6 @@
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Transactions" />
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
     <Reference Include="System.Net.Http">
     </Reference>
     <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -67,7 +64,7 @@
       <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Optimization">
-      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+      <HintPath>..\RootPosition\bin\System.Web.Optimization.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -76,10 +73,6 @@
     <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
-    </Reference>
-    <Reference Include="WebMatrix.WebData, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.WebData.2.0.20710.0\lib\net40\WebMatrix.WebData.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -108,15 +101,19 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap-datepicker.js" />
-    <Content Include="Scripts\CAN.topo.json" />
-    <Content Include="Scripts\CHN.topo.json" />
     <Content Include="Scripts\D3\d3.v3.js" />
     <Content Include="Scripts\D3\d3.v3.min.js" />
     <Content Include="Scripts\D3\topojson.v1.min.js" />
     <Content Include="Scripts\root.DataStructures.js" />
     <Content Include="Scripts\root.WebResourceUrl.js" />
-    <Content Include="Scripts\GBR.topo.json" />
     <Content Include="Scripts\D3\d3.v3.license" />
+    <Content Include="App_Data\CAN.topo.json" />
+    <Content Include="App_Data\CHN.topo.json" />
+    <Content Include="App_Data\GBR.topo.json" />
+    <Content Include="App_Data\MEX.topo.json" />
+    <Content Include="App_Data\RUS.topo.json" />
+    <Content Include="App_Data\USA.topo.json" />
+    <Content Include="App_Data\World.topo.json" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Images\email-icon.png" />
     <Content Include="Images\printer-icon.png" />
@@ -149,29 +146,14 @@
     </Content>
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
-    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Manage.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\Menu.cshtml" />
-    <Content Include="Scripts\MEX.topo.json" />
-    <Content Include="Scripts\RUS.topo.json" />
-    <Content Include="Scripts\USA.topo.json" />
-    <Content Include="Scripts\World.topo.json" />
     <Content Include="Services\world.json" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>

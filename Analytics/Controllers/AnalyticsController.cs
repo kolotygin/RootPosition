@@ -9,7 +9,7 @@ using RootPosition.Infrastructure.Collections;
 
 namespace RootPosition.Controllers
 {
-    public class ImageController : Controller
+    public class AnalyticsController : Controller
     {
 
         public JsonResult GetStatsData(string startDate, string endDate)
@@ -51,7 +51,6 @@ namespace RootPosition.Controllers
             };
             return new JsonResult() { Data = response, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
-
 
         private IEnumerable<SerializableKeyValuePair<string, int>> GetChoroplethDataInternal(string country)
         {
@@ -138,7 +137,7 @@ namespace RootPosition.Controllers
             return choropleth;
         }
 
-        private string GetMapDataInternal(string country)
+        private static string GetMapDataInternal(string country)
         {
             var jsonAsString = string.Empty;
             try

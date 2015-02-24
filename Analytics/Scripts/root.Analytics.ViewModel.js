@@ -394,7 +394,7 @@ root.Analytics = root.Analytics || {};
             this.metricView.show();
             this.timeLineView.show();
             this.geoMapView.show();
-            this.sourcesView.show();
+            //this.sourcesView.show();
         }
 
     };

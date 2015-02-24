@@ -32,12 +32,16 @@ root.Analytics = root.Analytics || {};
         },
 
         _callGetTest: function (parameters, onLoadHandler, method) {
-            var params = $.extend(parameters.entries(), this.extraParameters.entries());
+            //var params = $.extend(parameters.entries(), this.extraParameters.entries());
+            var params = "";
+            for (var i = 0, size = parameters.length; i < size; i++) {
+                params += "/" + parameters[i];
+            }
             var serviceSettings = {
-                url: this._serviceUrl + method,
+                url: this._serviceUrl + "/" + method + params,
                 contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                data: params,
+                //dataType: "json",
+                //data: params,
                 type: "GET",
                 async: true,
                 success: onLoadHandler,
@@ -52,26 +56,26 @@ root.Analytics = root.Analytics || {};
         },
 
         getMetricViewData: function (onGetDataCallback) {
-            var parameters = new root.Dictionary();
-            parameters.set("startDate", this._startDate.format("yyyy-MM-dd"));
-            parameters.set("endDate", this._endDate.format("yyyy-MM-dd"));
-            parameters.set("pageUrl", "http://somesite.com");
+            var parameters = [];
+            parameters.push(this._startDate.format("yyyy-MM-dd"));
+            parameters.push(this._endDate.format("yyyy-MM-dd"));
+            //parameters.set("pageUrl", "http://somesite.com");
             var handler = $.proxy(this._onGetStatsViewData, this, onGetDataCallback);
             this._callGetTest(parameters, handler, this.options.getStatsViewDataMethod, "getStatsViewData");
         },
 
         getTimeLineViewData: function (scale, onGetDataCallback) {
             var handler = $.proxy(this._onGetTimeLineViewData, this, onGetDataCallback);
-            var parameters = new root.Dictionary();
-            parameters.set("startDate", this._startDate.format("yyyy-MM-dd"));
-            parameters.set("endDate", this._endDate.format("yyyy-MM-dd"));
-            parameters.set("scale", scale);
-            parameters.set("pageUrl", "http://somesite.com");
+            var parameters = [];
+            parameters.push(this._startDate.format("yyyy-MM-dd"));
+            parameters.push(this._endDate.format("yyyy-MM-dd"));
+            parameters.push(scale);
+            //parameters.set("pageUrl", "http://somesite.com");
             this._callGetTest(parameters, handler, this.options.getGraphViewDataMethod, "getGraphViewData");
         },
 
         _onGetStatsViewData: function (callback, data, textStatus, jqXhr) {
-            callback.apply(this, [data ? data.Stats : null]);
+            callback.apply(this, [data ? Object.ToCamel(data.Stats) : null]);
         },
 
         _onGetTimeLineViewData: function (callback, data, textStatus, jqXhr) {
@@ -87,8 +91,7 @@ root.Analytics = root.Analytics || {};
 
         getCountryMapViewData: function (country, onGetDataCallback) {
             var callback = $.proxy(this._onGetCountryMapViewData, this, onGetDataCallback);
-            var parameters = new root.Dictionary();
-            parameters.set("country", country);
+            var parameters = [country];
             this._callGetTest(parameters, callback, this.options.getMapViewDataMethod, "getCountryMapViewData");
         },
 
@@ -122,8 +125,7 @@ root.Analytics = root.Analytics || {};
 
         getCountryChoroplethViewData: function (country, onGetDataCallback) {
             var handler = $.proxy(this._onGetChoroplethViewData, this, onGetDataCallback);
-            var parameters = new root.Dictionary();
-            parameters.set("country", country);
+            var parameters = [country];
             this._callGetTest(parameters, handler, this.options.getChoroplethViewDataMethod, "getChoroplethViewData");
         },
 

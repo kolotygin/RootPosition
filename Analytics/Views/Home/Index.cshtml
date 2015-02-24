@@ -117,66 +117,6 @@
         </div>
     </div>
 
-    <div class="an-sources-view" data-bind="with: sourcesView">
-        <label class="an-view-header">Sources</label>
-
-        <div class="an-sources-view-tabs">
-            <ul>
-                <!-- ko foreach: categories -->
-                <li data-bind="css: { selected: $parent.isSelected($data) }">
-                    <a href="javascript:void(0);" data-bind="text: key, click: function () { $parent.selectCategory($data); }"></a>
-                </li>
-                <!-- /ko -->
-            </ul>
-        </div>
-
-        <div class="an-sources-view-categories">
-
-            <div class="an-sources-view-pie-chart">
-                <div id="SourcesViewPieChartContainer"></div>
-            </div>
-
-            <div class="an-sources-view-selected-category">
-                <div class="an-sources-view-selected-category-details" data-bind="with: selectedCategory">
-                    <div>
-                        <ul data-bind="with: value">
-                            <li>
-                                <label>Avg Time On Page</label>
-                                <span data-bind="text: averageTime"></span>
-                            </li>
-                            <li>
-                                <label>Entrances</label>
-                                <span data-bind="text: entrances"></span>
-                            </li>
-                            <li>
-                                <label>Bounce Rate</label>
-                                <span data-bind="text: bounceRate + '%'"></span>
-                            </li>
-                            <li>
-                                <label>Exit Rate</label>
-                                <span data-bind="text: exitRate + '%'"></span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="an-sources-view-selected-category-description">
-                    <div>
-                        <!-- ko with: metric -->
-                        <label class="an-sources-view-selected-category-description-title" data-bind="text: key"></label>
-                        <!-- /ko -->
-                        <!-- ko with: selectedCategory -->
-                        <span class="an-sources-view-selected-category-description-value" data-bind="text: value.pageViews"></span>
-                        <!-- /ko -->
-                        <span class="an-sources-view-selected-category-description-note">Selected Source</span>
-                        <span class="an-sources-view-selected-category-description-note" data-bind="text: selectedCategoryDescription"></span>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-
 </div>
 
 }
@@ -185,7 +125,7 @@
     <script type="text/javascript">
         @{
             Model.TimeLineView.ContainerId = "TimeLineViewViewChartContainer";
-            Model.GeoMapView.ContainerId = "GeoGeoMapViewViewChartContainer";
+            Model.GeoMapView.ContainerId = "GeoMapViewChartContainer";
             Model.SourcesView.ContainerId = "SourcesViewPieChartContainer";
         }
         root.Analytics.initialize("#AnalyticsViewContainer", @Html.Raw(Model.ToJson()));
