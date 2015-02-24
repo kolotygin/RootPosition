@@ -399,9 +399,9 @@ root.Analytics = root.Analytics || {};
 
     };
 
-    this.initialize = function (selector, options) {
+    this.initialize = function (options) {
         $(document).ready(function () {
-            var $element = $(selector);
+            var $element = $("#" + options.containerId);
             // in case when control is excluded from rendering by server tags logic,
             // a check on the html element existence is performed here:
             if ($element.length === 0) {

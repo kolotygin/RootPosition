@@ -17,6 +17,9 @@ namespace RootPosition.Analytics.Models
         [DataMember(Name = "sourcesView")]
         public SourcesViewOptions SourcesView;
 
+        [DataMember(Name = "containerId")]
+        public string ContainerId;
+
         public AnalyticsOptions()
         {
             Services = new StatsServicesOptions();

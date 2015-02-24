@@ -124,10 +124,11 @@
 @section Scripts {
     <script type="text/javascript">
         @{
+            Model.ContainerId = "AnalyticsViewContainer";
             Model.TimeLineView.ContainerId = "TimeLineViewViewChartContainer";
             Model.GeoMapView.ContainerId = "GeoMapViewChartContainer";
             Model.SourcesView.ContainerId = "SourcesViewPieChartContainer";
         }
-        root.Analytics.initialize("#AnalyticsViewContainer", @Html.Raw(Model.ToJson()));
+        root.Analytics.initialize(@Html.Raw(Model.ToJson()));
     </script>
 }
