@@ -267,7 +267,7 @@ root.Analytics = root.Analytics || {};
 
 
     var ChoroplethBlender = this.ChoroplethBlender = function (colorRange) {
-        //this._colorRange = colorRange; // ["rgb(162,202,229)", "rgb(151,196,226)", "rgb(100,167,212)", "rgb(48,137,198)"]
+        //this._colorRange = colorRange;
         this._colorRange = ["rgb(162,202,229)", "rgb(151,196,226)", "rgb(100,167,212)", "rgb(48,137,198)"];
         this.init();
     };

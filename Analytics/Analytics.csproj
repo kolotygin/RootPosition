@@ -96,6 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CSS\bootstrap-datepicker.css" />
+    <Content Include="CSS\reset.css" />
     <Content Include="CSS\root.analytics.css" />
     <Content Include="CSS\root.linegraph.css" />
     <Content Include="favicon.ico" />

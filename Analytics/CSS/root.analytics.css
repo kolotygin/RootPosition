@@ -1,5 +1,36 @@
-﻿body {
-    background-color: #fff;
+﻿@import url("reset.css");
+
+html, form, body {
+	height: 100%; /* for container min-height */
+}
+
+body {
+	font: 62.5%/1.6 "Maiandra GD", "Lucida Grande", "Lucida Sans", "Lucida Sans Unicode", Verdana, sans-serif;
+	color: #333;
+	background: #ffffff;
+	min-width: 92em;
+	line-height: 1.6;
+	position: relative; /* Fixes IE resize bug http://friendlybit.com/css/ie6-resize-bug/ */
+}
+
+.an-view {
+	position: relative;
+	margin: 20px 12px; /* center, not in IE5 */
+	border: #666 solid 0;
+	max-width: 100%;
+	text-align: left;
+	min-height: 100%; /* gives layout 100% height - real browsers */
+}
+
+h1 {
+	font-size: 2.4em;
+	font-weight: normal;
+	color: #555;
+}
+
+h2 {
+	font-size: 2.0em;
+	font-weight: normal;
 }
 
 .an-container {
@@ -118,7 +149,12 @@
     width: 200px;
 }
 
-.an-scale-options-container:after {
+.an-timeline-view-chart {
+    height: 300px;
+    margin: 60px 0;
+}
+
+.an-timeline-view-scale-options:after {
     clear: both;
     content: ".";
     display: block;
@@ -126,7 +162,7 @@
     visibility: hidden;
 }
 
-.an-scale-options {
+.an-timeline-view-scale-options {
     display: inline;
     float: right;
     list-style: none inside none;
@@ -134,7 +170,7 @@
     margin: 20px 0;
 }
 
-.an-scale-options li {
+.an-timeline-view-scale-options li {
     font-size: 12px;
     display: inline-block;
     border: 1px solid #C2C2C2;
@@ -150,10 +186,10 @@
     text-align: center;
 }
 
-.an-scale-options a:link,
-.an-scale-options a:visited,
-.an-scale-options a:hover,
-.an-scale-options a:active
+.an-timeline-view-scale-options a:link,
+.an-timeline-view-scale-options a:visited,
+.an-timeline-view-scale-options a:hover,
+.an-timeline-view-scale-options a:active
  {
     display: block;
     color: #979797;
@@ -168,7 +204,7 @@
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#F0F2F1', GradientType=0); /* IE6-9 */
 }
 
-.an-scale-options a.selected {
+.an-timeline-view-scale-options a.selected {
     background-color: #EAEAEA; /* old browsers */
     background-image: -moz-linear-gradient(top, #D0D0D0 0%, #EAEAEA 100%); /* FF3.6+ */
     background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#D0D0D0) color-stop(100%,#EAEAEA)); /* Chrome,Safari4+ */
@@ -180,7 +216,7 @@
     color: #666666;
 }
 
-.an-scale-options a:active {
+.an-timeline-view-scale-options a:active {
     background-color: #fff;
     background-image: -moz-linear-gradient(top, #ffffff 0%, #ffffff 100%); /* FF3.6+ */
     background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff) color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
@@ -191,11 +227,11 @@
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ffffff', GradientType=0); /* IE6-9 */
 }
 
-.an-scale-options li:first-child {
+.an-timeline-view-scale-options li:first-child {
     border-radius: 3px 0 0 3px;
 }
 
-.an-scale-options li:last-child {
+.an-timeline-view-scale-options li:last-child {
     border-radius: 0 3px 3px 0;
     border-width: 1px;
 }
@@ -204,14 +240,19 @@
  * Statistics
  */
 
-.an-stats-container {
+.an-metric-options {
+    visibility: hidden;
+}
+
+.an-metric-view {
     margin: 10px 0;
     position: relative;
     background: #eee;
     padding: 14px 0;
+    visibility: hidden;
 }
 
-.an-stats-container ul {
+.an-metric-view ul {
     list-style: none outside none;
     padding: 0;
     margin: 0;
@@ -220,13 +261,13 @@
     font-size: 0.1px; /*hide whitespace between elements*/
 }
 
-.an-stats-container ul:after {
+.an-metric-view ul:after {
     content: '';
     display: inline-block;
     width: 100%; /* Ensures there are at least 2 lines of text, so justification works */
 }
 
-.an-stats-container ul li {
+.an-metric-view ul li {
     display: inline-block;
     padding: 0;
     margin: 10px;
@@ -234,27 +275,27 @@
     width: 100px;
 }
 
-.an-stats-container ul li label,
-.an-stats-container ul li span {
+.an-metric-view ul li label,
+.an-metric-view ul li span {
     display: inline;
 }
 
-.an-stats-container table.fixed {
+.an-metric-view table.fixed {
     table-layout: fixed;
     border-spacing: 0;
     border-collapse: collapse;
 }
 
-.an-stats-container table.stats {
+.an-metric-view table.stats {
     width: 100%;
 }
 
-.an-stats-container table.stats th {
+.an-metric-view table.stats th {
     width: 16.6%
 }
 
-.an-stats-container table.stats th,
-.an-stats-container table.stats td {
+.an-metric-view table.stats th,
+.an-metric-view table.stats td {
     text-align: center;
     border-left: solid #d8d7d7 1px;
     color: #656565;
@@ -262,32 +303,32 @@
     padding: 6px 0;
 }
 
-.an-stats-container table.stats th {
+.an-metric-view table.stats th {
     font-size: 13px;
     font-weight: bold;
 }
 
-.an-stats-container table.stats td {
+.an-metric-view table.stats td {
     font-weight: 500;
 }
 
-.an-stats-container table.stats th:first-child,
-.an-stats-container table.stats td:first-child {
+.an-metric-view table.stats th:first-child,
+.an-metric-view table.stats td:first-child {
     border-left: none;
 }
 
-.an-stats-container table.stats td.stats-cell-unique-pageviews,
-.an-stats-container table.stats td.stats-cell-pageviews,
-.an-stats-container table.stats td.stats-cell-entrances {
+.an-metric-view table.stats td.stats-cell-unique-pageviews,
+.an-metric-view table.stats td.stats-cell-pageviews,
+.an-metric-view table.stats td.stats-cell-entrances {
     font-size: 28px;
 }
 
-.an-stats-container table.stats td.stats-cell-bounce-rate,
-.an-stats-container table.stats td.stats-cell-exit-rate {
+.an-metric-view table.stats td.stats-cell-bounce-rate,
+.an-metric-view table.stats td.stats-cell-exit-rate {
     font-size: 22px;
 }
 
-.an-stats-container table.stats td.stats-cell-average-time {
+.an-metric-view table.stats td.stats-cell-average-time {
     font-size: 20px;
 }
 
@@ -357,6 +398,7 @@
     position: relative;
     display: table;
     border-collapse: separate;
+    display: inline-block;
 }
 
 .glyphicon {
@@ -384,3 +426,65 @@
 .glyphicon-th:before {
     content: "";
 }
+
+footer[role="siteinfo"] {
+	clear: both;
+	width: 100%;
+	/*border-top: 0.3em solid rgba(78, 68, 60, 0.1);*/
+	border-top: 1px solid #724848;
+	padding: 1em 0 2em 0;
+    margin: 30px 0 0 0;
+}
+
+footer[role="siteinfo"] p {
+	text-align: center;
+	margin: 1em 0 0 0;
+/*	font-family: "Maiandra GD", "Gill Sans", Helvetica, Arial, sans-serif;*/
+	font-family: "Gill Sans", Helvetica, Arial, sans-serif;
+	font-size: 1.4em;
+	line-height: 1.8em;
+	font-weight: normal;
+	text-decoration: none;
+	letter-spacing: 0.1em;
+	/*color: #FC6B35;*/
+	color: #D14836;
+}
+
+footer[role="siteinfo"] p b {
+	color: rgba(0, 0, 0, 0.8);
+}
+
+footer[role="siteinfo"] p#copyright {
+	text-transform: uppercase;
+	font-weight: normal;
+}
+
+footer[role="siteinfo"] p#copyright a {
+	font-weight: 700;
+	color: rgba(0, 0, 0, 0.5);
+	border-bottom: none;
+}
+
+footer[role="siteinfo"] p a:visited,
+footer[role="siteinfo"] p a:hover,
+footer[role="siteinfo"] p a:link,
+footer[role="siteinfo"] p a:active {
+/*	font-family: "Maiandra GD", "Gill Sans", Helvetica, Arial, sans-serif;*/
+	font-family: "Gill Sans", Helvetica, Arial, sans-serif;
+	font-style: normal;
+	font-size: 1em;
+	/*color: #FC6B35;*/
+	color: #D14836;
+	text-decoration: none;
+	border-bottom: 1px dotted;
+}
+
+footer[role="siteinfo"] p a:hover, footer[role="siteinfo"] p#copyright a:hover {
+	color: rgba(0, 0, 0, 0.8);
+}
+
+footer[role="siteinfo"] abbr {
+	border-bottom: 1px dotted;
+	cursor: help;
+}
+
