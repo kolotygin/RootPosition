@@ -3,12 +3,9 @@
 namespace RootPosition.Analytics.Models
 {
     [DataContract]
-    public class MapOptions
+    public class TimeLineOptions
     {
         [DataMember(Name = "containerId")]
         public string ContainerId;
-
-        [DataMember(Name = "zoomId")]
-        public string ZoomId;
     }
 }

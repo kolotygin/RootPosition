@@ -1,12 +1,13 @@
 ﻿@using Infrastructure.Extensions
 @using Web.Mvc.Html
-@using Web.Mvc.Models
+@model RootPosition.Analytics.Models.AnalyticsOptions
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 
     Html.Resources().Styles.Add(Url.Content("~/CSS/root.linegraph.css"));
     Html.Resources().Styles.Add(Url.Content("~/CSS/root.analytics.css"));
+    Html.Resources().Styles.Add(Url.Content("~/CSS/bootstrap-datepicker.css"));
 
     Html.Resources().Scripts.Add(Url.Content("~/Scripts/jquery.min.js"));
     Html.Resources().Scripts.Add(Url.Content("~/Scripts/knockout.js"));
@@ -17,6 +18,9 @@
     Html.Resources().Scripts.Add(Url.Content("~/Scripts/D3/d3.v3.min.js"));
     Html.Resources().Scripts.Add(Url.Content("~/Scripts/D3/topojson.v1.min.js"));
     Html.Resources().Scripts.Add(Url.Content("~/Scripts/root.LineGraph.js"));
+    Html.Resources().Scripts.Add(Url.Content("~/Scripts/bootstrap-datepicker.js"));
+    
+    
     Html.Resources().Scripts.Add(Url.Content("~/Scripts/root.Analytics.ChoroplethMap.js"));
     Html.Resources().Scripts.Add(Url.Content("~/Scripts/root.Analytics.Controller.js"));
     Html.Resources().Scripts.Add(Url.Content("~/Scripts/root.Analytics.ViewModel.js"));
@@ -24,7 +28,7 @@
 
 @section Body {
 
-<div id="AnalyticsViewContainer" runat="server" class="an-view">
+<div id="AnalyticsViewContainer" class="an-view">
     <div class="an-header">
         <div class="an-header-actions">
             <ul class="an-header-actions-options">
@@ -37,9 +41,15 @@
             </ul>
         </div>
         <div class="an-header-date-range">
-            <dnn:DnnDatePicker ID="StartDatePicker" runat="server" resourcekey="StartDatePicker" data-bind="dnnDatePicker: startDate"/>
-            <label class="an-header-to-label"><%= LocalizeString("DateRangeTo") %></label>
-            <dnn:DnnDatePicker ID="EndDatePicker" runat="server" resourcekey="EndDatePicker" data-bind="dnnDatePicker: endDate"/>
+            <div class="an-start-date date">
+                <input type="text">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+            </div>
+            <label class="an-header-to-label">To:</label>
+            <div class="an-end-date date">
+                <input type="text">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+            </div>
         </div>
     </div>
 
@@ -49,20 +59,20 @@
             </select>
             <ul class="an-timeline-view-scale-options">
                 <li>
-                    <a href="javascript:void(0);" data-bind="css: { selected: isDayScale }, click: setScale, attr: { data: scales.Day }"><%=LocalizeString("ScaleDay")%></a>
+                    <a href="javascript:void(0);" data-bind="css: { selected: isDayScale }, click: setScale, attr: { data: scales.Day }">Day</a>
                 </li>
                 <li>
-                    <a href="javascript:void(0);" data-bind="css: { selected: isWeekScale }, click: setScale, attr: { data: scales.Week }"><%=LocalizeString("ScaleWeek")%></a>
+                    <a href="javascript:void(0);" data-bind="css: { selected: isWeekScale }, click: setScale, attr: { data: scales.Week }">Week</a>
                 </li>
                 <li>
-                    <a href="javascript:void(0);" data-bind="css: { selected: isMonthScale }, click: setScale, attr: { data: scales.Month }"><%=LocalizeString("ScaleMonth")%></a>
+                    <a href="javascript:void(0);" data-bind="css: { selected: isMonthScale }, click: setScale, attr: { data: scales.Month }">Month</a>
                 </li>
                 <li>
-                    <a href="javascript:void(0);" data-bind="css: { selected: isYearScale }, click: setScale, attr: { data: scales.Year }"><%=LocalizeString("ScaleYear")%></a>
+                    <a href="javascript:void(0);" data-bind="css: { selected: isYearScale }, click: setScale, attr: { data: scales.Year }">Year</a>
                 </li>
             </ul>
         </div>
-        <div id="TimeLineViewChartContainer" runat="server" class="an-timeline-view-chart"></div>
+        <div id="TimeLineViewChartContainer" class="an-timeline-view-chart"></div>
     </div>
 
     <div class="an-metric-view" data-bind="with: metricView">
@@ -77,12 +87,12 @@
             </colgroup>
             <thead>
                 <tr>
-                    <th scope="col"><%= LocalizeString("PageviewsColumnHeader") %></th>
-                    <th scope="col"><%= LocalizeString("UniquePageviewsColumnHeader") %></th>
-                    <th scope="col"><%= LocalizeString("AverageTimeColumnHeader") %></th>
-                    <th scope="col"><%= LocalizeString("EntrancesColumnHeader") %></th>
-                    <th scope="col"><%= LocalizeString("BounceRateColumnHeader") %></th>
-                    <th scope="col"><%= LocalizeString("ExitRateColumnHeader") %></th>
+                    <th scope="col">Pageviews</th>
+                    <th scope="col">UniquePageviews</th>
+                    <th scope="col">Average Time</th>
+                    <th scope="col">Entrances</th>
+                    <th scope="col">Bounce Rate</th>
+                    <th scope="col">Exit Rate</th>
                 </tr>
             </thead>
             <tbody>
@@ -99,16 +109,16 @@
     </div>
 
     <div class="an-geomap-view">
-        <label class="an-view-header"><%= LocalizeString("GeographySectionHeader") %></label>
-        <div id="GeoMapViewChartContainer" runat="server">
-            <div id="GeoMapZoom" runat="server" class="an-geomap-view-zoom">
+        <label class="an-view-header">Geography</label>
+        <div id="GeoMapViewChartContainer">
+            <div id="GeoMapZoom" class="an-geomap-view-zoom">
                 <div class="an-geomap-view-zoom-handle"></div>
             </div>
         </div>
     </div>
 
     <div class="an-sources-view" data-bind="with: sourcesView">
-        <label class="an-view-header"><%= LocalizeString("SourcesSectionHeader") %></label>
+        <label class="an-view-header">Sources</label>
 
         <div class="an-sources-view-tabs">
             <ul>
@@ -123,7 +133,7 @@
         <div class="an-sources-view-categories">
 
             <div class="an-sources-view-pie-chart">
-                <div id="SourcesViewPieChartContainer" runat="server"></div>
+                <div id="SourcesViewPieChartContainer"></div>
             </div>
 
             <div class="an-sources-view-selected-category">
@@ -131,19 +141,19 @@
                     <div>
                         <ul data-bind="with: value">
                             <li>
-                                <label><%= LocalizeString("AvgTimeOnPageSourcesDetailsLabel") %></label>
+                                <label>Avg Time On Page</label>
                                 <span data-bind="text: averageTime"></span>
                             </li>
                             <li>
-                                <label><%= LocalizeString("EntrancesSourcesDetailsLabel") %></label>
+                                <label>Entrances</label>
                                 <span data-bind="text: entrances"></span>
                             </li>
                             <li>
-                                <label><%= LocalizeString("BounceRateSourcesDetailsLabel") %></label>
+                                <label>Bounce Rate</label>
                                 <span data-bind="text: bounceRate + '%'"></span>
                             </li>
                             <li>
-                                <label><%= LocalizeString("ExitRateSourcesDetailsLabel") %></label>
+                                <label>Exit Rate</label>
                                 <span data-bind="text: exitRate + '%'"></span>
                             </li>
                         </ul>
@@ -157,7 +167,7 @@
                         <!-- ko with: selectedCategory -->
                         <span class="an-sources-view-selected-category-description-value" data-bind="text: value.pageViews"></span>
                         <!-- /ko -->
-                        <span class="an-sources-view-selected-category-description-note"><%= LocalizeString("SelectedSourceCategoryDescriptionLabel") %></span>
+                        <span class="an-sources-view-selected-category-description-note">Selected Source</span>
                         <span class="an-sources-view-selected-category-description-note" data-bind="text: selectedCategoryDescription"></span>
                     </div>
                 </div>
@@ -172,7 +182,12 @@
 }
 
 @section Scripts {
-<script type="text/javascript">
-    root.Analytics.initialize("#AnalyticsViewContainer", @Html.Raw(Model.ToJson()));
-</script>
+    <script type="text/javascript">
+        @{
+            Model.TimeLineView.ContainerId = "TimeLineViewViewChartContainer";
+            Model.GeoMapView.ContainerId = "GeoGeoMapViewViewChartContainer";
+            Model.SourcesView.ContainerId = "SourcesViewPieChartContainer";
+        }
+        root.Analytics.initialize("#AnalyticsViewContainer", @Html.Raw(Model.ToJson()));
+    </script>
 }

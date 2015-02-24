@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using RootPosition.Analytics.Models;
 
 namespace Analytics.Controllers
 {
@@ -6,23 +7,26 @@ namespace Analytics.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
-
-            return View();
+            ViewBag.Title = "D3.js";
+            var model = GetOptions();
+            return View(model);
         }
 
-        public ActionResult About()
+        private AnalyticsOptions GetOptions()
         {
-            ViewBag.Message = "Your app description page.";
-
-            return View();
+            var options = new AnalyticsOptions
+            {
+                Services =
+                {
+                    GetStatsViewDataMethod = "AnalyticsService/GetStatsData",
+                    GetGraphViewDataMethod = "AnalyticsService/GetGraphData",
+                    GetMapViewDataMethod = "AnalyticsService/GetMapData",
+                    GetChoroplethViewDataMethod = "AnalyticsService/GetChoroplethData",
+                    ServiceRoot = "Analytics"
+                }
+            };
+            return options;
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
     }
 }

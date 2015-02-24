@@ -89,11 +89,11 @@
 }
 
 .an-header-actions-options a.an-header-actions-options-email {
-    background: transparent url("Images/email-icon.png") no-repeat center center;
+    background: transparent url("../Images/email-icon.png") no-repeat center center;
 }
 
 .an-header-actions-options a.an-header-actions-options-print {
-    background: transparent url("Images/printer-icon.png") no-repeat center center;
+    background: transparent url("../Images/printer-icon.png") no-repeat center center;
 }
 
 .an-header-actions-options a:active {
@@ -254,7 +254,7 @@
     text-align: center;
     border-left: solid #d8d7d7 1px;
     color: #656565;
-    font-family: Arial,​ Helvetica,​ sans-serif;
+    font-family: Arial,Helvetica,sans-serif;
     padding: 6px 0;
 }
 

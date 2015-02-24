@@ -3,7 +3,7 @@
 namespace RootPosition.Analytics.Models
 {
     [DataContract]
-    public class GraphOptions
+    public class SourcesViewOptions
     {
         [DataMember(Name = "containerId")]
         public string ContainerId;

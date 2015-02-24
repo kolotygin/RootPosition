@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 namespace RootPosition.Analytics.Models
@@ -7,9 +6,6 @@ namespace RootPosition.Analytics.Models
     [DataContract]
     public class StatsServicesOptions
     {
-        [DataMember(Name = "moduleId")]
-        public int ModuleId;
-
         [DataMember(Name = "serviceRoot")]
         public string ServiceRoot;
 

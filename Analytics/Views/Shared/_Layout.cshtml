@@ -18,13 +18,6 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    @{
-        Html.Resources().Styles.AddFirst(Url.Content("~/CSS/root-position.css"));
-        if (Request.Browser.Browser.Trim().Equals("IE", StringComparison.InvariantCultureIgnoreCase) && Request.Browser.MajorVersion != 7)
-        {
-            Html.Resources().Styles.Add(Url.Content("~/Css/ie-not7.css"));
-        }
-    }
     @Html.Resources().Styles.Render()
 </head>
 
@@ -34,12 +27,6 @@
 {
     <div id="wrapper">
         <header role="banner">
-            <div id="logo">
-                <a href="http://rootposition.com"><img src=@Url.Content("~/Images/logo-rootposition.gif") /></a>
-            </div>
-            <nav role="navigation">
-                @{ /*Html.RenderAction("Menu", "Menu", Html.ViewContext.RouteData.GetCurrentUrl());*/ }
-            </nav>
             <h1>@ViewBag.Title</h1>
         </header>
         @RenderSection("Body")

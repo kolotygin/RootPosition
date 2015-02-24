@@ -8,17 +8,21 @@ namespace RootPosition.Analytics.Models
         [DataMember(Name = "services")]
         public StatsServicesOptions Services;
 
-        [DataMember(Name = "graph")]
-        public GraphOptions Graph;
+        [DataMember(Name = "timeLineView")]
+        public TimeLineOptions TimeLineView;
 
-        [DataMember(Name = "map")]
-        public MapOptions Map;
+        [DataMember(Name = "geoMapView")]
+        public GeoMapOptions GeoMapView;
+
+        [DataMember(Name = "sourcesView")]
+        public SourcesViewOptions SourcesView;
 
         public AnalyticsOptions()
         {
             Services = new StatsServicesOptions();
-            Graph = new GraphOptions();
-            Map = new MapOptions();
+            TimeLineView = new TimeLineOptions();
+            GeoMapView = new GeoMapOptions();
+            SourcesView = new SourcesViewOptions();
         }
 
     }

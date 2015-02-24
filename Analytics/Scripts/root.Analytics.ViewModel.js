@@ -376,7 +376,7 @@ root.Analytics = root.Analytics || {};
             this.metricView = new MetricViewModel(this._controller);
             this.timeLineView = new TimeLineViewModel(this._controller, this._options.timeLineView);
             this.geoMapView = new GeoMapViewModel(this._controller, this._options.geoMapView);
-            this.sourcesView = new SourcesViewModel(this._controller, this._options.sourcesView);
+            //this.sourcesView = new SourcesViewModel(this._controller, this._options.sourcesView);
 
             this.show();
         },

@@ -33,13 +33,13 @@ if (typeof Object.getOwnPropertyNames === "undefined") {
         }
         return ownProperties;
     };
-};
+}
 
 if (typeof String.toCamel === "undefined") {
 	String.toCamel = function (text) {
 		return String.isNullOrEmpty(text) ? text : (text.charAt(0).toLowerCase() + text.substr(1));
 	};
-};
+}
 
 if (typeof Object.ToCamel === "undefined") {
     Object.ToCamel = function(o) {
@@ -65,7 +65,7 @@ if (typeof Object.ToCamel === "undefined") {
         }
         return camelizedObject;
     };
-};
+}
 
 String.prototype.append = function (stringToAppend, separator) {
 	if (String.isNullOrEmpty(stringToAppend)) {
@@ -104,6 +104,12 @@ if (typeof String.prototype.startsWith !== 'function') {
     };
 }
 
+if (typeof String.prototype.endsWith !== 'function') {
+    String.prototype.endsWith = function (suffix) {
+        return this.indexOf(suffix, this.length - suffix.length) !== -1;
+    };
+}
+
 if (typeof Array.prototype.insertAt !== "function") {
     Array.prototype.insertAt = function (index) {
         this.splice.apply(this, [index, 0].concat(
@@ -120,9 +126,7 @@ if (typeof Array.prototype.peek !== "function") {
 
 if (!Array.prototype.indexOf) {
     Array.prototype.indexOf = function(searchElement /*, fromIndex */) {
-        if (this == null) {
-            throw new TypeError();
-        }
+
         var t = Object(this);
         var len = t.length >>> 0;
         if (len === 0) {
@@ -131,9 +135,9 @@ if (!Array.prototype.indexOf) {
         var n = 0;
         if (arguments.length > 1) {
             n = Number(arguments[1]);
-            if (n != n) { // shortcut for verifying if it's NaN
+            if (n !== n) { // shortcut for verifying if it's NaN
                 n = 0;
-            } else if (n != 0 && n != Infinity && n != -Infinity) {
+            } else if (n !== 0 && n !== Infinity && n !== -Infinity) {
                 n = (n > 0 || -1) * Math.floor(Math.abs(n));
             }
         }
@@ -190,16 +194,22 @@ root.singletonify = function(constructorFunc /*, args */) {
 
     return new function () {
         this.getInstance = function () {
-            if (instance == null) {
-                instance = new constructorFunc(args);
-                instance.constructor = null;
+            var instanceArguments;
+            var f;
+            if (instance === null) {
+                instanceArguments = Array.prototype.slice.call(arguments);
+                f = function() {
+                    return constructorFunc.apply(this, [].concat(args, instanceArguments));
+                };
+                f.prototype = constructorFunc.prototype;
+                instance = new f();
             }
             return instance;
         };
     };
 };
 
-root.extend = function(child, parent) {
+root.derive = function(child, parent) {
     var tempConstructor = function() {};
     tempConstructor.prototype = parent.prototype;
     child.prototype = new tempConstructor();
@@ -207,7 +217,7 @@ root.extend = function(child, parent) {
     child.superclass = parent.prototype;
 };
 
-(function () {
+(function ($, window, document, undefined) {
     "use strict";
 
     var KeyValueConverter = this.KeyValueConverter = function () {
@@ -275,7 +285,7 @@ if (typeof Date.prototype.format === "undefined") {
         }
         for (var k in o) {
             if (new RegExp("(" + k + ")").test(pattern)) {
-                pattern = pattern.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
+                pattern = pattern.replace(RegExp.$1, RegExp.$1.length === 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
             }
         }
         return pattern;
@@ -308,3 +318,33 @@ if (typeof Object.isElement === "undefined") {
                 o && typeof o === "object" && o.nodeType === 1 && typeof o.nodeName === "string";
     };
 }
+
+root.removeElement = function (element) {
+    if (element && element.parentNode) {
+        element.parentNode.removeChild(element);
+    }
+};
+
+/*
+ * Generates a GUID string, according to RFC4122 standards.
+ * @returns {String} The generated GUID like "af8a8416-6e18-a307-bd9c-f2c947bbb3aa"
+ */
+root.guid = (function() {
+    var partOf8 = function (dashed) {
+        var part = (Math.random().toString(16) + "000000000").substr(2, 8);
+        return dashed ? "-" + part.substr(0, 4) + "-" + part.substr(4, 4) : part;
+    };
+    return function () { return partOf8(false) + partOf8(true) + partOf8(true) + partOf8(false); };
+})();
+
+root.uid = (function () {
+    var id = (new Date()).getTime();
+    return function (prefix) {
+        return (prefix || "id") + (id++);
+    };
+})();
+
+root.isUrl = function(url) {
+    var regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+    return regexp.test(url);
+};

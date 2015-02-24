@@ -26,23 +26,22 @@ root.Analytics = root.Analytics || {};
 
         init: function () {
             this.options = $.extend({}, Controller.defaults(), this.options);
-            this._serviceUrl = $.rootSF(this.options.moduleId).getServiceRoot(this.options.serviceRoot);
+            this._serviceUrl = this.options.serviceRoot;
             //this._serviceUrl = "http://evoq-svc-ci.rootdev.local/api/";
             this.extraParameters = root.KeyValueConverter.arrayToDictionary(this.options.extraParameters, "Key", "Value");
         },
 
-        _callGet: function (parameters, onLoadHandler, method) {
+        _callGetTest: function (parameters, onLoadHandler, method) {
             var params = $.extend(parameters.entries(), this.extraParameters.entries());
             var serviceSettings = {
                 url: this._serviceUrl + method,
-                beforeSend: $.rootSF(this.options.moduleId).setModuleHeaders,
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 data: params,
                 type: "GET",
                 async: true,
                 success: onLoadHandler,
-                error: $.onAjaxError
+                error: function () { alert("Ajax error"); }
             };
             $.ajax(serviceSettings);
         },

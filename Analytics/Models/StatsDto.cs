@@ -1,4 +1,3 @@
-using System;
 using System.Runtime.Serialization;
 
 namespace RootPosition.Analytics.Models
