@@ -151,8 +151,18 @@ form header h1 {
 	background-color: #B0281A;
 }
 
-form[id="home-index"] header[role="banner"] h1 
-{
+form[id="home-index"] header[role="banner"] h1 {
+    padding: 15.5em 0 0.5em 15em;
+    border-left: 1px solid #724848;
+    border-right: 1px solid #724848;
+    background: url("/Images/home-background.jpg") #000 no-repeat center center; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+form[id="about-index"] header[role="banner"] h1 {
 	background: url(/Images/header-olga.jpg) no-repeat 16.6em 50%;
 	background: url(/Images/header-olga.jpg) no-repeat 16.6em 50%, -webkit-gradient(linear, left top, left bottom, from(#5c1e18), to(#B0281A)); /* Saf4+, Chrome */
 	background: url(/Images/header-olga.jpg) no-repeat 16.6em 50%, -webkit-linear-gradient(top, #5c1e18, #B0281A); /* Chrome 10+, Saf5.1+ */
@@ -267,7 +277,7 @@ aside[role="complementary"] li {
 /* Box */
 
 .box {
-	float:left;
+	float: left;
 	border: 1px solid #c6a765;
 	background: #faf7f1;
 	-webkit-border-radius: 1em;

@@ -105,6 +105,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Controllers\GalleryController.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
@@ -119,6 +120,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CSS\contacts.css" />
+    <Content Include="CSS\home.css" />
     <Content Include="CSS\gallery.css" />
     <Content Include="CSS\ie-not7.css" />
     <Content Include="CSS\ie6-overlay.css" />
@@ -135,7 +137,9 @@
     <Content Include="Images\header-notes.jpg" />
     <Content Include="Images\back-button.png" />
     <Content Include="Images\close.png" />
+    <Content Include="Images\header-olga.jpg" />
     <Content Include="Images\header-voice.jpg" />
+    <Content Include="Images\home-background.jpg" />
     <Content Include="Images\in-progress-small.gif" />
     <Content Include="Images\header-piano.jpg" />
     <Content Include="Images\header-testimonials.jpg" />
@@ -199,6 +203,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\PublishProfiles\Profile.pubxml" />
+    <Content Include="Views\About\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

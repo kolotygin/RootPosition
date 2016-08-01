@@ -1,0 +1,39 @@
+﻿div[role="body"] {
+    padding: 0 2em 10em;
+}
+
+#content {
+    width: auto;
+    max-width: 100%;
+    float: right;
+}
+
+section[role="lessons-reasons"] {
+    float: right;
+    padding-right: 3.2em;
+}
+
+section[role="lessons-reasons"] p {
+    margin: 0.2em 0 0.2em 0.4em;
+    /*font-family: 'Segoe UI Light','Segoe UI',Arial,Helvetica,Sans-Serif;*/
+}
+
+section[role="lessons-reasons"] ul {
+    margin: 0;
+    padding: 0 0 0 0.5em; /* 1em left padding aligns to the left side of the container */
+    list-style-position: outside;
+    list-style-type: lower-roman;
+    font-size: 1.2em;
+    /*direction: rtl;*/
+}
+
+section[role="lessons-reasons"] ul li {
+    margin: 0 0 0 1em;
+    float: right;
+    clear: right;
+}
+
+section[role="lessons-reasons"] abbr {
+    border-bottom: 1px dotted;
+    cursor: help;
+}

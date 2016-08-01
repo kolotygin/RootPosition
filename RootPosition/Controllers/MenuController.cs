@@ -14,6 +14,7 @@ namespace RootPosition.Controllers
             {
                 Items = new List<MenuItemModel> {
                     new MenuItemModel { Text = "Home", Url = new UrlModel { ActionName = "Index", ControllerName = "Home" }},
+                    new MenuItemModel { Text = "About", Url = new UrlModel { ActionName = "Index", ControllerName = "About" }},
                     new MenuItemModel { Text = "Piano", Url = new UrlModel { ActionName = "Index", ControllerName = "Piano" }},
                     new MenuItemModel { Text = "Voice", Url = new UrlModel { ActionName = "Index", ControllerName = "Voice" }},
                     new MenuItemModel { Text = "Gallery",  Url = new UrlModel { ActionName = "Index", ControllerName = "Gallery" }},
