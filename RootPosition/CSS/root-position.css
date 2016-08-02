@@ -229,7 +229,7 @@ form[id="gallery-index"] header[role="banner"] h1 {
 }
 
 div[role="body"] {
-	padding-bottom: 10em;
+	padding-bottom: 14em;
 }
 
 #content {
@@ -420,6 +420,14 @@ footer[role="siteinfo"] {
 	position:absolute;
 	bottom:0; /* stick to bottom */
 
+	color: #724848;
+    background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#968383)); /* Saf4+, Chrome */
+    background: -webkit-linear-gradient(top, #fff, #968383)
+    background: -webkit-linear-gradient(top, #fff, #968383); /* Chrome 10+, Saf5.1+ */
+    background:    -moz-linear-gradient(top, #fff, #968383); /* FF3.6+ */
+    background:     -ms-linear-gradient(top, #fff, #968383); /* IE10 */
+    background:      -o-linear-gradient(top, #fff, #968383); /* Opera 11.10+ */
+    background:         linear-gradient(top, #fff, 0%, #968383 100%); /* W3C */
 }
 
 footer[role="siteinfo"] p {
@@ -433,7 +441,7 @@ footer[role="siteinfo"] p {
 	text-decoration: none;
 	letter-spacing: 0.1em;
 	/*color: #FC6B35;*/
-	color: #D14836;
+	color: #000 /*#724848*/;
 }
 
 footer[role="siteinfo"] p b {
@@ -441,14 +449,15 @@ footer[role="siteinfo"] p b {
 }
 
 footer[role="siteinfo"] p#copyright {
-	text-transform: uppercase;
-	font-weight: normal;
+    text-transform: uppercase;
+    font-weight: normal;
+    font-size: 1.2em;
 }
 
 footer[role="siteinfo"] p#copyright a {
-	font-weight: 700;
-	color: rgba(0, 0, 0, 0.5);
-	border-bottom: none;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.5);
+    border-bottom: none;
 }
 
 footer[role="siteinfo"] p a:visited,
@@ -456,13 +465,14 @@ footer[role="siteinfo"] p a:hover,
 footer[role="siteinfo"] p a:link,
 footer[role="siteinfo"] p a:active {
 /*	font-family: "Maiandra GD", "Gill Sans", Helvetica, Arial, sans-serif;*/
-	font-family: "Gill Sans", Helvetica, Arial, sans-serif;
-	font-style: normal;
-	font-size: 1em;
-	/*color: #FC6B35;*/
-	color: #D14836;
-	text-decoration: none;
-	border-bottom: 1px dotted;
+    font-family: "Gill Sans", Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-size: 1em;
+    /*color: #FC6B35;*/
+    /*color: #D14836; */
+    color: #000;
+    text-decoration: none;
+    border-bottom: 1px dotted;
 }
 
 footer[role="siteinfo"] p a:hover, footer[role="siteinfo"] p#copyright a:hover {
