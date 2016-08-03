@@ -135,6 +135,7 @@
     <Content Include="Global.asax" />
     <Content Include="Images\arrows-sprite.png" />
     <Content Include="Images\clef.png" />
+    <Content Include="Images\header-home.jpg" />
     <Content Include="Images\header-notes.jpg" />
     <Content Include="Images\back-button.png" />
     <Content Include="Images\close.png" />

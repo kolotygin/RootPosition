@@ -152,10 +152,10 @@ form header h1 {
 }
 
 form[id="home-index"] header[role="banner"] h1 {
-    padding: 15.5em 0 0.5em 15em;
+    padding: 11.9em 0 0.2em 15em;
     border-left: 1px solid #724848;
     border-right: 1px solid #724848;
-    background: url("/Images/home-background.jpg") #000 no-repeat center center; 
+    background: url("/Images/header-home.jpg") #000 no-repeat top left;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -229,7 +229,7 @@ form[id="gallery-index"] header[role="banner"] h1 {
 }
 
 div[role="body"] {
-	padding-bottom: 14em;
+	padding-bottom: 10em;
 }
 
 #content {
@@ -416,23 +416,23 @@ footer[role="siteinfo"] {
 	width: 100%;
 	/*border-top: 0.3em solid rgba(78, 68, 60, 0.1);*/
 	border-top: 1px solid #724848;
-	padding: 1em 0 2em 0;
-	position:absolute;
+	padding: 0.5em 0;
+	position: absolute;
 	bottom:0; /* stick to bottom */
 
-	color: #724848;
-    background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#968383)); /* Saf4+, Chrome */
+    background: rgb(97, 14, 14);
+/*    background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#968383)); /* Saf4+, Chrome !1!
     background: -webkit-linear-gradient(top, #fff, #968383)
-    background: -webkit-linear-gradient(top, #fff, #968383); /* Chrome 10+, Saf5.1+ */
-    background:    -moz-linear-gradient(top, #fff, #968383); /* FF3.6+ */
-    background:     -ms-linear-gradient(top, #fff, #968383); /* IE10 */
-    background:      -o-linear-gradient(top, #fff, #968383); /* Opera 11.10+ */
-    background:         linear-gradient(top, #fff, 0%, #968383 100%); /* W3C */
+    background: -webkit-linear-gradient(top, #fff, #968383); /* Chrome 10+, Saf5.1+ !1!
+    background:    -moz-linear-gradient(top, #fff, #968383); /* FF3.6+ !1!
+    background:     -ms-linear-gradient(top, #fff, #968383); /* IE10 !1!
+    background:      -o-linear-gradient(top, #fff, #968383); /* Opera 11.10+ !1!
+    background:         linear-gradient(top, #fff, 0%, #968383 100%); /* W3C !1!*/
 }
 
 footer[role="siteinfo"] p {
 	text-align: center;
-	margin: 1em 0 0 0;
+	margin: 0;
 /*	font-family: "Maiandra GD", "Gill Sans", Helvetica, Arial, sans-serif;*/
 	font-family: "Gill Sans", Helvetica, Arial, sans-serif;
 	font-size: 1.4em;
@@ -441,22 +441,23 @@ footer[role="siteinfo"] p {
 	text-decoration: none;
 	letter-spacing: 0.1em;
 	/*color: #FC6B35;*/
-	color: #000 /*#724848*/;
+	color: #ffdbdb /*#724848*/;
 }
 
 footer[role="siteinfo"] p b {
-	color: rgba(0, 0, 0, 0.8);
+    color: rgba(0, 0, 0, 0.8);
 }
 
 footer[role="siteinfo"] p#copyright {
     text-transform: uppercase;
     font-weight: normal;
-    font-size: 1.2em;
+    font-size: 1em;
+    color: #926a6a;
 }
 
 footer[role="siteinfo"] p#copyright a {
     font-weight: 700;
-    color: rgba(0, 0, 0, 0.5);
+    color: #926a6a;
     border-bottom: none;
 }
 
@@ -470,13 +471,13 @@ footer[role="siteinfo"] p a:active {
     font-size: 1em;
     /*color: #FC6B35;*/
     /*color: #D14836; */
-    color: #000;
+    color: #ffdbdb;
     text-decoration: none;
     border-bottom: 1px dotted;
 }
 
 footer[role="siteinfo"] p a:hover, footer[role="siteinfo"] p#copyright a:hover {
-	color: rgba(0, 0, 0, 0.8);
+    color: #fff;
 }
 
 footer[role="siteinfo"] abbr {
