@@ -5,38 +5,34 @@
 #content {
     width: auto;
     max-width: 100%;
-    float: right;
+    float: none;
+    padding: 0;
 }
 
 section[role="lessons-reasons"] {
-    float: right;
-    background: url(/Images/clef.png) top left no-repeat;
-    padding: 4em 3.2em 4em 0;
+    background: url(/Images/clef.png) 4em 0px no-repeat;
+    padding: 4em 2.2em 10em 2.2em;
     background-size: contain;
-}
-
-section[role="lessons-reasons"] p {
-    float: right;
-    margin: 0.2em 0 0.2em 0.4em;
-    color: #B0281A;
-    /*font-family: 'Segoe UI Light','Segoe UI',Arial,Helvetica,Sans-Serif;*/
 }
 
 section[role="lessons-reasons"] ul {
     margin: 0;
-    padding: 0 0 0 0.5em; /* 1em left padding aligns to the left side of the container */
+    /* padding: 0 0 0 0.5em; */
     list-style-position: outside;
     list-style-type: none /*lower-roman*/;
     font-size: 1.2em;
-    /*direction: rtl;*/
+    /* direction: rtl; */
 }
 
 section[role="lessons-reasons"] ul li {
-    margin: 0 0 0 1em;
-    float: right;
-    clear: right;
-    width: 66em;
     border-bottom: 1px solid rgb(76,76,76);
+}
+
+section[role="lessons-reasons"] p {
+    text-align: right;
+    margin: 0.2em 1em 0.2em 0.4em;
+    color: #B0281A;
+    /*font-family: 'Segoe UI Light','Segoe UI',Arial,Helvetica,Sans-Serif;*/
 }
 
 section[role="lessons-reasons"] abbr {
