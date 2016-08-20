@@ -12,10 +12,6 @@ section[role="direction"] iframe {
 	border: 0.1em solid #888;
 	border-color:  #BBB #888 #888 #BBB;
 
-	-moz-border-radius: 1em;
-	-webkit-border-radius: 1em;
-	border-radius: 1em;
-
 	-webkit-box-shadow: 0.2em 0.2em 0.37em #666;
 	-moz-box-shadow: 0.2em 0.2em 0.37em #666;
 	box-shadow: 0.2em 0.2em 0.37em #666;

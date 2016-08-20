@@ -1,12 +1,19 @@
-﻿#content article[role="reference"] {
-	margin: 2em 0;
+﻿#content {
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+#content article[role="reference"] {
+	margin: 4em 0;
 	background: url("/Images/reference-background.gif") no-repeat scroll 50% 50% #fff;
 	background-size: contain;
 	padding: 1.2em;
-	border: 1px solid #E0CFAB;
-	-webkit-border-radius: 1em;
+	border: 1px solid #e8e8e8;
+    /*box-shadow: 0 10px 6px -6px #777;*/
+    box-shadow: -35px -39px 6px -40px #999;
+	/*-webkit-border-radius: 1em;
 	-moz-border-radius: 1em;
-	border-radius: 1em;
+	border-radius: 1em;*/
 }
 
 #content article[role="reference"].first-reference {
@@ -18,7 +25,7 @@
 }
 
 #content article[role="reference"]:hover {
-	border: 1px solid #FC6B35;
+	border: 1px solid #e8e8e8;
 }
 
 article[role="reference"] p {
@@ -64,4 +71,54 @@ hr {
 	background-image: -o-linear-gradient(left, rgba(0,0,0,0), #FC6B35, rgba(0,0,0,0));
 	/* Proposed W3C Markup */
 	background-image: linear-gradient(rgba(0,0,0,0), #FC6B35, rgba(0,0,0,0));
+}
+
+.corner-fold {
+  position: relative;
+  /*-webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.8);
+  -moz-box-shadow: 5px 5px 5px rgba(0,0,0,0.8);
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.8);*/
+}
+ 
+.corner-fold:before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    width: 0;
+    height: 0;
+    border-bottom: 50px solid #fbfbfb;
+    border-right: 70px solid #fff;
+    -webkit-box-shadow: -5px 5px 5px rgba(0,0,0,0.3);
+    -moz-box-shadow: -5px 5px 5px rgba(0,0,0,0.3);
+    -ms-box-shadow: -5px 5px 5px rgba(0,0,0,0.3);
+    box-shadow: -5px 5px 5px rgba(0,0,0,0.3);
+    border-top: 0;
+}
+
+article[role="reference"] footer {
+  position: relative;
+}
+
+article[role="reference"] footer:before,
+article[role="reference"] footer:after {
+    z-index: -1;
+    position: absolute;
+  content: "";
+  bottom: 3px;
+  left: 0;
+  width: 50%;
+  top: 80%;
+  max-width:300px;
+  background: #777;
+    -webkit-box-shadow: 0 15px 10px #777;
+    -ms-box-shadow: 0 15px 10px #777;
+    box-shadow: 0 15px 10px #777;
+  transform: rotate(-3deg);
+}
+
+article[role="reference"] footer:after {
+    transform: rotate(3deg);
+    right: 0;
+    left: auto;
 }

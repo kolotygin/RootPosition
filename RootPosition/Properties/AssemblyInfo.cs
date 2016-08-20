@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("RootPosition")]
 [assembly: AssemblyProduct("RootPosition")]
-[assembly: AssemblyCopyright("Copyright © RootPosition 2013")]
+[assembly: AssemblyCopyright("Copyright © RootPosition 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

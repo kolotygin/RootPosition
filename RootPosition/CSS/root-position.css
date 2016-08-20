@@ -207,13 +207,13 @@ form[id="testimonials-index"] header[role="banner"] h1 {
 }
 
 form[id="contacts-index"] header[role="banner"] h1 {
-	background: url(/Images/header-piano.jpg) no-repeat 16.6em 50%;
-	background: url(/Images/header-piano.jpg) no-repeat 16.6em 50%, -webkit-gradient(linear, left top, left bottom, from(#5c1e18), to(#B0281A)); /* Saf4+, Chrome */
-	background: url(/Images/header-piano.jpg) no-repeat 16.6em 50%, -webkit-linear-gradient(top, #5c1e18, #B0281A); /* Chrome 10+, Saf5.1+ */
-	background: url(/Images/header-piano.jpg) no-repeat 16.6em 50%,    -moz-linear-gradient(top, #5c1e18, #B0281A); /* FF3.6+ */
-	background: url(/Images/header-piano.jpg) no-repeat 16.6em 50%,     -ms-linear-gradient(top, #5c1e18, #B0281A); /* IE10 */
-	background: url(/Images/header-piano.jpg) no-repeat 16.6em 50%,      -o-linear-gradient(top, #5c1e18, #B0281A); /* Opera 11.10+ */
-	background: url(/Images/header-piano.jpg) no-repeat 16.6em 50%,         linear-gradient(top, #5c1e18 0%, #B0281A 100%); /* W3C */
+	background: url(/Images/header-olga.jpg) no-repeat 16.6em 50%;
+	background: url(/Images/header-olga.jpg) no-repeat 16.6em 50%, -webkit-gradient(linear, left top, left bottom, from(#5c1e18), to(#B0281A)); /* Saf4+, Chrome */
+	background: url(/Images/header-olga.jpg) no-repeat 16.6em 50%, -webkit-linear-gradient(top, #5c1e18, #B0281A); /* Chrome 10+, Saf5.1+ */
+	background: url(/Images/header-olga.jpg) no-repeat 16.6em 50%,    -moz-linear-gradient(top, #5c1e18, #B0281A); /* FF3.6+ */
+	background: url(/Images/header-olga.jpg) no-repeat 16.6em 50%,     -ms-linear-gradient(top, #5c1e18, #B0281A); /* IE10 */
+	background: url(/Images/header-olga.jpg) no-repeat 16.6em 50%,      -o-linear-gradient(top, #5c1e18, #B0281A); /* Opera 11.10+ */
+	background: url(/Images/header-olga.jpg) no-repeat 16.6em 50%,         linear-gradient(top, #5c1e18 0%, #B0281A 100%); /* W3C */
 	background-size: contain;
 }
 
@@ -347,63 +347,99 @@ float:left;
 */
 
 blockquote.pullquote {
+    padding: 1em 0 0 0;
 }
 
+
+/*
 blockquote.pullquote span.start, blockquote.pullquote span.end {
 	display: inline;
 	font-family: "Lucida Grande";
 	color: #724848;
 	font-size: 3em;
 	vertical-align: super;
+    position: relative;
+}
+*/
+
+
+blockquote.pullquote a:before,
+blockquote.pullquote a:after {
+    content: "\201C";
+    display: inline;
+    font-family: "Lucida Grande";
+    color: #724848;
+    font-size: 3em;
+/*    vertical-align: super;*/
+    position: relative;
+    top: 0.2em;
+    left: -0.2em;
+    line-height: 0;
 }
 
-blockquote.pullquote p.quote,
-blockquote.pullquote p.quote a,
-blockquote.pullquote p.quote a:visited,
-blockquote.pullquote p.quote a:hover,
-blockquote.pullquote p.quote a:link,
-blockquote.pullquote p.quote a:active {
+blockquote.pullquote a:after {
+    content: "\201D";
+	/*vertical-align: -0.5em;*/
+    left: 0;
+}
+
+blockquote.pullquote a,
+blockquote.pullquote a:visited,
+blockquote.pullquote a:hover,
+blockquote.pullquote a:link,
+blockquote.pullquote a:active {
 	font-family: Georgia, "Times New Roman", Times, serif;
 	font-style: normal;
-	font-size: 1em;
+	font-size: 1.4em;
 	font-style: italic;
-	display: inline;
-	vertical-align:baseline;
+	display: inline-block;
+	vertical-align: baseline;
 	color: #D14836;
 	text-decoration: none;
 	text-align: justify;
+    line-height: 2em;
 }
+
+blockquote.pullquote a:hover,
+blockquote.pullquote a:active {
+	color: #B0281A;
+}
+
 
 blockquote.pullquote p.quote {
-	font-size: 1.4em;
 }
 
+/*
 blockquote.pullquote span.end {
 	vertical-align: -0.5em;
 }
+*/
 
 blockquote.pullquote p.author {
-	position: relative;
-	top: -1.3em;
-	margin: 0;
-	letter-spacing: -1px;
-	padding: 0 1em 0 0;
-	color: #724848;
-	font-size: 1.4em;
-	text-align: right;
-	font-family: Georgia, "Times New Roman", Times, serif;
-	line-height: normal;
-	vertical-align: top;
+        /* position: relative; */
+    /* top: -1.3em; */
+    margin: 0;
+    letter-spacing: -1px;
+    /* padding: 0 1em 0 0; */
+    color: #724848;
+    font-size: 1.4em;
+    text-align: right;
+    /* font-family: Georgia, "Times New Roman", Times, serif; */
+    /* line-height: normal; */
+    /* vertical-align: top; */
+
 }
 
-blockquote.pullquote:hover p.quote a,
-blockquote.pullquote:hover p.author {
+blockquote.pullquote:hover a,
+blockquote.pullquote:hover .author {
 	color: #B0281A;
 }
 
 blockquote.pullquote:hover {
+/*
 	border-right: 3px solid #B0281A;
 	margin-right: -3px;
+*/
 }
 
 /*

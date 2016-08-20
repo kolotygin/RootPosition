@@ -54,6 +54,7 @@
     <Compile Include="Extensions\TagBuilderExtensions.cs" />
     <Compile Include="Extensions\HttpContextExtensions.cs" />
     <Compile Include="Extensions\RequestExtensions.cs" />
+    <Compile Include="Extensions\TimeStampedContentExtensions.cs" />
     <Compile Include="Html\MvcImage.cs" />
     <Compile Include="Html\MvcExternalResources.cs" />
     <Compile Include="Html\MvcLabelExtensions.cs" />
