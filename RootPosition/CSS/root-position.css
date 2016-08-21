@@ -1,4 +1,5 @@
 ﻿@import url("reset.css");
+@import url("fonts.css");
 
 html, form, body {
 	height: 100%; /* for container min-height */
@@ -26,7 +27,7 @@ h2 {
 
 p {
 	margin: 1em 0;
-	font-size: 1.6em;
+	font-size: 1.8em;
 	text-align: justify;
 	font-family: "Maiandra GD", "Gill Sans", Helvetica, Arial, sans-serif;
 	
@@ -325,52 +326,23 @@ div[role="body"]:after {
 	visibility: hidden;
 }
 
-/*.pullquote {
-float:left;
-	margin: 1em;
-	font-family: Georgia, "Times New Roman", Times, serif;
-	font-style: italic;
-	font-size: 1.4em
-}
- 
-.pullquote:before {
-	content: "“";
-	font-size: xx-large;
-	font-weight: bold;
-}
- 
-.pullquote:after {
-	content: "";
-	font-size: xx-large;
-	font-weight: bold;
-}
-*/
-
 blockquote.pullquote {
-    padding: 1em 0 0 0;
-}
-
-
-/*
-blockquote.pullquote span.start, blockquote.pullquote span.end {
-	display: inline;
-	font-family: "Lucida Grande";
-	color: #724848;
-	font-size: 3em;
-	vertical-align: super;
+    margin: 2em 0;
+    padding: 1em 1em 0 1em;
     position: relative;
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    -ms-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 }
-*/
-
 
 blockquote.pullquote a:before,
 blockquote.pullquote a:after {
     content: "\201C";
     display: inline;
-    font-family: "Lucida Grande";
+    font-family: "Dr Sugiyama", cursive;
     color: #724848;
     font-size: 3em;
-/*    vertical-align: super;*/
     position: relative;
     top: 0.2em;
     left: -0.2em;
@@ -379,7 +351,6 @@ blockquote.pullquote a:after {
 
 blockquote.pullquote a:after {
     content: "\201D";
-	/*vertical-align: -0.5em;*/
     left: 0;
 }
 
@@ -388,58 +359,37 @@ blockquote.pullquote a:visited,
 blockquote.pullquote a:hover,
 blockquote.pullquote a:link,
 blockquote.pullquote a:active {
-	font-family: Georgia, "Times New Roman", Times, serif;
-	font-style: normal;
-	font-size: 1.4em;
+    font-family: "Alegreya CS", serif;
 	font-style: italic;
+    font-size: 1.6em;
 	display: inline-block;
 	vertical-align: baseline;
 	color: #D14836;
 	text-decoration: none;
 	text-align: justify;
-    line-height: 2em;
+    line-height: 1.8em;
 }
-
-blockquote.pullquote a:hover,
-blockquote.pullquote a:active {
-	color: #B0281A;
-}
-
-
-blockquote.pullquote p.quote {
-}
-
-/*
-blockquote.pullquote span.end {
-	vertical-align: -0.5em;
-}
-*/
 
 blockquote.pullquote p.author {
-        /* position: relative; */
-    /* top: -1.3em; */
     margin: 0;
     letter-spacing: -1px;
-    /* padding: 0 1em 0 0; */
     color: #724848;
     font-size: 1.4em;
     text-align: right;
-    /* font-family: Georgia, "Times New Roman", Times, serif; */
-    /* line-height: normal; */
-    /* vertical-align: top; */
-
+	font-size: 1.4em;
+	font-family: "Alegreya CS", serif;
 }
 
 blockquote.pullquote:hover a,
 blockquote.pullquote:hover .author {
-	color: #B0281A;
+    color: #724848;
 }
 
 blockquote.pullquote:hover {
-/*
-	border-right: 3px solid #B0281A;
-	margin-right: -3px;
-*/
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 1px rgba(0, 0, 0, 0.1) inset;
+    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 1px rgba(0, 0, 0, 0.1) inset;
+    -ms-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 1px rgba(0, 0, 0, 0.1) inset;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 1px rgba(0, 0, 0, 0.1) inset;
 }
 
 /*
@@ -457,13 +407,6 @@ footer[role="siteinfo"] {
 	bottom:0; /* stick to bottom */
 
     background: rgb(97, 14, 14);
-/*    background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#968383)); /* Saf4+, Chrome !1!
-    background: -webkit-linear-gradient(top, #fff, #968383)
-    background: -webkit-linear-gradient(top, #fff, #968383); /* Chrome 10+, Saf5.1+ !1!
-    background:    -moz-linear-gradient(top, #fff, #968383); /* FF3.6+ !1!
-    background:     -ms-linear-gradient(top, #fff, #968383); /* IE10 !1!
-    background:      -o-linear-gradient(top, #fff, #968383); /* Opera 11.10+ !1!
-    background:         linear-gradient(top, #fff, 0%, #968383 100%); /* W3C !1!*/
 }
 
 footer[role="siteinfo"] p {
@@ -542,13 +485,11 @@ p {
 }
 
 ::selection {
-	/*background: #FF8539; /* Safari */
 	background: #D14836; /* Safari */
 	color: #333;
 }
 
 ::-moz-selection {
-	/*background: #FF8539; /* Firefox */
 	background: #D14836; /* Firefox */
 	color: #333;
 }

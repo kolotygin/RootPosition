@@ -120,6 +120,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CSS\contacts.css" />
+    <Content Include="CSS\fonts.css" />
     <Content Include="CSS\home.css" />
     <Content Include="CSS\gallery.css" />
     <Content Include="CSS\ie-not7.css" />
