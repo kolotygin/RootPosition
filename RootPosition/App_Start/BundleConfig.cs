@@ -47,8 +47,8 @@ namespace RootPosition
                 Orderer = nullOrderer
             };
             obfuscatedScriptBundle.Include(
-                "~/Scripts/jquery.min.js",
-                "~/Scripts/knockout.js",
+                "~/Scripts/jquery-{version}.js",
+                "~/Scripts/knockout-{version}.js",
                 "~/Scripts/date.format.js",
                 "~/Scripts/jquery.extensions.js",
                 "~/Scripts/root.extensions.js",
