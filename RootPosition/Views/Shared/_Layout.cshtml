@@ -1,5 +1,5 @@
 ﻿@using Web.Mvc.Extensions
-@using Web.Mvc.Html
+@using Web.Mvc.Url
 
 <!DOCTYPE html>
 <html>
@@ -19,13 +19,13 @@
     <![endif]-->
 
     @{
-        Html.Resources().Styles.AddFirst(Url.Content("~/CSS/root-position.css"));
+        Url.Resources().Styles.AddFirst(Url.Content("~/CSS/root-position.css"));
         if (Request.Browser.Browser.Trim().Equals("IE", StringComparison.InvariantCultureIgnoreCase) && Request.Browser.MajorVersion != 7)
         {
-            Html.Resources().Styles.Add(Url.Content("~/Css/ie-not7.css"));
+            Url.Resources().Styles.Add(Url.Content("~/Css/ie-not7.css"));
         }
     }
-    @Html.Resources().Styles.Render()
+    @Url.Resources().Styles.Render()
 </head>
 
 <body>
@@ -48,7 +48,7 @@
             <p id="copyright">Copyright &copy; 2016 <a href="http://www.rootposition.com/" title="root-position home page">Rootposition</a></p>
         </footer>
     </div>
-    @Html.Resources().Scripts.Render()
+    @Url.Resources().Scripts.Render()
     @RenderSection("Scripts")
 }
 </body>

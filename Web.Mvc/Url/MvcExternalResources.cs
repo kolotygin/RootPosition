@@ -3,20 +3,19 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Web.Mvc.Html
+namespace Web.Mvc.Url
 {
     public static class MvcExternalResourcesExtensions
     {
-        public static MvcExternalResources Resources(this HtmlHelper helper)
+        public static MvcExternalResources Resources(this UrlHelper helper)
         {
             return GetInstance(helper);
         }
 
-        public static MvcExternalResources GetInstance(HtmlHelper helper)
+        public static MvcExternalResources GetInstance(UrlHelper helper)
         {
             const string instanceKey = "ExternalResourcesInstance";
 
-            /*var context = htmlHelper.ViewContext.HttpContext;*/
             var context = HttpContext.Current;
             if (context == null)
             {
@@ -27,7 +26,7 @@ namespace Web.Mvc.Html
 
             if (instance == null)
             {
-                context.Items.Add(instanceKey, instance = new MvcExternalResources());
+                context.Items.Add(instanceKey, instance = new MvcExternalResources(helper));
             }
             return instance;
         }
@@ -38,10 +37,10 @@ namespace Web.Mvc.Html
         public const string StyleFormat = "<link href=\"{0}\" rel=\"stylesheet\" type=\"text/css\" />";
         public const string ScriptFormat = "<script src=\"{0}\" type=\"text/javascript\"></script>";
 
-        public MvcExternalResources()
+        public MvcExternalResources(UrlHelper helper)
         {
-            Styles = new ResourceRegistrar(StyleFormat);
-            Scripts = new ResourceRegistrar(ScriptFormat);
+            Styles = new ResourceRegistrar(helper, StyleFormat);
+            Scripts = new ResourceRegistrar(helper, ScriptFormat);
         }
 
         public ResourceRegistrar Styles { get; private set; }
@@ -53,9 +52,11 @@ namespace Web.Mvc.Html
     {
         private readonly string _format;
         private readonly IList<string> _items;
+        private readonly UrlHelper _helper;
 
-        public ResourceRegistrar(string format)
+        public ResourceRegistrar(UrlHelper helper, string format)
         {
+            _helper = helper;
             _format = format;
             _items = new List<string>();
         }
@@ -65,7 +66,6 @@ namespace Web.Mvc.Html
             if (!_items.Contains(url))
             {
                 _items.Add(url);
-                //_items.Insert(0, url);
             }
             return this;
         }
@@ -84,7 +84,7 @@ namespace Web.Mvc.Html
             var builder = new StringBuilder();
             foreach (var item in _items)
             {
-                var formattedString = string.Format(_format, item);
+                var formattedString = string.Format(_format, _helper.VersionedContent(item));
                 builder.AppendLine(formattedString);
             }
             return new HtmlString(builder.ToString());

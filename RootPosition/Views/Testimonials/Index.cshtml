@@ -1,8 +1,8 @@
-﻿@using Web.Mvc.Html
+﻿@using Web.Mvc.Url
 @{
 	Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@Html.Resources().Styles.Add(Url.Content("~/CSS/testimonials.css"))
+@Url.Resources().Styles.Add(Url.Content("~/CSS/testimonials.css"))
 @section Body {
 
 <div role="body">

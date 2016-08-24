@@ -1,4 +1,3 @@
-using System;
 using System.Web.Mvc;
 
 namespace Web.Mvc.Extensions
@@ -7,7 +6,7 @@ namespace Web.Mvc.Extensions
 	{
 		public static void AddNotEmptyCssClass(this TagBuilder builder, string cssClass)
 		{
-			if (!String.IsNullOrEmpty(cssClass))
+			if (!string.IsNullOrEmpty(cssClass))
 			{
 				builder.AddCssClass(cssClass);
 			}
