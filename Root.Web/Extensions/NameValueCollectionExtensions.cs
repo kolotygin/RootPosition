@@ -18,7 +18,7 @@ namespace Root.Web.Extensions
 
         public static string AsCommaDelimitedString(this NameValueCollection collection)
         {
-            List<string> items = new List<string>();
+            var items = new List<string>();
             foreach (string name in collection)
             {
                 items.Add(string.Concat(name, "=", collection[name]));
@@ -33,9 +33,9 @@ namespace Root.Web.Extensions
 
         public static void Add(this NameValueCollection collection, bool overrideIfExist, params KeyValuePair<string, string>[] resourceParameters)
         {
-            if ((resourceParameters != null))
+            if (resourceParameters != null)
             {
-                foreach (KeyValuePair<string, string> parameter in resourceParameters)
+                foreach (var parameter in resourceParameters)
                 {
                     if (overrideIfExist || !collection.Contains(parameter.Key))
                     {

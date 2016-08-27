@@ -37,9 +37,7 @@ namespace Root.Web.Url
 
             //   apostrophe characters are not escaped for URI since they are considered 'unreserved' in RFC 2396
             //   we explicitly escape apostrophes with their escape sequence "%27"
-            result = result.Replace("'", "%27");
-
-            return result;
+            return result.Replace("'", "%27");
         }
     }
 }

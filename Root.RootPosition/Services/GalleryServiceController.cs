@@ -2,13 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Web.Hosting;
 using System.IO;
-using Root.Infrastructure.Extensions;
+using System.Web.Hosting;
 using Root.Infrastructure.Imaging;
+using Root.Web.Extensions;
 using Root.Web.Mvc.Models;
 
-namespace RootPosition.Services
+namespace Root.RootPosition.Services
 {
     internal class DescendingComparer : IComparer<string>
     {
@@ -16,7 +16,7 @@ namespace RootPosition.Services
         {
             try
             {
-                return String.Compare(x, y, StringComparison.CurrentCultureIgnoreCase) * -1;
+                return string.Compare(x, y, StringComparison.CurrentCultureIgnoreCase) * -1;
             }
             catch (Exception)
             {

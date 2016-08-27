@@ -46,7 +46,7 @@ namespace Root.Web.Mvc.Models
 
         public override string ToString()
         {
-            return String.Format("{0} [{1}]", Text, Id);
+            return $"{Text} [{Id}]";
         }
     }
 }

@@ -25,8 +25,8 @@ namespace Root.Web.Mvc.Models
                 return false;
             }
 
-            return (((String.IsNullOrEmpty(AreaName) && String.IsNullOrEmpty(urlModel.AreaName)) || (String.Equals(AreaName, urlModel.AreaName, StringComparison.InvariantCultureIgnoreCase))) &&
-                ((String.IsNullOrEmpty(ControllerName)) || (ControllerName.Equals(urlModel.ControllerName, StringComparison.InvariantCultureIgnoreCase)) &&
+            return (((string.IsNullOrEmpty(AreaName) && string.IsNullOrEmpty(urlModel.AreaName)) || (string.Equals(AreaName, urlModel.AreaName, StringComparison.InvariantCultureIgnoreCase))) &&
+                ((string.IsNullOrEmpty(ControllerName)) || (ControllerName.Equals(urlModel.ControllerName, StringComparison.InvariantCultureIgnoreCase)) &&
                 ((ActionName == null) || ActionName.Equals(urlModel.ActionName, StringComparison.InvariantCultureIgnoreCase))));
         }
 
@@ -37,7 +37,7 @@ namespace Root.Web.Mvc.Models
 
         public override string ToString()
         {
-            return String.Format("ActionName: {0}; ControllerName: {1}; AreaName: {2}", ActionName, ControllerName, AreaName);
+            return $"ActionName: {ActionName}; ControllerName: {ControllerName}; AreaName: {AreaName}";
         }
 
         public string AsId()

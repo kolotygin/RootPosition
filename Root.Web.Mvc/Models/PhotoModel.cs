@@ -8,33 +8,20 @@ namespace Root.Web.Mvc.Models
     public class PhotoModel
     {
         private readonly string _source;
-        private readonly Orientation _orientation;
 
         public PhotoModel(string source, Orientation orientation)
         {
             _source = source;
-            _orientation = orientation;
+            Orientation = orientation;
         }
 
         //public string Source;
         //public string AlternateText;
         //public Size ThumbnailSize { get; set; }
 
-        public string Source
-        {
-            get
-            {
-                return HttpContext.Current.Server.UrlEncode(_source);
-            }
-        }
+        public string Source => HttpContext.Current.Server.UrlEncode(_source);
 
-        public Orientation Orientation
-        {
-            get
-            {
-                return _orientation;
-            }
-        }
+        public Orientation Orientation { get; }
 
 /*
         public string ThumbnailSource
@@ -64,7 +51,7 @@ namespace Root.Web.Mvc.Models
 
         public override string ToString()
         {
-            return String.Format("{0} [{1}]", Source, Orientation);
+            return $"{Source} [{Orientation}]";
         }
 
     }
