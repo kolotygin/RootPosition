@@ -9,7 +9,6 @@ namespace Root.RootPosition.Controllers
 {
     public class ImageController : Controller
     {
-
         public ActionResult Render(string file)
         {
             var fullPath = HostingEnvironment.MapPath(file);
