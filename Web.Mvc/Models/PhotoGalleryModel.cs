@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace Web.Mvc.Models
+namespace Root.Web.Mvc.Models
 {
     public class PhotoGalleryModel
     {

@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
-using RootPosition.Analytics.Models;
+using Root.Analytics.Models;
 
-namespace Analytics.Controllers
+namespace Root.Analytics.Controllers
 {
     public class HomeController : Controller
     {

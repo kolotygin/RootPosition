@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Web.Hosting;
 using System.IO;
-using Infrastructure.Imaging;
-using Infrastructure.Extensions;
-using Web.Mvc.Models;
+using Root.Infrastructure.Extensions;
+using Root.Infrastructure.Imaging;
+using Root.Web.Mvc.Models;
 
 namespace RootPosition.Services
 {

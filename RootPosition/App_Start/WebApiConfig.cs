@@ -1,6 +1,6 @@
 ﻿using System.Web.Http;
 
-namespace RootPosition
+namespace Root.RootPosition
 {
     public static class WebApiConfig
     {

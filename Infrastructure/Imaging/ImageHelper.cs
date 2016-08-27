@@ -4,7 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 
-namespace Infrastructure.Imaging
+namespace Root.Infrastructure.Imaging
 {
     /// <summary>
     ///     Taken from http://stackoverflow.com/questions/111345/getting-image-dimensions-without-reading-the-entire-file/111349

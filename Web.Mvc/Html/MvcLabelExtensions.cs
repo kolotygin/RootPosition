@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace Web.Mvc.Html
+namespace Root.Web.Mvc.Html
 {
     public static class MvcLabelExtensions
     {

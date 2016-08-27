@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace RootPosition
+namespace Root.RootPosition
 {
     public class FilterConfig
     {

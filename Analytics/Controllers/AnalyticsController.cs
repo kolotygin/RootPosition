@@ -4,10 +4,10 @@ using System.Globalization;
 using System.IO;
 using System.Web.Hosting;
 using System.Web.Mvc;
-using RootPosition.Analytics.Models;
-using RootPosition.Infrastructure.Collections;
+using Root.Analytics.Models;
+using Root.Web.Collections;
 
-namespace RootPosition.Controllers
+namespace Root.Analytics.Controllers
 {
     public class AnalyticsController : Controller
     {

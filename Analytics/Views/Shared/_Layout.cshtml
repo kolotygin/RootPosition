@@ -1,5 +1,5 @@
-﻿@using Web.Mvc.Extensions
-@using Web.Mvc.Html
+﻿@using Root.Web.Mvc.Extensions
+@using Root.Web.Mvc.Url
 
 <!DOCTYPE html>
 <html>
@@ -18,7 +18,7 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    @Html.Resources().Styles.Render()
+    @Url.Resources().Styles.Render()
 </head>
 
 <body>
@@ -34,7 +34,7 @@
             <p id="contact">Roman Kolotygin (<abbr title="Web UI Developer">UI</abbr>) <b>|</b> <a href="callto&#58;+16047831967">(604)727-6259</a> <b>|</b> <a href="mailto:rkolotyg@hotmail.com">rkolotyg@hotmail.com</a></p>
         </footer>
     </div>
-    @Html.Resources().Scripts.Render()
+    @Url.Resources().Scripts.Render()
     @RenderSection("Scripts")
 }
 </body>

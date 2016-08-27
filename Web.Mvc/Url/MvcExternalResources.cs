@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Text;
+﻿using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Optimization;
+using Root.Infrastructure.Collections;
 
-namespace Web.Mvc.Url
+namespace Root.Web.Mvc.Url
 {
     public static class MvcExternalResourcesExtensions
     {
@@ -34,60 +35,71 @@ namespace Web.Mvc.Url
 
     public class MvcExternalResources
     {
-        public const string StyleFormat = "<link href=\"{0}\" rel=\"stylesheet\" type=\"text/css\" />";
-        public const string ScriptFormat = "<script src=\"{0}\" type=\"text/javascript\"></script>";
-
         public MvcExternalResources(UrlHelper helper)
         {
-            Styles = new ResourceRegistrar(helper, StyleFormat);
-            Scripts = new ResourceRegistrar(helper, ScriptFormat);
+            Styles = new StyleRenderer(helper);
+            Scripts = new ScriptRenderer(helper);
         }
 
-        public ResourceRegistrar Styles { get; private set; }
-        public ResourceRegistrar Scripts { get; private set; }
-
+        public StyleRenderer Styles { get; private set; }
+        public ScriptRenderer Scripts { get; private set; }
     }
 
-    public class ResourceRegistrar
+    public class ScriptRenderer
     {
-        private readonly string _format;
-        private readonly IList<string> _items;
         private readonly UrlHelper _helper;
+        private readonly OrderedSet<string> _paths;
 
-        public ResourceRegistrar(UrlHelper helper, string format)
+        public ScriptRenderer(UrlHelper helper)
         {
+            _paths = new OrderedSet<string>();
             _helper = helper;
-            _format = format;
-            _items = new List<string>();
         }
 
-        public ResourceRegistrar Add(string url)
+        public ScriptRenderer Add(string path)
         {
-            if (!_items.Contains(url))
-            {
-                _items.Add(url);
-            }
+            _paths.Add(path);
             return this;
         }
 
-        public ResourceRegistrar AddFirst(string url)
+        public ScriptRenderer AddFirst(string path)
         {
-            if (!_items.Contains(url))
-            {
-                _items.Insert(0, url);
-            }
+            _paths.AddFirst(path);
             return this;
         }
 
         public IHtmlString Render()
         {
-            var builder = new StringBuilder();
-            foreach (var item in _items)
-            {
-                var formattedString = string.Format(_format, _helper.VersionedContent(item));
-                builder.AppendLine(formattedString);
-            }
-            return new HtmlString(builder.ToString());
+            return Scripts.Render(_paths.AsEnumerable().Select(path => _helper.VersionedContent(path)).ToArray());
+        }
+    }
+
+    public class StyleRenderer
+    {
+        private readonly UrlHelper _helper;
+        private readonly OrderedSet<string> _paths;
+
+        public StyleRenderer(UrlHelper helper)
+        {
+            _paths = new OrderedSet<string>();
+            _helper = helper;
+        }
+
+        public StyleRenderer Add(string path)
+        {
+            _paths.Add(path);
+            return this;
+        }
+
+        public StyleRenderer AddFirst(string path)
+        {
+            _paths.AddFirst(path);
+            return this;
+        }
+
+        public IHtmlString Render()
+        {
+            return Styles.Render(_paths.AsEnumerable().Select(path => _helper.VersionedContent(path)).ToArray());
         }
     }
 

@@ -1,5 +1,5 @@
-﻿@using Web.Mvc.Extensions
-@using Web.Mvc.Url
+﻿@using Root.Web.Mvc.Extensions
+@using Root.Web.Mvc.Url
 
 <!DOCTYPE html>
 <html>
@@ -19,10 +19,10 @@
     <![endif]-->
 
     @{
-        Url.Resources().Styles.AddFirst(Url.Content("~/CSS/root-position.css"));
+        Url.Resources().Styles.AddFirst("~/CSS/root-position.css");
         if (Request.Browser.Browser.Trim().Equals("IE", StringComparison.InvariantCultureIgnoreCase) && Request.Browser.MajorVersion != 7)
         {
-            Url.Resources().Styles.Add(Url.Content("~/Css/ie-not7.css"));
+            Url.Resources().Styles.Add("~/Css/ie-not7.css");
         }
     }
     @Url.Resources().Styles.Render()

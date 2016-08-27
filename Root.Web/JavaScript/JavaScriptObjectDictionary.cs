@@ -4,19 +4,13 @@ using System.Collections.Specialized;
 using System.Text;
 using System.Web;
 
-namespace RootPosition.Infrastructure.JavaScript
+namespace Root.Web.JavaScript
 {
     public class JavaScriptObjectDictionary : IEnumerable<KeyValuePair<string, string>>
     {
         private OrderedDictionary _dictionary = null;
 
-        internal OrderedDictionary Dictionary
-        {
-            get
-            {
-                return _dictionary ?? (_dictionary = new OrderedDictionary());
-            }
-        }
+        internal OrderedDictionary Dictionary => _dictionary ?? (_dictionary = new OrderedDictionary());
 
         public void AddMethodBody(string name, string methodBody)
         {

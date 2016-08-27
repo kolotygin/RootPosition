@@ -1,7 +1,7 @@
 using System;
-using Infrastructure.Extensions;
+using Root.Infrastructure.Extensions;
 
-namespace Web.Mvc.Models
+namespace Root.Web.Mvc.Models
 {
     public class UrlModel
     {

@@ -1,9 +1,8 @@
 ﻿using System.Web.Mvc;
 using RootPosition.Services;
 
-namespace RootPosition.Controllers
+namespace Root.RootPosition.Controllers
 {
-
     public class GalleryController : Controller
     {
 

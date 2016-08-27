@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace RootPosition.Controllers
+namespace Root.RootPosition.Controllers
 {
     public class TestimonialsController : Controller
     {

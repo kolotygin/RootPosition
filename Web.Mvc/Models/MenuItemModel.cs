@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Web.Mvc.Models
+namespace Root.Web.Mvc.Models
 {
     public class MenuItemModel
     {

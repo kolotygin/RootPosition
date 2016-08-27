@@ -1,8 +1,8 @@
 using System;
 using System.Web.Routing;
-using Web.Mvc.Models;
+using Root.Web.Mvc.Models;
 
-namespace Web.Mvc.Extensions
+namespace Root.Web.Mvc.Extensions
 {
 	public static class RequestExtensions
 	{

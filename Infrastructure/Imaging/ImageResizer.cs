@@ -5,7 +5,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using Size = System.Drawing.Size;
 
-namespace Infrastructure.Imaging
+namespace Root.Infrastructure.Imaging
 {
     public enum ImageResizeQuality
     {

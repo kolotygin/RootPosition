@@ -1,29 +1,29 @@
-﻿@using Infrastructure.Extensions
-@using Web.Mvc.Html
-@model RootPosition.Analytics.Models.AnalyticsOptions
+﻿@using Root.Web.Extensions
+@using Root.Web.Mvc.Url
+@model Root.Analytics.Models.AnalyticsOptions
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 
-    Html.Resources().Styles.Add(Url.Content("~/CSS/root.linegraph.css"));
-    Html.Resources().Styles.Add(Url.Content("~/CSS/root.analytics.css"));
-    Html.Resources().Styles.Add(Url.Content("~/CSS/bootstrap-datepicker.css"));
+    Url.Resources().Styles.Add("~/CSS/root.linegraph.css");
+    Url.Resources().Styles.Add("~/CSS/root.analytics.css");
+    Url.Resources().Styles.Add("~/CSS/bootstrap-datepicker.css");
 
-    Html.Resources().Scripts.Add(Url.Content("~/Scripts/jquery.min.js"));
-    Html.Resources().Scripts.Add(Url.Content("~/Scripts/knockout.js"));
-    Html.Resources().Scripts.Add(Url.Content("~/Scripts/root.extensions.js"));
-    Html.Resources().Scripts.Add(Url.Content("~/Scripts/jquery.extensions.js"));
-    Html.Resources().Scripts.Add(Url.Content("~/Scripts/root.DataStructures.js"));
-    Html.Resources().Scripts.Add(Url.Content("~/Scripts/root.WebResourceUrl.js"));
-    Html.Resources().Scripts.Add(Url.Content("~/Scripts/D3/d3.v3.min.js"));
-    Html.Resources().Scripts.Add(Url.Content("~/Scripts/D3/topojson.v1.min.js"));
-    Html.Resources().Scripts.Add(Url.Content("~/Scripts/root.LineGraph.js"));
-    Html.Resources().Scripts.Add(Url.Content("~/Scripts/bootstrap-datepicker.js"));
-    
-    
-    Html.Resources().Scripts.Add(Url.Content("~/Scripts/root.Analytics.ChoroplethMap.js"));
-    Html.Resources().Scripts.Add(Url.Content("~/Scripts/root.Analytics.Controller.js"));
-    Html.Resources().Scripts.Add(Url.Content("~/Scripts/root.Analytics.ViewModel.js"));
+    Url.Resources().Scripts.Add("~/Scripts/jquery.min.js");
+    Url.Resources().Scripts.Add("~/Scripts/knockout.js");
+    Url.Resources().Scripts.Add("~/Scripts/root.extensions.js");
+    Url.Resources().Scripts.Add("~/Scripts/jquery.extensions.js");
+    Url.Resources().Scripts.Add("~/Scripts/root.DataStructures.js");
+    Url.Resources().Scripts.Add("~/Scripts/root.WebResourceUrl.js");
+    Url.Resources().Scripts.Add("~/Scripts/D3/d3.v3.min.js");
+    Url.Resources().Scripts.Add("~/Scripts/D3/topojson.v1.min.js");
+    Url.Resources().Scripts.Add("~/Scripts/root.LineGraph.js");
+    Url.Resources().Scripts.Add("~/Scripts/bootstrap-datepicker.js");
+
+
+    Url.Resources().Scripts.Add("~/Scripts/root.Analytics.ChoroplethMap.js");
+    Url.Resources().Scripts.Add("~/Scripts/root.Analytics.Controller.js");
+    Url.Resources().Scripts.Add("~/Scripts/root.Analytics.ViewModel.js");
 }
 
 @section Body {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
 
-namespace RootPosition.Analytics.Models
+namespace Root.Analytics.Models
 {
     [DataContract]
     public class StatsServicesOptions

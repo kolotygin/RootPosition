@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Runtime.Serialization;
-using RootPosition.Infrastructure.Collections;
+using Root.Web.Collections;
 
-namespace RootPosition.Analytics.Models
+namespace Root.Analytics.Models
 {
     [DataContract]
     public class LineGraphDto

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Web.Mvc.Models
+namespace Root.Web.Mvc.Models
 {
     public class MenuModel
     {

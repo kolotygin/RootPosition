@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace Web.Mvc.Html
+namespace Root.Web.Mvc.Html
 {
     public static class MvcUrl
     {

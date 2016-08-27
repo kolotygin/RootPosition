@@ -3,7 +3,7 @@ using System.IO;
 using System.Runtime.Serialization.Json;
 using System.Text;
 
-namespace RootPosition.Infrastructure.JavaScript
+namespace Root.Web.JavaScript
 {
     /// <summary>
     /// Serialize or Deserialize Json

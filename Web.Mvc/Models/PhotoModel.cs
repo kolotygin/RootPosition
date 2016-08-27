@@ -2,7 +2,7 @@
 using System.Web;
 using System.Web.UI.WebControls;
 
-namespace Web.Mvc.Models
+namespace Root.Web.Mvc.Models
 {
 
     public class PhotoModel

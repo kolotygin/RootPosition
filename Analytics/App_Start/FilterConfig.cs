@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace Analytics
+namespace Root.Analytics
 {
     public class FilterConfig
     {

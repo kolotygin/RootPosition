@@ -1,6 +1,6 @@
 ﻿using System.Web.Http;
 
-namespace Analytics
+namespace Root.Analytics
 {
     public static class WebApiConfig
     {

@@ -1,7 +1,7 @@
 ﻿using System.Runtime.Serialization;
-using RootPosition.Infrastructure.JavaScript;
+using Root.Web.JavaScript;
 
-namespace RootPosition.Infrastructure.Collections
+namespace Root.Web.Collections
 {
     [DataContract]
     public class SerializableKeyValuePair<TKey, TValue>

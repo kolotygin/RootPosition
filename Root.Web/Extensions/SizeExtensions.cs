@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Web.UI.WebControls;
 
-namespace Infrastructure.Extensions
+namespace Root.Infrastructure.Extensions
 {
     public static class SizeExtensions
     {

@@ -1,7 +1,7 @@
-﻿@using Web.Mvc.Url
+﻿@using Root.Web.Mvc.Url
 @{ Layout = "~/Views/Shared/_Layout.cshtml"; }
 
-@Url.Resources().Styles.Add(Url.Content("~/CSS/contacts.css"))
+@Url.Resources().Styles.Add("~/CSS/contacts.css")
 
 @section Body {
 <div role="body">

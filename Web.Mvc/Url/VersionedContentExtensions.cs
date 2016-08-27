@@ -1,11 +1,10 @@
 ﻿using System;
-using System.IO;
 using System.Web;
 using System.Web.Caching;
-using System.Web.Hosting;
 using System.Web.Mvc;
+using Root.Web.Url;
 
-namespace Web.Mvc.Url
+namespace Root.Web.Mvc.Url
 {
     public static class VersionedContentExtensions
     {
@@ -24,18 +23,15 @@ namespace Web.Mvc.Url
         private static string GetVersionedContentUrl(UrlHelper helper, string contentPath)
         {
             var contentUrl = helper.Content(contentPath);
-            var physicalPath = HostingEnvironment.MapPath(contentPath);
-
-            if (!File.Exists(physicalPath))
+            var version = CurrentApplication.GetVersion();
+            if (!string.IsNullOrEmpty(version))
             {
-                return contentUrl;
+                var webResourceUrl = new WebResourceUrl(contentUrl);
+                webResourceUrl.Parameters.Add("ver", version);
+                return webResourceUrl.ToPathAndQuery();
             }
-            var version = @"v=" + File.GetLastWriteTime(physicalPath).ToString(@"yyyyMMddhhmmss");
-
-            var versionedContentUrl = contentPath.Contains(@"?") ? contentUrl + @"&" + version
-                    : contentUrl + @"?" + version;
-
-            return versionedContentUrl;
+            return contentUrl;
         }
+
     }
 }

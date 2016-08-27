@@ -3,7 +3,7 @@ using BundleTransformer.Core.Builders;
 using BundleTransformer.Core.Orderers;
 using BundleTransformer.Core.Transformers;
 
-namespace RootPosition
+namespace Root.RootPosition
 {
     public class BundleConfig
     {

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
-using Web.Mvc.Models;
+using Root.Web.Mvc.Models;
 
-namespace RootPosition.Controllers
+namespace Root.RootPosition.Controllers
 {
     public class MenuController : Controller
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Infrastructure.Extensions
+namespace Root.Infrastructure.Extensions
 {
     public static class StringExtensions
     {

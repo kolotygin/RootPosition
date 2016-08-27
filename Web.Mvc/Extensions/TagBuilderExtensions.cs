@@ -1,6 +1,6 @@
 using System.Web.Mvc;
 
-namespace Web.Mvc.Extensions
+namespace Root.Web.Mvc.Extensions
 {
 	public static class TagBuilderExtensions
 	{

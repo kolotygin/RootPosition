@@ -1,11 +1,11 @@
 ﻿using System.IO;
 using System.Web.Hosting;
 using System.Web.Mvc;
-using Infrastructure.Extensions;
-using Infrastructure.Imaging;
-using Web.Mvc;
+using Root.Infrastructure.Extensions;
+using Root.Infrastructure.Imaging;
+using Root.Web.Mvc;
 
-namespace RootPosition.Controllers
+namespace Root.RootPosition.Controllers
 {
     public class ImageController : Controller
     {
@@ -15,7 +15,7 @@ namespace RootPosition.Controllers
             var fullPath = HostingEnvironment.MapPath(file);
             if (!System.IO.File.Exists(fullPath))
             {
-                return new HttpNotFoundResult(string.Format("The file {0} does not exist.", file));
+                return new HttpNotFoundResult($"The file {file} does not exist.");
             }
             return new ImagePathResult(fullPath, GetContentType(fullPath));
         }
@@ -25,7 +25,7 @@ namespace RootPosition.Controllers
             var fullPath = HostingEnvironment.MapPath(file);
             if (!System.IO.File.Exists(fullPath))
             {
-                return new HttpNotFoundResult(string.Format("The file {0} does not exist.", file));
+                return new HttpNotFoundResult($"The file {file} does not exist.");
             }
             var stream = ImageResizer.Resize(fullPath, width, height, ImageResizeQuality.High);
             return new ImageStreamResult(stream, GetContentType(fullPath));

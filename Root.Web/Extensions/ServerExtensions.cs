@@ -1,7 +1,7 @@
-﻿using System;
-using System.Web;
+﻿using System.Web;
+using Root.Infrastructure.Extensions;
 
-namespace Infrastructure.Extensions
+namespace Root.Web.Extensions
 {
     public static class ServerExtensions
     {
@@ -12,7 +12,7 @@ namespace Infrastructure.Extensions
 
         public static string MapPathReverse(string absolutePath)
         {
-            return @"~\" + absolutePath.Replace(HttpContext.Current.Request.PhysicalApplicationPath.TextOrEmpty(), String.Empty);
+            return @"~\" + absolutePath.Replace(HttpContext.Current.Request.PhysicalApplicationPath.TextOrEmpty(), string.Empty);
         }
 
         static string GetVirtualPath(string absolutePath)
