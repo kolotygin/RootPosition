@@ -2,7 +2,7 @@
 
 namespace Root.Web.Mvc
 {
-    public static class MvcApplication
+    public static class CurrentApplication
     {
         public static string GetVersion()
         {
