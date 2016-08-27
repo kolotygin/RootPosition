@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Root.Infrastructure", "Infrastructure\Root.Infrastructure.csproj", "{2B5AFB8F-B499-417A-BCA7-921C3DBA036E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Root.Infrastructure", "Root.Infrastructure\Root.Infrastructure.csproj", "{2B5AFB8F-B499-417A-BCA7-921C3DBA036E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Root.Web.Mvc", "Web.Mvc\Root.Web.Mvc.csproj", "{6BDFECA3-B9F1-4D64-8ABE-6E87B19C5149}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Root.Web.Mvc", "Root.Web.Mvc\Root.Web.Mvc.csproj", "{6BDFECA3-B9F1-4D64-8ABE-6E87B19C5149}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Root.RootPosition", "RootPosition\Root.RootPosition.csproj", "{C112E62D-AB9D-4FD4-A670-D50518E0FCB1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Root.RootPosition", "Root.RootPosition\Root.RootPosition.csproj", "{C112E62D-AB9D-4FD4-A670-D50518E0FCB1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Root.Analytics", "Analytics\Root.Analytics.csproj", "{885D09DA-C4F7-4F4D-B234-7BB58A4A2F20}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Root.Analytics", "Root.Analytics\Root.Analytics.csproj", "{885D09DA-C4F7-4F4D-B234-7BB58A4A2F20}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Root.Web", "Root.Web\Root.Web.csproj", "{772B7AAE-8786-472A-8BF7-6D355AF03E2A}"
 EndProject

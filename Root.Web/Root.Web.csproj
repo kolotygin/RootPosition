@@ -55,7 +55,7 @@
     <Compile Include="Url\WebResourceUrl.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Infrastructure\Root.Infrastructure.csproj">
+    <ProjectReference Include="..\Root.Infrastructure\Root.Infrastructure.csproj">
       <Project>{2b5afb8f-b499-417a-bca7-921c3dba036e}</Project>
       <Name>Root.Infrastructure</Name>
     </ProjectReference>
