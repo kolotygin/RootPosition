@@ -1,0 +1,65 @@
+﻿@using Root.Web.Mvc.Url
+@{ Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+@Url.Resources().Styles.Add("~/CSS/music.css")
+
+@section Body {
+
+    <div role="body">
+
+        <div id="content">
+            <section id="music" role="music">
+                <p>For one thing, it’s a <em>World of Wonder!</em></p>
+
+                <p>Music can be all or any part of your life. It can give you a full-time career or part-time job, be your ‘ticket to travel’,  release tensions after a hard day’s work,  provide fun and relaxation for family and friends, bring pleasure to those around you, and keep you learning and active into your senior-citizen years.</p>
+                <p>Playing piano is more than just taking lessons, it help the students to develop <em>Life Skills</em> through Music:</p>
+                <ul>
+                    <li>
+                        <p>Increase your brain’s memory capacity</p>
+                    </li>
+                    <li>
+                        <p>Improve (as much as 30-40%) in math, reading and comprehension skills</p>
+                    </li>
+                    <li>
+                        <p>Refine your time management and organizational skills</p>
+                    </li>
+                    <li>
+                        <p>Affect both sides of the brain</p>
+                    </li>
+                    <li>
+                        <p>Sharpen concentration, attention to detail and discipline</p>
+                    </li>
+                    <li>
+                        <p>Develop better social skills, self-esteem and more ...</p>
+                    </li>
+                </ul>
+            </section>
+        </div>
+
+        <aside id="sidebar" role="complementary">
+            <blockquote class="pullquote" cite="../Testimonials">
+                @Html.ActionLink("Olga sees each student as an individual and draws upon their strengths to teach them in ways that work best for them...", "Index", "Testimonials")
+                <p class="author">~ Igor Dianov</p>
+            </blockquote>
+
+            <blockquote class="pullquote" cite="../Testimonials">
+                @Html.ActionLink("Olga has been demonstrating her patience and encouraging personality, which are critical for starting students, along with her excellent teaching skills and passion for music...", "Index", "Testimonials")
+                <p class="author">~ Songlin Ye</p>
+            </blockquote>
+
+            <blockquote class="pullquote" cite="../Testimonials">
+                @Html.ActionLink("Olga sees each student as an individual and draws upon their strengths to teach them in ways that work best for them...", "Index", "Testimonials")
+                <p class="author">~ Iana Machinskaia</p>
+            </blockquote>
+
+            <blockquote class="pullquote" cite="../Testimonials">
+                @Html.ActionLink("Olga is very positive and encouraging Teacher who is able to make students feel confident and motivated...", "Index", "Testimonials")
+                <p class="author">~ Nisveta  Nikki Mujezinovic</p>
+            </blockquote>
+        </aside>
+
+    </div>
+}
+
+@section Scripts {
+}

@@ -2,11 +2,11 @@
 
 namespace Root.RootPosition.Controllers
 {
-    public class PianoController : Controller
+    public class MusicController : Controller
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Piano";
+            ViewBag.Title = "Why study music";
             return View();
         }
     }

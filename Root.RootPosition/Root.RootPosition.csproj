@@ -46,8 +46,8 @@
       <HintPath>..\packages\BundleTransformer.Core.1.9.92\lib\net40\BundleTransformer.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="BundleTransformer.UglifyJs, Version=1.9.120.0, Culture=neutral, PublicKeyToken=973c344c93aac60d, processorArchitecture=MSIL">
-      <HintPath>..\packages\BundleTransformer.UglifyJs.1.9.120\lib\net40\BundleTransformer.UglifyJs.dll</HintPath>
+    <Reference Include="BundleTransformer.UglifyJs, Version=1.9.121.0, Culture=neutral, PublicKeyToken=973c344c93aac60d, processorArchitecture=MSIL">
+      <HintPath>..\packages\BundleTransformer.UglifyJs.1.9.121\lib\net40\BundleTransformer.UglifyJs.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -152,9 +152,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
-    <Compile Include="Controllers\PianoController.cs" />
+    <Compile Include="Controllers\MusicController.cs" />
     <Compile Include="Controllers\TestimonialsController.cs" />
-    <Compile Include="Controllers\VoiceController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -175,6 +174,7 @@
     <Content Include="CSS\root-position.css" />
     <Content Include="CSS\slimbox2.css" />
     <Content Include="CSS\testimonials.css" />
+    <Content Include="CSS\music.css" />
     <Content Include="CSS\voice.css" />
     <Content Include="Global.asax" />
     <Content Include="Images\arrows-sprite.png" />
@@ -231,6 +231,7 @@
     <Content Include="Views\Shared\Menu.cshtml" />
     <Content Include="Views\Testimonials\Index.cshtml" />
     <Content Include="Views\Voice\Index.cshtml" />
+    <Content Include="Views\Music\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
