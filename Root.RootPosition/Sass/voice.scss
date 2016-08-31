@@ -1,0 +1,15 @@
+﻿section[role="voice-techniques"] em {
+	font-weight: bold;
+	font-style: normal;
+}
+
+section[role="voice-techniques"] ul {
+	margin: 0;
+	padding: 0 0 0 0.3em; /* 1em left padding aligns to the left side of the container */
+	list-style-position: outside;
+	list-style-type: disc;
+}
+
+section[role="voice-techniques"] ul li {
+	margin: 0 0 0 1em;
+}

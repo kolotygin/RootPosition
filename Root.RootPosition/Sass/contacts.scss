@@ -1,0 +1,62 @@
+﻿section[role="direction"] {
+	text-align: left;
+}
+
+section[role="direction"] iframe {
+	width: 100%;
+	height: 50em;
+	border: none;
+	overflow: hidden;
+	padding: 0;
+
+	border: 0.1em solid #888;
+	border-color:  #BBB #888 #888 #BBB;
+
+	-webkit-box-shadow: 0.2em 0.2em 0.37em #666;
+	-moz-box-shadow: 0.2em 0.2em 0.37em #666;
+	box-shadow: 0.2em 0.2em 0.37em #666;
+}
+
+section[role="direction"] a:visited,
+section[role="direction"] a:hover,
+section[role="direction"] a:link,
+section[role="direction"] a:active {
+	font-family: "Maiandra GD", "Gill Sans", Helvetica, Arial, sans-serif;
+	font-style: normal;
+	font-size: 1.6em;
+	color: #333;
+	text-decoration: underline;
+}
+
+aside[role="complementary"] address {
+	text-align: right;
+	width: 100%;
+}
+
+aside[role="complementary"] address span {
+	display: inline-block;
+	font-family: "Maiandra GD", "Gill Sans", Helvetica, Arial, sans-serif;
+	font-style: normal;
+	font-size: 1.6em;
+	line-height: 2em;
+	color: #333;
+	font-weight: 500;
+}
+
+aside[role="complementary"] address span a:visited,
+aside[role="complementary"] address span a:hover,
+aside[role="complementary"] address span a:link,
+aside[role="complementary"] address span a:active {
+/*	font-family: "Maiandra GD", "Gill Sans", Helvetica, Arial, sans-serif;*/
+	font-family: "Gill Sans", Helvetica, Arial, sans-serif;
+	font-style: normal;
+	font-size: 1em;
+	color: #333;
+	text-decoration: none;
+	border-bottom: 1px dotted;
+}
+
+aside[role="complementary"] address abbr {
+	border-bottom: 1px dotted;
+	cursor: help;
+}

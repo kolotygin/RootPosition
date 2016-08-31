@@ -1,0 +1,246 @@
+﻿div[role="body"] {
+    padding: 0 2em 10em;
+}
+
+#content {
+	padding: 0;
+	width: 100%;
+	max-width: 100%;
+    margin: 0;
+}
+
+section[role="photos"] h3 {
+	margin-top: 2em;
+	font-size: 2em;
+	font-weight: normal;
+	color: #724848;
+	border-bottom: 1px solid #724848;
+}
+
+.gl-slides-center-column-wrapper {
+	float: left;
+	width: 100%;
+}
+
+.gl-slides-center-column {
+	height: 18.4em;
+	overflow: hidden; /* So the sliding bit doesn't stick out. */
+	float: left;
+	position: relative;
+	margin: 1em 3em;
+}
+
+.gl-slides-left-column, .gl-slides-right-column {
+    float: left;
+    height: 20.2em;
+    width: 3em;
+    position: relative;
+}
+
+.gl-slides-left-column {
+    margin-left: -100%;
+}
+
+.gl-slides-right-column {
+    margin-left: -3em;
+}
+
+a.gl-slides-prev-button,
+a.gl-slides-prev-button:link,
+a.gl-slides-prev-button:visited,
+a.gl-slides-prev-button:hover,
+a.gl-slides-prev-button:active,
+a.gl-slides-next-button,
+a.gl-slides-next-button:link,
+a.gl-slides-next-button:visited,
+a.gl-slides-next-button:hover,
+a.gl-slides-next-button:active {
+    margin: 1em 0;
+    height: 18.2em;
+    width: 30px;
+    text-indent: -1000em;
+    background: transparent url(../Images/arrows-sprite.png) no-repeat 0 0;
+}
+
+a.gl-slides-prev-button {
+    float: left;
+}
+
+a.gl-slides-next-button {
+    float: right;
+}
+
+a.gl-slides-prev-button:link {
+    background-position: 0 50%;
+}
+
+a.gl-slides-prev-button:hover {
+    background-position: -30px 50%;
+}
+
+a.gl-slides-prev-button:active {
+    background-position: -60px 50%;
+}
+
+a.gl-slides-next-button:link {
+    background-position: -216px 50%;
+}
+
+a.gl-slides-next-button:hover {
+    background-position: -186px 50%;
+}
+
+a.gl-slides-next-button:active {
+    background-position: -156px 50%;
+}
+
+section[role="photos"] ul {
+	list-style-type: none;
+	float: left;
+	padding: 0;
+	-webkit-transition:all 1.0s ease-in-out;
+	-moz-transition:all 1.0s ease-in-out;
+	-o-transition:all 1.0s ease-in-out;
+	transition:all 1.0s ease-in-out;
+	/*margin-right: -999em;*/
+}
+
+section[role="photos"] ul li {
+	display: block;
+	float: left;
+	margin: 0 0 1.4em 1.7em;
+}
+
+section[role="photos"] ul li a {
+	background: none repeat scroll 0 0 #ffffff;
+	/*background: none repeat scroll 0 0 rgb(239, 236, 229);*/
+	border: 0.063em solid #aaa;
+	border-color: #aaa #666 #666 #aaa;
+/*
+	-moz-border-radius: 0.5em;
+	-webkit-border-radius: 0.5em;
+	border-radius: 0.5em;
+/*
+	-webkit-box-shadow: 0.2em 0.2em 0.37em #aaa;
+	-moz-box-shadow: 0.2em 0.2em 0.37em #aaa;
+	box-shadow: 0.2em 0.2em 0.37em #aaa;
+*/
+	display: block;
+	overflow: hidden;
+	line-height: 16em;
+	padding: 1em;
+
+	text-align: center;
+
+	width: 16em;
+	height: 16em;
+}
+
+section[role="photos"] ul li a img {
+    border: 0.063em solid #aaa;
+    border-color: #666 #aaa #aaa #666;
+    opacity: 0.9;
+}
+
+section[role="photos"] ul li a img.ls {
+    width: 100%;
+    vertical-align: middle;
+}
+
+section[role="photos"] ul li a img.pt {
+    height: 100%;
+}
+
+section[role="photos"] ul li a:hover {
+	/*background: none repeat scroll 0 0 #FF8539;*/
+/*
+	background: none repeat scroll 0 0 #B0281A;
+*/
+}
+
+section[role="photos"] ul li a:hover img {
+    opacity: 1;
+}
+
+section[role="photos"] ul li a.gl-photo-loading {
+    background: #fff url(../Images/in-progress-small.gif) no-repeat 50% 50%;
+}
+
+section[role="photos"] ul li a.gl-photo-loading img {
+    display: none;
+}
+
+/*
+section[role="photos"] ul li a em {
+    display: none;
+}
+
+section[role="photos"] ul li a.horiz span img {
+    border: 1px solid #888888;
+    margin-top: 21px;
+}
+
+section[role="photos"] ul li a.vert span img {
+    border: 1px solid #888888;
+    margin-top: 9px;
+}
+
+section[role="photos"] ul li a:active, section[role="photos"] .ul li a:focus {
+    background: none repeat scroll 0 0 #AAAAAA;
+    border: 0 none;
+    height: 0;
+    width: 0;
+}
+
+section[role="photos"] ul li a:active em, section[role="photos"] ul li a:focus em {
+    background: none repeat scroll 0 0 #BBBBBB;
+    border: 0 none;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    width: 0;
+}
+
+section[role="photos"] ul li a.horiz:active em, section[role="photos"] ul li a.horiz:focus em {
+    background: none repeat scroll 0 0 #DDDDDD;
+    border: 1px solid #FFFFFF;
+    cursor: default;
+    display: block;
+    height: 480px;
+    left: 15px;
+    position: absolute;
+    top: 100px;
+    width: 640px;
+    z-index: 500;
+}
+
+section[role="photos"] ul li a.horiz:active em img, section[role="photos"] ul li a.horiz:focus em img {
+    border: 0 none;
+}
+
+section[role="photos"] ul li a.vert:active em, section[role="photos"] ul li a.vert:focus em {
+    background: none repeat scroll 0 0 #DDDDDD;
+    border: 1px solid #FFFFFF;
+    cursor: default;
+    display: block;
+    height: 640px;
+    left: 95px;
+    position: absolute;
+    top: 23px;
+    width: 480px;
+    z-index: 500;
+}
+
+section[role="photos"] ul li a.vert:active em img, section[role="photos"] ul li a.vert:focus em img {
+    border: 0 none;
+}
+
+section[role="photos"] span.clr {
+    clear: both;
+    display: block;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+    width: 0;
+}
+*/

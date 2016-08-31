@@ -109,8 +109,7 @@ Root.GetControl = function(controlId) {
             control = document.forms[controlId];
         }
         else {
-            var i;
-            for (i = 0; i < document.forms.length; i++) {
+            for (var i = 0; i < document.forms.length; i++) {
                 if (document.forms[i][controlId]) {
                     control = document.forms[i][controlId];
                     break;
@@ -124,8 +123,7 @@ Root.GetControl = function(controlId) {
 Root.GetControls = function(controlIDs) {
     if (Root.IsArray(controlIDs)) {
         var returnArray = new Array(controlIDs.length);
-        var i;
-        for (i = 0; i < controlIDs.length; i++) {
+        for (var i = 0; i < controlIDs.length; i++) {
             returnArray[i] = Root.GetControl(controlIDs[i]);
         }
         return returnArray;
@@ -232,14 +230,14 @@ Root.GetIFrameDocument = function(iframe) {
 // then this may differ.
 Root.CanHaveVerticalScrollBar = function(element) {
     if (Object.isNullOrUndefined(element)) {
-        element = document.compatMode == 'BackCompat' ? document.body : document.documentElement;
+        element = document.compatMode === 'BackCompat' ? document.body : document.documentElement;
     }
     return element.scrollHeight > element.clientHeight;
 };
 
 Root.CanHaveHorizontalScrollBar = function(element) {
     if (Object.isNullOrUndefined(element)) {
-        element = document.compatMode == 'BackCompat' ? document.body : document.documentElement;
+        element = document.compatMode === 'BackCompat' ? document.body : document.documentElement;
     }
     return element.scrollWidth > element.clientWidth;
 };
@@ -543,8 +541,11 @@ if (typeof Date.prototype.format === "undefined") {
             pattern = pattern.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
         }
         for (var k in o) {
-            if (new RegExp("(" + k + ")").test(pattern)) {
-                pattern = pattern.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
+            if (o.hasOwnProperty(k)) {
+                if (new RegExp("(" + k + ")").test(pattern)) {
+                    pattern = pattern.replace(RegExp.$1,
+                        RegExp.$1.length === 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
+                }
             }
         }
         return pattern;
