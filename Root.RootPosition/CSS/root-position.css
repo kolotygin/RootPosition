@@ -6,7 +6,8 @@ html, form, body {
 }
 
 body {
-	font: 62.5%/1.6 "Maiandra GD", "Lucida Grande", "Lucida Sans", "Lucida Sans Unicode", Verdana, sans-serif;
+	/*font: 62.5%/1.6 "Maiandra GD", "Lucida Grande", "Lucida Sans", "Lucida Sans Unicode", Verdana, sans-serif;*/
+	font: 62.5%/1.6 "Maiandra GD V2", sans-serif;
 	color: #333;
 	background: #ffffff;
 	min-width: 92em;
@@ -29,7 +30,8 @@ p {
 	margin: 1em 0;
 	font-size: 1.8em;
 	text-align: justify;
-	font-family: "Maiandra GD", "Gill Sans", Helvetica, Arial, sans-serif;
+	/*font-family: "Maiandra GD", "Gill Sans", Helvetica, Arial, sans-serif;*/
+	font-family: "Maiandra GD V2", sans-serif;
     /*font-family: "Roboto", "Helvetica Neue", Arial, sans-serif;*/
 }
 
@@ -95,7 +97,8 @@ nav[role="navigation"] ul li.last {
 nav[role="navigation"] ul li a {
 	float: left;
 	width: 100%;
-	font-family: "Gill Sans", Helvetica, Arial, sans-serif;
+	/*font-family: "Gill Sans", Helvetica, Arial, sans-serif;*/
+    font-family: sans-serif;
 	font-size: 1.3em;
 	line-height: 2em;
 	font-weight: 800;
@@ -361,9 +364,8 @@ blockquote.pullquote a:visited,
 blockquote.pullquote a:hover,
 blockquote.pullquote a:link,
 blockquote.pullquote a:active {
-    font-family: "Alegreya CS", serif;
 	font-style: italic;
-    font-size: 1.6em;
+    font-size: 1.5em;
 	display: inline-block;
 	vertical-align: baseline;
 	color: #D14836;
@@ -379,7 +381,7 @@ blockquote.pullquote p.author {
     font-size: 1.4em;
     text-align: right;
 	font-size: 1.4em;
-	font-family: "Alegreya CS", serif;
+	font-family: "Alegreya", serif;
 }
 
 blockquote.pullquote:hover a,
@@ -407,7 +409,6 @@ footer[role="siteinfo"] {
 	padding: 0.5em 0;
 	position: absolute;
 	bottom:0; /* stick to bottom */
-
     background: rgb(97, 14, 14);
 }
 
@@ -461,14 +462,14 @@ footer[role="siteinfo"] p a:hover, footer[role="siteinfo"] p#copyright a:hover {
     color: #fff;
 }
 
-footer[role="siteinfo"] abbr {
-	border-bottom: 1px dotted;
-	cursor: help;
+abbr {
+    border-bottom: 1px dotted;
+    cursor: help;
 }
 
 /*
-	Text Selection Color with CSS:
-*/
+ *   Text Selection Color with CSS:
+ */
 
 * {
 	-webkit-user-select: none;

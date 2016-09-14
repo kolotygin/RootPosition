@@ -67,6 +67,7 @@ UpgradeLog*.XML
 
 Root.RootPosition/[Bb]in/*
 Root.RootPosition/node_modules/*
+Root.RootPosition/PhotoGallery/*
 Root.Analytics/[Bb]in/*
 Root.Web/[Bb]in/*
 Root.Web.Mvc/[Bb]in/*

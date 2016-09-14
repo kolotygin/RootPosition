@@ -1,6 +1,7 @@
 ﻿section[role="music"] em {
-	font-weight: bold;
-	font-style: normal;
+    font-family: "Maiandra GD Demi Bold";
+    font-style: normal;
+    color: rgb(97, 14, 14);
 }
 
 section[role="music"] ul {
@@ -11,5 +12,9 @@ section[role="music"] ul {
 }
 
 section[role="music"] ul li {
-	margin: 0 0 0 1em;
+  margin: 0 0 0 1em;
+}
+
+section[role="music"] ul li p {
+  text-align: left;
 }

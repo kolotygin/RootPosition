@@ -1,4 +1,15 @@
-﻿/* latin-ext */
+﻿@font-face {
+  font-family: 'Dr Sugiyama';
+  src: url('/fonts/DrSugiyama-Regular/DrSugiyama.eot?#iefix') format('embedded-opentype'),
+      url('/fonts/DrSugiyama-Regular/DrSugiyama.woff') format('woff'),
+      url('/fonts/DrSugiyama-Regular/DrSugiyama.ttf') format('truetype'),
+      url('/fonts/DrSugiyama-Regular/DrSugiyama.svg#DrSugiyama') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*
+/* latin-ext !1!
 @font-face {
   font-family: 'Dr Sugiyama';
   font-style: normal;
@@ -7,16 +18,16 @@
   unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
 }
 
-/* latin */
+/* latin !1!
 @font-face {
   font-family: 'Dr Sugiyama';
   font-style: normal;
   font-weight: 400;
   src: local('Dr Sugiyama Regular'), local('DrSugiyama-Regular'), url(http://fonts.gstatic.com/s/drsugiyama/v5/rq_8251Ifx6dE1Mq7bUM6Y4P5ICox8Kq3LLUNMylGO4.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
-}
+*/
 
-/* latin */
+/* latin !1!
 @font-face {
   font-family: 'Damion';
   font-style: normal;
@@ -24,8 +35,23 @@
   src: local('Damion'), url(http://fonts.gstatic.com/s/damion/v6/DwAj7ratfj53tabaOiOW3g.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
 }
+*/
 
-/* latin-ext */
+@font-face {
+  font-family: 'Alegreya';
+  src: url('/fonts/Alegreya-Regular/Alegreya-Regular.eot');
+  src: url('/fonts/Alegreya-Regular/Alegreya-Regular.eot?#iefix') format('embedded-opentype'),
+    url('/fonts/Alegreya-Regular/Alegreya-Regular.otf') format('opentype'),
+    url('/fonts/Alegreya-Regular/Alegreya-Regular.woff') format('woff'),
+    url('/fonts/Alegreya-Regular/Alegreya-Regular.ttf') format('truetype'),
+    url('/fonts/Alegreya-Regular/Alegreya-Regular.svg#AlegreyaSC-Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*
+
+/* latin-ext !1!
 @font-face {
   font-family: 'Alegreya';
   font-style: normal;
@@ -34,7 +60,7 @@
   unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
 }
 
-/* latin */
+/* latin !1!
 @font-face {
   font-family: 'Alegreya';
   font-style: normal;
@@ -42,3 +68,65 @@
   src: local('Alegreya'), local('Alegreya-Regular'), url(https://fonts.gstatic.com/s/alegreya/v7/4vRXIs1BEbKX6mQ7lGu1I_esZW2xOQ-xsNqO47m55DA.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
 }
+
+*/
+
+@font-face {
+  font-family: "Maiandra GD";
+  src: url(/fonts/MaiandraGD/v1/0dc85fad34f00fbec56d8081d0f9267a.eot); /* IE9*/
+  src: url(/fonts/MaiandraGD/v1/0dc85fad34f00fbec56d8081d0f9267a.eot?#iefix) format("embedded-opentype"), /* IE6-IE8 */
+  url(/fonts/MaiandraGD/v1/0dc85fad34f00fbec56d8081d0f9267a.woff2) format("woff2"), /* chrome、firefox */
+  url(/fonts/MaiandraGD/v1/0dc85fad34f00fbec56d8081d0f9267a.woff) format("woff"), /* chrome、firefox */
+  url(/fonts/MaiandraGD/v1/0dc85fad34f00fbec56d8081d0f9267a.ttf) format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url("/fonts/MaiandraGD/v1/0dc85fad34f00fbec56d8081d0f9267a.svg#Maiandra GD") format("svg"); /* iOS 4.1- */
+}
+
+@font-face {
+  font-family: "Maiandra GD V2";
+  font-style: normal;
+  src: url(/fonts/MaiandraGD/v2/0141df8c3436a6c3eb8be69855e1ec0d.eot); /* IE9*/
+  src: url(/fonts/MaiandraGD/v2/0141df8c3436a6c3eb8be69855e1ec0d.eot?#iefix) format("embedded-opentype"), /* IE6-IE8 */
+  url(/fonts/MaiandraGD/v2/0141df8c3436a6c3eb8be69855e1ec0d.woff2) format("woff2"), /* chrome,firefox */
+  url(/fonts/MaiandraGD/v2/0141df8c3436a6c3eb8be69855e1ec0d.woff) format("woff"), /* chrome, firefox */
+  url(/fonts/MaiandraGD/v2/0141df8c3436a6c3eb8be69855e1ec0d.ttf) format("truetype"), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url("/fonts/MaiandraGD/v2/0141df8c3436a6c3eb8be69855e1ec0d.svg#Maiandra GD V2") format("svg"); /* iOS 4.1- */
+}
+
+@font-face {
+  font-family: "Maiandra GD Demi Bold";
+  src: url(/fonts/MaiandraGDDemiBold/v1/48c596760aabb6ee49d0cb9a1e134380.eot); /* IE9*/
+  src: url(/fonts/MaiandraGDDemiBold/v1/48c596760aabb6ee49d0cb9a1e134380.eot?#iefix) format("embedded-opentype"), /* IE6-IE8 */
+  url(/fonts/MaiandraGDDemiBold/v1/48c596760aabb6ee49d0cb9a1e134380.woff2) format("woff2"), /* chrome、firefox */
+  url(/fonts/MaiandraGDDemiBold/v1/48c596760aabb6ee49d0cb9a1e134380.woff) format("woff"), /* chrome、firefox */
+  url(/fonts/MaiandraGDDemiBold/v1/48c596760aabb6ee49d0cb9a1e134380.ttf) format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url("/fonts/MaiandraGDDemiBold/v1/48c596760aabb6ee49d0cb9a1e134380.svg#Maiandra GD Demi Bold") format("svg"); /* iOS 4.1- */
+}
+
+@font-face {
+  font-family: "Maiandra GD Demi Bold V2";
+  src: url(/fonts/MaiandraGDDemiBold/v2/54c3eac3447a34e26b61565d2caa1f34.eot); /* IE9*/
+  src: url(/fonts/MaiandraGDDemiBold/v2/54c3eac3447a34e26b61565d2caa1f34.eot?#iefix) format("embedded-opentype"), /* IE6-IE8 */
+  url(/fonts/MaiandraGDDemiBold/v2/54c3eac3447a34e26b61565d2caa1f34.woff2) format("woff2"), /* chrome、firefox */
+  url(/fonts/MaiandraGDDemiBold/v2/54c3eac3447a34e26b61565d2caa1f34.woff) format("woff"), /* chrome、firefox */
+  url(/fonts/MaiandraGDDemiBold/v2/54c3eac3447a34e26b61565d2caa1f34.ttf) format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url("/fonts/MaiandraGDDemiBold/v2/54c3eac3447a34e26b61565d2caa1f34.svg#Maiandra GD Demi Bold V2") format("svg"); /* iOS 4.1- */
+}
+
+/* latin-ext !1!
+@font-face {
+  font-family: 'Englebert';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Englebert'), local('Englebert-Regular'), url(https://fonts.gstatic.com/s/englebert/v4/MykG8TVW-QHabUz_HyszNBJtnKITppOI_IvcXXDNrsc.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* latin !1!
+@font-face {
+  font-family: 'Englebert';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Englebert'), local('Englebert-Regular'), url(https://fonts.gstatic.com/s/englebert/v4/5vhE18ztcHRcsYmBaZ6CaFtXRa8TVwTICgirnJhmVJw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+*/

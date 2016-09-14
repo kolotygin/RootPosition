@@ -6,12 +6,12 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 
-    Url.Resources().Styles.Add("~/Css/root.photo-box.css");
+    Url.Resources().Styles.Add("~/CSS/root.photo-box.css");
     if (Request.Browser.Browser.Trim().Equals("IE", StringComparison.InvariantCultureIgnoreCase) && Request.Browser.MajorVersion < 7)
     {
-        Url.Resources().Styles.Add("~/Css/ie6-overlay.css");
+        Url.Resources().Styles.Add("~/CSS/ie6-overlay.css");
     }
-    Url.Resources().Styles.Add("~/Css/gallery.css");
+    Url.Resources().Styles.Add("~/CSS/gallery.css");
 
     Url.Resources().Scripts.Add("~/Bundles/Gallery");
 }

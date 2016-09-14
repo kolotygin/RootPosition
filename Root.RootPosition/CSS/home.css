@@ -12,16 +12,15 @@
 section[role="lessons-reasons"] {
     background: url(/Images/clef.png) 4em 0 no-repeat;
     padding: 4em 2.2em 10em 2.2em;
+    -ms-background-size: contain;
     background-size: contain;
 }
 
 section[role="lessons-reasons"] ul {
     margin: 0;
-    /* padding: 0 0 0 0.5em; */
     list-style-position: outside;
     list-style-type: none /*lower-roman*/;
     font-size: 1.2em;
-    /* direction: rtl; */
 }
 
 section[role="lessons-reasons"] ul li {
@@ -29,14 +28,8 @@ section[role="lessons-reasons"] ul li {
 }
 
 section[role="lessons-reasons"] p {
+    font-size: 1.6em;
     text-align: right;
     margin: 0.2em 1em 0.2em 0.4em;
     color: #B0281A;
-    font-size: 1.6em;
-    /*font-family: 'Segoe UI Light','Segoe UI',Arial,Helvetica,Sans-Serif;*/
-}
-
-section[role="lessons-reasons"] abbr {
-    border-bottom: 1px dotted;
-    cursor: help;
 }

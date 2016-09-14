@@ -21,7 +21,8 @@ section[role="direction"] a:visited,
 section[role="direction"] a:hover,
 section[role="direction"] a:link,
 section[role="direction"] a:active {
-	font-family: "Maiandra GD", "Gill Sans", Helvetica, Arial, sans-serif;
+	/*font-family: "Maiandra GD", "Gill Sans", Helvetica, Arial, sans-serif;*/
+	font-family: "Maiandra GD V2", sans-serif;
 	font-style: normal;
 	font-size: 1.6em;
 	color: #333;
@@ -34,8 +35,9 @@ aside[role="complementary"] address {
 }
 
 aside[role="complementary"] address span {
-	display: inline-block;
-	font-family: "Maiandra GD", "Gill Sans", Helvetica, Arial, sans-serif;
+	display: block;
+	/*font-family: "Maiandra GD", "Gill Sans", Helvetica, Arial, sans-serif;*/
+	font-family: "Maiandra GD V2", sans-serif;
 	font-style: normal;
 	font-size: 1.6em;
 	line-height: 2em;

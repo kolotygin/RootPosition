@@ -1,10 +1,11 @@
-// Global namespace
+;// Global namespace
 var Root = Root || {};
 
 // Singleton (Instance in a Closure)
 Root.PhotoBox = function (options) {
+    var self = this;
 
-    this._options = {
+    self._options = {
         loop: false, // Allows to navigate between first and last images
         overlayOpacity: 0.8, // 1 is opaque, 0 is completely transparent (change the color in the CSS file)
         overlayFadeDuration: 400, // Duration of the overlay fade-in and fade-out animations (in milliseconds)
@@ -23,27 +24,26 @@ Root.PhotoBox = function (options) {
         noImageAvailable: "/Images/child-singing.jpg"
     };
 
-    this._options = $.extend(this._options, options);
-    this._ie6 = ($.browser && $.browser.msie && parseFloat($.browser.version) < 7);
+    self._options = $.extend(self._options, options);
+    self._ie6 = ($.browser && $.browser.msie && parseFloat($.browser.version) < 7);
 
-    this._$window = $(window);
+    self._$window = $(window);
 
-    this._images = null;
-    this._currentImageIndex = -1;
-    this._prevImageIndex = -1;
-    this._nextImageIndex = -1;
+    self._images = null;
+    self._currentImageIndex = -1;
+    self._prevImageIndex = -1;
+    self._nextImageIndex = -1;
 
-    var self = this;
-    this._onKeyDownFunction = function (event) { self._onKeyDown(event); };
-    this._onResizeFunction = function (event) { self._center(event); };
-    this._onImageLoadedFunction = function (event) { self._onImageLoaded(event); };
+    self._onKeyDownFunction = function (event) { self._onKeyDown(event); };
+    self._onResizeFunction = function (event) { self._center(event); };
+    self._onImageLoadedFunction = function (event) { self._onImageLoaded(event); };
 
-    this._closeFunction = function () { self._close(); return false; };
-    this._prevImageFunction = function () { self._showPrevImage(); };
-    this._nextImageFunction = function () { self._showNextImage(); };
-    this._showPrevImageFunction = function () { self._showImage(self._prevImageIndex); };
-    this._showNextImageFunction = function () { self._showImage(self._nextImageIndex); };
-    this._hideLayoutFunction = function () { self._hideLayout(); };
+    self._closeFunction = function () { self._close(); return false; };
+    self._prevImageFunction = function () { self._showPrevImage(); };
+    self._nextImageFunction = function () { self._showNextImage(); };
+    self._showPrevImageFunction = function () { self._showImage(self._prevImageIndex); };
+    self._showNextImageFunction = function () { self._showImage(self._nextImageIndex); };
+    self._hideLayoutFunction = function () { self._hideLayout(); };
 
     //	this._loadingImage = new Image();
     //	this._$loadingImage = jQuery(this._loadingImage);
@@ -55,37 +55,37 @@ Root.PhotoBox = function (options) {
 Root.PhotoBox.prototype = {
 
     _createLayout: function () {
+        var self = this;
 
-        this._image = new Image();
-        this._image.setAttribute("unselectable", "on");
-        this._image.tabIndex = "-1";
-        this._$image = $(this._image);
-        this._$image.load(this._onImageLoadedFunction);
-        this._$image.error(this._onImageLoadedFunction);
+        self._image = new Image();
+        self._image.setAttribute('unselectable', 'on');
+        self._image.tabIndex = '-1';
+        self._$image = $(self._image);
 
-        this._$overlay = $('<div id="overlay-container" />');
-        this._overlay = this._$overlay[0];
-        this._$overlay.bind("click", this._closeFunction);
+        self._$image.on('load', self._onImageLoadedFunction);
+        self._$image.on('error', self._onImageLoadedFunction);
 
-        this._$container = $("<div id='photo-container' />");
-        this._$container.addClass("hide");
-        this._container = this._$container[0];
+        self._$overlay = $('<div id="overlay-container" />');
+        self._overlay = self._$overlay[0];
+        self._$overlay.bind('click', self._closeFunction);
 
-        this._$imageContainer = $('<div id="image-container" />');
-        this._imageContainer = this._$imageContainer[0];
+        self._$container = $('<div id="photo-container" />');
+        self._$container.addClass('hide');
+        self._container = self._$container[0];
 
-        this._imageContainer.appendChild(this._image);
-        //this._imageContainer.appendChild(this._loadingImage);
+        self._$imageContainer = $('<div id="image-container" />');
+        self._imageContainer = self._$imageContainer[0];
 
-        this._$closeButton = $('<a id="close-button" href="#" />').bind("click", this._closeFunction);
+        self._imageContainer.appendChild(self._image);
 
-        this._$prevImageButton = $('<a id="previous-button" href="#" />').bind("click", this._prevImageFunction);
-        this._$nextImageButton = $('<a id="next-button" href="#" />').bind("click", this._nextImageFunction);
+        self._$closeButton = $('<a id="close-button" href="#" />').bind('click', self._closeFunction);
+        self._$prevImageButton = $('<a id="previous-button" href="#" />').bind('click', self._prevImageFunction);
+        self._$nextImageButton = $('<a id="next-button" href="#" />').bind('click', self._nextImageFunction);
 
-        this._container.appendChild(this._$imageContainer[0]);
-        this._container.appendChild(this._$prevImageButton[0]);
-        this._container.appendChild(this._$nextImageButton[0]);
-        this._container.appendChild(this._$closeButton[0]);
+        self._container.appendChild(self._$imageContainer[0]);
+        self._container.appendChild(self._$prevImageButton[0]);
+        self._container.appendChild(self._$nextImageButton[0]);
+        self._container.appendChild(self._$closeButton[0]);
 
         /*
 		this._$footer = jQuery('<div id="footer-container" />');
@@ -160,23 +160,25 @@ Root.PhotoBox.prototype = {
     },
 
     _destroyLayout: function () {
-        this._$image.load = null;
-        this._$image.error = null;
-        this._image = null;
+        var self = this;
 
-        this._$overlay.unbind("click", this._closeFunction);
-        this._overlay = null;
+        self._$image.off('load');
+        self._$image.off('error');
+        self._image = null;
 
-        this._$closeButton.unbind("click", this._closeFunction);
-        this._$prevImageButton.unbind("click", this._prevImageFunction);
-        this._$nextImageButton.unbind("click", this._nextImageFunction);
+        self._$overlay.unbind('click', self._closeFunction);
+        self._overlay = null;
 
-        this._container = null;
+        self._$closeButton.unbind('click', self._closeFunction);
+        self._$prevImageButton.unbind('click', self._prevImageFunction);
+        self._$nextImageButton.unbind('click', self._nextImageFunction);
+
+        self._container = null;
     },
 
     _center: function () {
-        var height;
-        var width;
+        var height,
+            width;
 
         /* figuring out a pixel width and pixel height to set the overlay to for IE6. IE6 does not like using percentages in this case. */
         if (this._ie6) {
@@ -216,20 +218,21 @@ Root.PhotoBox.prototype = {
     },
 
     _showPrevImage: function () {
-        if (this._currentImageIndex > 0) {
-            this._$image.fadeOut(this._options.imageFadeDuration, this._showPrevImageFunction);
-            /*			debugger;
-                        this._$image.hide("slide", { direction: "right" }, 10);
-                        this._showImage(this._prevImageIndex);*/
+        var self = this;
+        if (!self._loading && self._currentImageIndex > 0) {
+            //this._$image.fadeOut(this._options.imageFadeDuration, this._showPrevImageFunction);
+            self._$image./*stop(true, true).*/animate({ left: '+=600', opacity: 'hide' },
+                self._options.imageFadeDuration, self._showPrevImageFunction);
         }
-        //return this._showImage(this._prevImageIndex);
     },
 
     _showNextImage: function () {
-        if (this._currentImageIndex < this._images.length - 1) {
-            this._$image.fadeOut(this._options.imageFadeDuration, this._showNextImageFunction);
+        var self = this;
+        if (!self._loading && self._currentImageIndex < self._images.length - 1) {
+            //this._$image.fadeOut(this._options.imageFadeDuration, this._showNextImageFunction);
+            self._$image/*.stop(true, true)*/.animate({ left: '-=600', opacity: 'hide' }, self._options.imageFadeDuration,
+                self._showNextImageFunction);
         }
-        //return this._showImage(this._showNextImageImageIndex);
     },
 
     _resetImageSize: function () {
@@ -295,7 +298,6 @@ Root.PhotoBox.prototype = {
         //self._$image.removeClass("hide");
         this._$image.fadeIn(300);
         this._loading = false;
-
     },
 
     _onLoadFail: function () {
